@@ -5,10 +5,11 @@
     </head>
 
     <body>
-        <div ng-controller = 'market_controller'>
+        <div ng-controller = 'market_controller as market'>
             <select>
                 <option ng-repeat = "ticker in tickers">{{ticker}}</option>
             </select>
+            <stock-tab ticker="market.selection"></stock-tab>
         </div>
 
     <script src = 'angular.min.js'></script> 

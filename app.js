@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 // Setup root directory 
 app.use(express.static(path.join(__dirname, "css")));
 app.use(express.static(path.join(__dirname, "html")));
+app.use(express.static(path.join(__dirname, "html", "components")));
 app.use(express.static(path.join(__dirname, "app")))
 app.use(express.static(path.join(__dirname, "app", "utilities")));
 app.use(express.static(path.join(__dirname, "app", "angularjs")));

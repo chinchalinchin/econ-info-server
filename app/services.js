@@ -4,10 +4,10 @@ const endpoints = {
     closing_price: 'api/closingPrice/'
 }
 
-var services_module = angular.module('services', [])
+var services_module = angular.module('factories', [])
 
 services_module
-    .factory('price_service', [ '$http', function($http){
+    .factory('price_factory', [ '$http', function($http){
             var getTickers = function(){
                 var url = endpoints.host.concat(endpoints.tickers)
                 return $http.get(url).then(function(response){
