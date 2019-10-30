@@ -21,4 +21,4 @@ main_module
             ticker:'='
         },
         controller: 'market_controller'
-    });
+    }); 

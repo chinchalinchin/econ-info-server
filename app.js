@@ -10,7 +10,7 @@ const app = express();
 
 // Setup middleware
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json());  
 
 // Setup root directory 
 app.use(express.static(path.join(__dirname, "css")));
