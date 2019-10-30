@@ -1,0 +1,57 @@
+{
+    "APIKey": "api_key=UwpqQhVzYdzm7-szfqdj",
+    "JSON": "data.json",
+    "WikiURL": "https://www.quandl.com/api/v3/databases/WIKI/",
+    "collapseValues": { 
+        "daily": "daily", 
+        "weekly": "weekly", 
+        "monthly": "monthly", 
+        "quarterly": "quarterly",
+        "annual":"annual" 
+    },
+    "orderValues":{
+            "asc": "asc",
+            "des": "desc"
+    },
+    "transformValues":{
+        "none": "none",
+        "diff": "diff",
+        "rdiff": "rdiff",
+        "rdiff_from": "rdiff_from",
+        "cumul": "cumul",
+        "normalize": "normalize"
+    },
+    "columnValues":{
+        "date": 0,
+        "open": 1,
+        "high": 2,
+        "low": 3,
+        "close": 4,
+        "volume": 5,
+        "dividend": 6
+    },
+    "tickers":{
+        "AAPL": "AAPL",
+        "AMD": "AMD",
+        "AMZN": "AMZN",
+        "CBOE": "CBOE",
+        "CBS": "CBS",
+        "CSX": "CSX",
+        "EBAY": "EBAY",
+        "ENPH": "ENPH",
+        "FB": "FB",
+        "FOX": "FOX",
+        "FSLR": "FSLR",
+        "GS":"GS",
+        "HAL": "HAL",
+        "HASI":"HASI",
+        "IBM": "IBM",
+        "INTL": "INTL",
+        "JPM": "JPM",
+        "MSFT":"MSFT",
+        "NDAQ":"NDAQ",
+        "NVDA": "NVDA"
+
+    }
+
+}

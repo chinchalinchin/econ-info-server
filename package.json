@@ -1,0 +1,25 @@
+{
+  "name": "finneas_stockholm",
+  "version": "1.0.0",
+  "description": "an angularjs app that provides technical analysis for stocks",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stock",
+    "black-scholes",
+    "technical",
+    "analysis",
+    "node",
+    "express",
+    "angularjs"
+  ],
+  "author": "Grant Moore",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
