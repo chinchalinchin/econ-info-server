@@ -1,7 +1,7 @@
 {
     "APIKey": "api_key=UwpqQhVzYdzm7-szfqdj",
     "JSON": "data.json",
-    "WikiURL": "https://www.quandl.com/api/v3/databases/WIKI/",
+    "WikiURL": "https://www.quandl.com/api/v3/datasets/WIKI",
     "collapseValues": { 
         "daily": "daily", 
         "weekly": "weekly", 
@@ -30,28 +30,10 @@
         "volume": 5,
         "dividend": 6
     },
-    "tickers":{
-        "AAPL": "AAPL",
-        "AMD": "AMD",
-        "AMZN": "AMZN",
-        "CBOE": "CBOE",
-        "CBS": "CBS",
-        "CSX": "CSX",
-        "EBAY": "EBAY",
-        "ENPH": "ENPH",
-        "FB": "FB",
-        "FOX": "FOX",
-        "FSLR": "FSLR",
-        "GS":"GS",
-        "HAL": "HAL",
-        "HASI":"HASI",
-        "IBM": "IBM",
-        "INTL": "INTL",
-        "JPM": "JPM",
-        "MSFT":"MSFT",
-        "NDAQ":"NDAQ",
-        "NVDA": "NVDA"
-
-    }
+    "tickers":
+        ["AAPL","AMD", "AMZN", "CBOE", "CBS", "CSX",
+            "EBAY", "ENPH", "FB", "FOX", "FSLR", "GS",
+            "HAL", "HASI", "IBM", "INTL", "JPM", "MSFT",
+            "NDAQ", "NVDA"]
 
 }

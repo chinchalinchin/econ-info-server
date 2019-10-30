@@ -1,14 +1,39 @@
-module.export={
+module.exports={
+    tickers: getTickers,
     getEODUrl: getEODUrl,
     from: appendFrom,
     to: appendTo,
     limit: appendLimit,
     frequency: appendFrequency,
     order: appendOrder,
-    column: appendColumn
+    column: appendColumn,
+    columnValues: getColumnValues,
+    orderValues: getOrderValues,
+    collapseValues: getCollapseValues,
+    transformValues: getTransformValues
 }
 
-const quandl = require('./json/quandl_config.json')
+var quandl = require('./json/quandl_config.json')
+
+function getColumnValues(){ 
+    return quandl.columnValues; 
+}
+
+function getCollapseValues(){
+    return quandl.collapseValues;
+}
+
+function getOrderValues(){
+    return quandl.orderValues;
+}
+
+function getTransformValues(){
+    return quandl.transformValues;
+}
+
+function getTickers(){
+    return quandl.tickers;
+}
 
 function getEODUrl(ticker){
     return `${quandl.WikiURL}/${ticker}/${quandl.JSON}?${quandl.APIKey}`;

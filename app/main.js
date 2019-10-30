@@ -1,20 +1,18 @@
-angular.module('finneas_stockholm', [])
-        .controller('market', ['$scope', function($scope){
+var main_module = angular.module('finneas_stockholm', ['services'])
 
-        }])
-        .factory('prices', [ '$http', function($http){
+main_module
+    .controller('market_controller', ['$scope', 'price_service', function($scope, price_service){
+    
+        $scope.getClosingPrice = function(ticker){
+            var price
+            price_service.getClosingPrice(ticker).then(data=>{
+                price = data;
+                return price;
+            });
+        };
 
-            var getClosingPrice = function(ticker, date){
-                var url = getEODUrl(ticker)
-                url = appendColumn(url, quandl.columnValues.close)
-                url = appendLimit(url, 1)
-                return $http.get(url).then(function(response){
-                    console.log(response)
-                })
-
-            }
-
-            return{
-                closingPrice: getClosingPrice
-            }
-        }])
+        price_service.getTickers().then(data=>{
+            $scope.tickers = data;
+        })
+        
+    }])

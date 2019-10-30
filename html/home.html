@@ -1,16 +1,18 @@
-<html ng-app>
+<html ng-app = "finneas_stockholm">
     <head>
         <title>Finneas Stockholm</title>
         <link rel="stylesheet" type = "text/css" href="styles.css">
     </head>
 
     <body>
+        <div ng-controller = 'market_controller'>
+            <select>
+                <option ng-repeat = "ticker in tickers">{{ticker}}</option>
+            </select>
+        </div>
 
-        <div ng-repeat = " ticker in quandl.tickers" ></div>
-        <iframe src ="http://localhost:8001/api/getClosingPrice/556">
-            
     <script src = 'angular.min.js'></script> 
-    <script src = quandl.js></script>
-    <script type = 'text/javacsript' src = 'quandl_config.json'></script>     
+    <script src = 'main.js'></script>
+    <script src = 'services.js'></script>
     </body>
 </html>

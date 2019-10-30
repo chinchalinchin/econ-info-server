@@ -2,9 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const path = require('path');
-const proxy = require('express-http-proxy');
 const helper = require('./scripts/helper.js');
-const quandl = require('./services/quandl.js')
+const quandl_router = require('./routers/quandl_router.js')
 
 // Initialize node-express
 const app = express();
@@ -31,10 +30,7 @@ app.use('/home', function(req, res, next){
     res.sendFile(path.join(__dirname,'html', 'home.html'));
 });
 
-app.get('/api/getClosingPrice/', function(req, res, next){
-    console.log(req.url.split('/'));
-    console.log(quandl.EODUrl());
-})
+app.use('/api/', quandl_router);
 
 app.listen(8001, function(){
     helper.log("Listening On 8001", "server")
