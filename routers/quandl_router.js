@@ -6,13 +6,13 @@ const helper = require('../scripts/helper.js')
 var router = express.Router();
 
 router.get('/tickers/', function(req, res, next){
-    helper.log('Routing', '/api/tickers/');
+    helper.log('GET tickers', '/api/tickers/');
     var tickers = quandl.tickers();
     res.send(tickers);
 })
 
 router.get('/closingPrice/*', function(req, res, next){
-    helper.log(`Routing ${req.url.split('/')[2]}`, '/api/closingPrice');
+    helper.log(`GET ${req.url.split('/')[2]} price`, '/api/closingPrice');
     url = quandl.getEODUrl(req.url.split('/')[2]);
     url = quandl.limit(url, 1);
     url = quandl.column(url, quandl.columnValues().close);
@@ -22,6 +22,10 @@ router.get('/closingPrice/*', function(req, res, next){
             date: body_json.dataset_data.data[0][0],
             price: body_json.dataset_data.data[0][1]
         };
+        helper.log(`response_json.date: ${response_json.date}`, 
+                    "/api/closingPrice");
+        helper.log(`response_json.price: ${response_json.price}`, 
+                    "/api/closingPrice");
         res.send(response_json);
     });
 })

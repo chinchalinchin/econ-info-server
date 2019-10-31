@@ -25,9 +25,9 @@
             <input type = "button" ng-if = "market.clearable" ng-click = "market.clear()" value = "Clear Search">
             <input type = "button" ng-if = "!market.clearable" value = "Clear Search" disabled>
 
-            <div ng-if='market.portfolio.length>0'>
-                <span ng-repeat= "holding in market.portfolio">
-                    <stock-tab ticker = "holding"></stock-tab>
+            <div ng-if='market.portfolio.tickers.length>0'>
+                <span ng-repeat= "holding in market.portfolio.tickers">
+                    <stock-tab ticker = "holding" price = "market.getStoredPrice(holding)"></stock-tab>
                 </span>
             </div>
 

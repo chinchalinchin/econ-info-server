@@ -4,8 +4,10 @@ main_module
     .component('stockTab', {
         templateUrl: 'stock-tab.html',
         bindings:{
-            ticker:'='
-        }
+            ticker:'=',
+            price:'='
+        },
+        controller: "market_controller"
     }
 ); 
 

@@ -21,12 +21,6 @@ app.use(express.static(path.join(__dirname, "app", "angularjs")));
 app.use(express.static(path.join(__dirname, "app", "main")));
 app.use(express.static(path.join(__dirname, "app", "services")));
 
-
-app.get('/', function(req, res,next){
-    helper.log("Redirecting to /home/", '/');
-    res.redirect('/home');
-});
-
 app.use('/home', function(req, res, next){
     helper.log("Serving 'home.html'", '/home/');
     res.sendFile(path.join(__dirname,'html', 'home.html'));
