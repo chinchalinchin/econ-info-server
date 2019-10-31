@@ -17,9 +17,10 @@ app.use(express.static(path.join(__dirname, "css")));
 app.use(express.static(path.join(__dirname, "html")));
 app.use(express.static(path.join(__dirname, "html", "components")));
 app.use(express.static(path.join(__dirname, "app")))
-app.use(express.static(path.join(__dirname, "app", "utilities")));
 app.use(express.static(path.join(__dirname, "app", "angularjs")));
-app.use(express.static(path.join(__dirname, "app", "json")));
+app.use(express.static(path.join(__dirname, "app", "main")));
+app.use(express.static(path.join(__dirname, "app", "services")));
+
 
 app.get('/', function(req, res,next){
     helper.log("Redirecting to /home/", '/');

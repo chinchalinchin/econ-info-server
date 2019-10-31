@@ -2,20 +2,35 @@
     <head>
         <title>Finneas Stockholm</title>
         <link rel="stylesheet" type = "text/css" href="styles.css">
+        <script src = "angular.min.js"></script> 
+        <script src = "main.js"></script>
+        <script src = "controllers.js"></script>
+        <script src = "components.js"></script>
+        <script src = "factories.js"></script>
     </head>
 
     <body>
-        <div ng-controller = 'market_controller as market'>
-            <select>
-                <option ng-repeat = "ticker in tickers">{{ticker}}</option>
-            </select>
-            Testing
-            <stock-tab ticker="market.selection"></stock-tab>
-            This
-        </div>
+        <div ng-cloak ng-controller = 'market_controller as market'>
 
-    <script src = 'angular.min.js'></script> 
-    <script src = 'main.js'></script>
-    <script src = 'services.js'></script>
+            <select ng-model = 'market.selection'>
+                <option ng-repeat = "ticker in market.tickers">{{ticker}}</option>
+            </select>
+
+            <!--Search Button-->
+            <input type = "button" ng-click = "market.add()" ng-if="market.selection" value = "Add Stock">
+            <input type = "button" ng-if = "!market.selection" value ="Add Stock" disabled>
+            <!--Update Button-->
+
+            <!--Clear Button-->
+            <input type = "button" ng-if = "market.clearable" ng-click = "market.clear()" value = "Clear Search">
+            <input type = "button" ng-if = "!market.clearable" value = "Clear Search" disabled>
+
+            <div ng-if='market.portfolio.length>0'>
+                <span ng-repeat= "holding in market.portfolio">
+                    <stock-tab ticker = "holding"></stock-tab>
+                </span>
+            </div>
+
+        </div>
     </body>
 </html>
