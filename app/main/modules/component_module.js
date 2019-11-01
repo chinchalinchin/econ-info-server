@@ -6,8 +6,7 @@ main_module
         bindings:{
             ticker:'=',
             price:'='
-        },
-        controller: "market_controller"
+        }
     }
 ); 
 

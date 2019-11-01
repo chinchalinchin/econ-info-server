@@ -3,10 +3,12 @@
         <title>Finneas Stockholm</title>
         <link rel="stylesheet" type = "text/css" href="styles.css">
         <script src = "angular.min.js"></script> 
-        <script src = "main.js"></script>
-        <script src = "controllers.js"></script>
-        <script src = "components.js"></script>
-        <script src = "factories.js"></script>
+        <script src = "logger_controller.js"></script>
+        <script src = "market_controller.js"></script>
+        <script src = "main_module.js"></script>
+        <script src = "controller_module.js"></script>
+        <script src = "component_module.js"></script>
+        <script src = "factory_module.js"></script>
     </head>
 
     <body>
@@ -25,12 +27,17 @@
             <input type = "button" ng-if = "market.clearable" ng-click = "market.clear()" value = "Clear Search">
             <input type = "button" ng-if = "!market.clearable" value = "Clear Search" disabled>
 
-            <div ng-if='market.portfolio.tickers.length>0'>
-                <span ng-repeat= "holding in market.portfolio.tickers">
-                    <stock-tab ticker = "holding" price = "market.getStoredPrice(holding)"></stock-tab>
-                </span>
-            </div>
+            <span ng-if='market.stored'>
+                <table>
+                    <tr>
+                    <td ng-repeat= "holding in market.portfolio.tickers">
+                        <stock-tab ticker = "holding" price = "market.getStoredPrice(holding)"></stock-tab>
+                    </td>
+                    </tr>
+                </table>
+            </span>
 
         </div>
     </body>
+
 </html>

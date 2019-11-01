@@ -6,14 +6,16 @@ const helper = require('../scripts/helper.js')
 var router = express.Router();
 
 router.get('/tickers/', function(req, res, next){
-    helper.log('GET tickers', '/api/tickers/');
+    helper.log('GET "tickers" Received', '/api/tickers/');
     var tickers = quandl.tickers();
+    helper.log(`GET "tickers" Response Sent: ${tickers.length} tickers sent`, "/api/tickers/")
     res.send(tickers);
 })
 
 router.get('/closingPrice/*', function(req, res, next){
-    helper.log(`GET ${req.url.split('/')[2]} price`, '/api/closingPrice');
-    url = quandl.getEODUrl(req.url.split('/')[2]);
+    var ticker = req.url.split('/')[2]
+    helper.log(`GET ${ticker} Request Received`, '/api/closingPrice/');
+    url = quandl.getEODUrl(ticker);
     url = quandl.limit(url, 1);
     url = quandl.column(url, quandl.columnValues().close);
     request(url, function(error, response, body){
@@ -22,10 +24,8 @@ router.get('/closingPrice/*', function(req, res, next){
             date: body_json.dataset_data.data[0][0],
             price: body_json.dataset_data.data[0][1]
         };
-        helper.log(`response_json.date: ${response_json.date}`, 
-                    "/api/closingPrice");
-        helper.log(`response_json.price: ${response_json.price}`, 
-                    "/api/closingPrice");
+        helper.log(`GET ${ticker} Response Sent: {date, price}: {${response_json.date}, ${response_json.price}}`, 
+                    "/api/closingPrice/");
         res.send(response_json);
     });
 })
