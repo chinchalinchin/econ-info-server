@@ -72,7 +72,8 @@ function market_controller(price_factory, logger_factory){
             self.add_clicks++;
             logger_factory.log(`Adding ${self.selection} To Portfolio`, "market_controller.add")
             self.getClosingPrice(self.selection).then((date_and_price)=>{
-                logger_factory.log(`Storing Returned ${self.selection} (date, price):(${date_and_price.date}, ${date_and_price.price})`,
+                logger_factory.log(`Storing Returned ${self.selection} {date, price}: ` + 
+                                   `{${date_and_price.date}, ${date_and_price.price}}`,
                                     "market_controller.add")
                 self.portfolio.prices.push(date_and_price.price);
                 self.portfolio.dates.push(date_and_price.date);
