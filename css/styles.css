@@ -1,0 +1,42 @@
+.container{
+    border-style: solid;
+    border-width: 2px;
+    border-color: midnightblue;
+}
+.cell{
+    border-style:solid;
+    border-width: 2px;
+    border-color: mediumblue;
+}
+.title{
+    font-size:150%;
+    color: darkblue;
+}
+.manager{
+    border-style: solid;
+    border-width: 2px;
+    border-color:darkblue;
+}
+.manager-grid{
+    display:grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+.manager-grid-item{
+    justify-self: left;
+    text-align: left;
+    float: left;
+}
+.stock-grid{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    max-height:400px;
+    overflow-y: auto;
+}
+.stock-grid-item{
+    text-align:left;
+    border-style:solid;
+    border-width: 2px;
+    border-color: mediumblue;
+}
+

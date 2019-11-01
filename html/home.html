@@ -12,32 +12,48 @@
     </head>
 
     <body>
-        <div ng-cloak ng-controller = 'market_controller as market'>
 
-            <select ng-model = 'market.selection'>
-                <option ng-repeat = "ticker in market.tickers">{{ticker}}</option>
-            </select>
+        <table>
+            <tr><td>
+                    <input type = "text" value = "username" disabled>
+                    <input type = "button" value = "Login" disabled>
+                    <input type = button value = "Logout" disabled>
+            </td></tr>
+        </table><br><br>
 
-            <!--Search Button-->
-            <input type = "button" ng-click = "market.add()" ng-if="market.selection" value = "Add Stock">
-            <input type = "button" ng-if = "!market.selection" value ="Add Stock" disabled>
-            <!--Update Button-->
 
-            <!--Clear Button-->
-            <input type = "button" ng-if = "market.clearable" ng-click = "market.clear()" value = "Clear Search">
-            <input type = "button" ng-if = "!market.clearable" value = "Clear Search" disabled>
-
-            <span ng-if='market.stored'>
-                <table>
-                    <tr>
-                    <td ng-repeat= "holding in market.portfolio.tickers">
+        <div id = "portfolio-app" class = "container" 
+                ng-cloak ng-controller = 'market_controller as market'>
+            <div class = "title">Finneas Stockholm: Portfolio Manager</div>
+            <table>
+                <tr>
+                    <div class = "manager"> Manage Portfolio
+                    <div class = "manager-grid">   
+                        <div class = "manager-grid-item">
+                            <select ng-model = 'market.selection'>
+                                <option ng-if ="!market.portfolio.tickers.includes(ticker)"
+                                         ng-repeat = "ticker in market.tickers">{{ticker}}</option>
+                            </select>
+                            <input id = "add-enabled" type = "button" value = "Add Stock"
+                                ng-click = "market.add()" ng-if="market.selection" >
+                            <input type = "button" value ="Add Stock" disabled
+                                ng-if = "!market.selection">
+                            <input type = "button" value = "Clear Search"
+                                ng-if = "market.clearable" ng-click = "market.clear()">
+                            <input type = "button" value = "Clear Search" disabled
+                                ng-if = "!market.clearable">
+                        </div>
+                    </div> 
+                </tr>
+                <tr><div class = "stock-grid" ng-if = "market.portfolio.tickers.length === market.add_clicks && market.stored">
+                    <div class = "stock-grid-item" ng-repeat = "holding in market.portfolio.tickers">
+                        {{holding}} Holding
                         <stock-tab ticker = "holding" price = "market.getStoredPrice(holding)"></stock-tab>
-                    </td>
-                    </tr>
-                </table>
-            </span>
-
+                    </div>
+                </div></tr>
+            </table>
         </div>
+
     </body>
 
 </html>
