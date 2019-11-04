@@ -11,37 +11,34 @@ UPCOMING FEATURES:
 	a. Automatic calculation of profit/loss according to current date and purchase date.<br>
 	b. Calculation of breakeven point<br>
 2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
-	<b>Portfolio Tab</b><br>
-	I. Date<br>
-	II. Purchase Date<br>
-	III. Number of Days Held (=date - purchase_date)<br>
-	IV. Price<br>
-	V. Purchase Price<br>
-	VI. Shares<br>
-	VII. Liquidity (=current_price*shares)<br>
-	VIII. Trade Price (=purchase_price*shares)<br>
-	IX. Profit/Loss (=shares*(current_price-purchase_price))<br>
-	<b>Economic Data Tab</b>
-	I. US Treasury 3 Month, Continuous<br>
-	* Quotes Are Semi-Annual<br>
-	II. US Treasury 1 Year, Continuous<br>
-	* Quotes Are Semi-Annual<br>
-	III. US Treasury 10 Year, Continuous<br>
-	* Quotes Are Semi-Annual<br>
-	IV. VIX Spot<br>
-	V. VIX 1 Month Future<br>
-	VI. VIX 2 Month Future<br>
-	VII. VIX 3 Month Future<br>
-	<b>Black-Scholes Analysis Tab</b><br>
-		I. Input<br>
-		- Observed: Spot, Interest, Dividend, Volatility (VIX)<br>
-		- User: Strike, Expiration, Call/Put<br>
-		II. Output<br>
-		- Black-Scholes Price Call/Put<br>
-		- Greeks<br>
-		- Breakeven Underlying Price<br>
-	<b>Grafana Tab</b><br>
-		Notes: Will connect with DB<br>
+	<b>a. Portfolio Tab</b><br>
+	* Date<br>
+	* Purchase Date<br>
+	* Number of Days Held (=date - purchase_date)<br>
+	* Price<br>
+	* Purchase Price<br>
+	* Shares<br>
+	* Liquidity (=current_price*shares)<br>
+	* Trade Price (=purchase_price*shares)<br>
+	* Profit/Loss (=shares*(current_price-purchase_price))<br>
+	<b>b. Economic Data Tab</b>
+	* US Treasury 3 Month, Continuous<br>
+	* US Treasury 1 Year, Continuous<br>
+	* US Treasury 10 Year, Continuous<br>
+	* VIX Spot<br>
+	* VIX 1 Month Future<br>
+	* VIX 2 Month Future<br>
+	* VIX 3 Month Future<br>
+	<b>c. Black-Scholes Analysis Tab</b><br>
+	* Input<br>
+	- Observed: Spot, Interest, Dividend, Volatility (VIX)<br>
+	- User: Strike, Expiration, Call/Put<br>
+	* Output<br>
+	- Black-Scholes Price Call/Put<br>
+	- Greeks<br>
+	- Breakeven Underlying Price<br>
+	<b>d. Grafana Tab</b><br>
+	- Notes: Will connect with DB<br>
 3. OAuth2 Authentication/Authorization Flow And Features<br>
 	a. Storage of Users in Database<br>
 	b. Storage of User's Portfolios in Database<br>
