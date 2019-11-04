@@ -12,9 +12,9 @@ UPCOMING FEATURES:
 	<span class = "margin-left:10px">b. Calculation of breakeven point</span><br>
 2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
 	<span class = "margin-left:10px">a. Portfolio Tab</span><br>
-		<span class = "margin-left:10px">I. Date<br>
+		<span class = "margin-left:10px">I. Date<br></span>
 		II. Purchase Date<br>
-		III. Number of Days Held (date - purchase_date)<br>
+		III. Number of Days Held (=date - purchase_date)<br>
 		IV. Price<br>
 		V. Purchase Price<br>
 		VI. Shares<br>
