@@ -10,7 +10,7 @@ UPCOMING FEATURES:
 1. Ability to set number of shares and purchase date.<br>
 	a. Automatic calculation of profit/loss according to current date and purchase date.<br>
 	b. Calculation of breakeven point<br>
-2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
+2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br><br>
 	<b>Portfolio Tab</b><br>
 	* Date<br>
 	* Purchase Date<br>
@@ -20,7 +20,7 @@ UPCOMING FEATURES:
 	* Shares<br>
 	* Liquidity (=current_price*shares)<br>
 	* Trade Price (=purchase_price*shares)<br>
-	* Profit/Loss (=shares*(current_price-purchase_price))<br>
+	* Profit/Loss (=shares*(current_price-purchase_price))<br><br/>
 	<b>Economic Data Tab</b><br>
 	* US Treasury 3 Month, Continuous<br>
 	* US Treasury 1 Year, Continuous<br>
@@ -28,7 +28,7 @@ UPCOMING FEATURES:
 	* VIX Spot<br>
 	* VIX 1 Month Future<br>
 	* VIX 2 Month Future<br>
-	* VIX 3 Month Future<br>
+	* VIX 3 Month Future<br><br>
 	<b>Black-Scholes Analysis Tab</b><br>
 	* Input<br>
 	- Observed: Spot, Interest, Dividend, Volatility (VIX)<br>
@@ -36,9 +36,9 @@ UPCOMING FEATURES:
 	* Output<br>
 	- Black-Scholes Price Call/Put<br>
 	- Greeks<br>
-	- Breakeven Underlying Price<br>
+	- Breakeven Underlying Price<br><br>
 	<b>d. Grafana Tab</b><br>
-	- Notes: Will connect with DB<br>
+	- Notes: Will connect with DB<br><br>
 3. OAuth2 Authentication/Authorization Flow And Features<br>
 	a. Storage of Users in Database<br>
 	b. Storage of User's Portfolios in Database<br>
