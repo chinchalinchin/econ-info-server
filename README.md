@@ -21,7 +21,7 @@ UPCOMING FEATURES:
 	* Liquidity (=current_price*shares)<br>
 	* Trade Price (=purchase_price*shares)<br>
 	* Profit/Loss (=shares*(current_price-purchase_price))<br>
-	<b>b. Economic Data Tab</b>
+	<b>b. Economic Data Tab</b><br>
 	* US Treasury 3 Month, Continuous<br>
 	* US Treasury 1 Year, Continuous<br>
 	* US Treasury 10 Year, Continuous<br>
