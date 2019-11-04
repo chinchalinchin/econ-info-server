@@ -5,4 +5,8 @@ main_module.config(['$routeProvider', function($routeProvider) {
         .when('/portfolio', {
             templateUrl: 'portfolio-tab.html'
         })
-    }])
+        .when('/welcome',{
+            templateUrl:'splash-tab.html'
+        })
+        .otherwise({redirectTo: '/welcome'})
+}])

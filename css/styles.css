@@ -2,6 +2,7 @@
     border-style: solid;
     border-width: 2px;
     border-color: midnightblue;
+    min-width: 480;
 }
 .cell{
     border-style:solid;
@@ -29,7 +30,7 @@
 }
 .stock-grid{
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto;
     max-height:400px;
     overflow-y: auto;
 }

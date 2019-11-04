@@ -39,6 +39,7 @@ UPCOMING FEATURES:
 	- Breakeven Underlying Price<br><br>
 	<b>Grafana Tab</b><br>
 	- Notes: Will connect with DB<br><br>
+	
 3. OAuth2 Authentication/Authorization Flow And Features<br>
 	a. Storage of Users in Database<br>
 	b. Storage of User's Portfolios in Database<br>
