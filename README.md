@@ -8,11 +8,11 @@ The app simulates a portfolio manager where you can add stocks to your portfolio
 
 UPCOMING FEATURES:
 1. Ability to set number of shares and purchase date.<br>
-	<span class = "margin-left:10px">a. Automatic calculation of profit/loss according to current date and purchase date.<span><br>
-	<span class = "margin-left:10px">b. Calculation of breakeven point</span><br>
+	a. Automatic calculation of profit/loss according to current date and purchase date.<br>
+	b. Calculation of breakeven point<br>
 2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
-	<span class = "margin-left:10px">a. Portfolio Tab</span><br>
-		<span class = "margin-left:10px">I. Date<br></span>
+	a. Portfolio Tab<br>
+		I. Date<br>
 		II. Purchase Date<br>
 		III. Number of Days Held (=date - purchase_date)<br>
 		IV. Price<br>
