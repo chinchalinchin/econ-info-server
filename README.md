@@ -2,7 +2,7 @@ Introduction
 
 Finneas-Stockholm is a simple UI built from the AngularJS framework and served up through Node Express. The app makes calls to a free API provided by Quandl, retrieving financial data for the user to view. Currently, the app displays stock price data by date, but in the future, it will also display relevant economic data from other datasets on Quandl, such as interest rates on US treasuries and implied volatility term structures on the S&P 500. In other words, Quandl is a great resource and everyone should use it. 
 
-<a href = "http://www.quandl.com">USE QUANDL!</a>
+<a class = "margin-left:30px" href = "http://www.quandl.com">USE QUANDL!</a>
 
 The app simulates a portfolio manager where you can add stocks to your portfolio. Currently only price information is displayed, but I am working on allowing the user to set the number of shares and purchase date, which will then translate into a net profit/loss binding in the UI. What follows is a full schedule of features I have imagined for this app:
 
@@ -11,13 +11,13 @@ UPCOMING FEATURES:
 	<span class = "margin-left:10px">a. Automatic calculation of profit/loss according to current date and purchase date.<span><br>
 	<span class = "margin-left:10px">b. Calculation of breakeven point</span><br>
 2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
-	a. Portfolio Tab
-		I. Date
-		II. Purchase Date
-		III. Number of Days Held (date - purchase_date)
-		IV. Price
-		V. Purchase Pirce
-		VI. Shares
+	<span class = "margin-left:10px">a. Portfolio Tab</span><br>
+		<span class = "margin-left:10px">I. Date<br>
+		II. Purchase Date<br>
+		III. Number of Days Held (date - purchase_date)<br>
+		IV. Price<br>
+		V. Purchase Price<br>
+		VI. Shares<br>
 		VII. Liquidity (=current_price*shares)
 		VIII. Trade Price (=purchase_price*shares)
 		IX. Profit/Loss (=shares*(current_price-purchase_price)
