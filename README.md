@@ -2,7 +2,7 @@ Introduction
 
 Finneas-Stockholm is a simple UI built from the AngularJS framework and served up through Node Express. The app makes calls to a free API provided by Quandl, retrieving financial data for the user to view. Currently, the app displays stock price data by date, but in the future, it will also display relevant economic data from other datasets on Quandl, such as interest rates on US treasuries and implied volatility term structures on the S&P 500. In other words, Quandl is a great resource and everyone should use it. 
 
-<a class = "margin-left:30px" href = "http://www.quandl.com">USE QUANDL!</a>
+	<a href = "http://www.quandl.com">USE QUANDL!</a>
 
 The app simulates a portfolio manager where you can add stocks to your portfolio. Currently only price information is displayed, but I am working on allowing the user to set the number of shares and purchase date, which will then translate into a net profit/loss binding in the UI. What follows is a full schedule of features I have imagined for this app:
 
@@ -18,9 +18,9 @@ UPCOMING FEATURES:
 		IV. Price<br>
 		V. Purchase Price<br>
 		VI. Shares<br>
-		VII. Liquidity (=current_price*shares)
-		VIII. Trade Price (=purchase_price*shares)
-		IX. Profit/Loss (=shares*(current_price-purchase_price)
+		VII. Liquidity (=current_price*shares)<br>
+		VIII. Trade Price (=purchase_price*shares)<br>
+		IX. Profit/Loss (=shares*(current_price-purchase_price))<br>
 	b. Economic Data Tab
 		I. US Treasury 3 Month, Continuous
 			* Quotes Are Semi-Annual
