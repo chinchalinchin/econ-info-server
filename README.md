@@ -9,7 +9,7 @@ The app simulates a portfolio manager where you can add stocks to your portfolio
 UPCOMING FEATURES:
 1. Ability to set number of shares and purchase date.<br>
 	a. Automatic calculation of profit/loss according to current date and purchase date.<br>
-	b. Calculation of breakeven point<br>
+	b. Calculation of breakeven point<br><br>
 2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br><br>
 	<b>Portfolio Tab</b><br>
 	* Date<br>
@@ -37,12 +37,12 @@ UPCOMING FEATURES:
 	- Black-Scholes Price Call/Put<br>
 	- Greeks<br>
 	- Breakeven Underlying Price<br><br>
-	<b>d. Grafana Tab</b><br>
+	<b>Grafana Tab</b><br>
 	- Notes: Will connect with DB<br><br>
 3. OAuth2 Authentication/Authorization Flow And Features<br>
 	a. Storage of Users in Database<br>
 	b. Storage of User's Portfolios in Database<br>
-	c. Retrieval of Portfolio Upon Login<br>
+	c. Retrieval of Portfolio Upon Login<br><br>
 
 <h1>Thoughts</h1>
 
