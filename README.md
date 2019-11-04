@@ -11,7 +11,7 @@ UPCOMING FEATURES:
 	a. Automatic calculation of profit/loss according to current date and purchase date.<br>
 	b. Calculation of breakeven point<br>
 2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
-	<b>a. Portfolio Tab</b><br>
+	<b>Portfolio Tab</b><br>
 	* Date<br>
 	* Purchase Date<br>
 	* Number of Days Held (=date - purchase_date)<br>
@@ -21,7 +21,7 @@ UPCOMING FEATURES:
 	* Liquidity (=current_price*shares)<br>
 	* Trade Price (=purchase_price*shares)<br>
 	* Profit/Loss (=shares*(current_price-purchase_price))<br>
-	<b>b. Economic Data Tab</b><br>
+	<b>Economic Data Tab</b><br>
 	* US Treasury 3 Month, Continuous<br>
 	* US Treasury 1 Year, Continuous<br>
 	* US Treasury 10 Year, Continuous<br>
@@ -29,7 +29,7 @@ UPCOMING FEATURES:
 	* VIX 1 Month Future<br>
 	* VIX 2 Month Future<br>
 	* VIX 3 Month Future<br>
-	<b>c. Black-Scholes Analysis Tab</b><br>
+	<b>Black-Scholes Analysis Tab</b><br>
 	* Input<br>
 	- Observed: Spot, Interest, Dividend, Volatility (VIX)<br>
 	- User: Strike, Expiration, Call/Put<br>
