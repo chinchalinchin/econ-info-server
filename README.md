@@ -7,10 +7,10 @@ Finneas-Stockholm is a simple UI built from the AngularJS framework and served u
 The app simulates a portfolio manager where you can add stocks to your portfolio. Currently only price information is displayed, but I am working on allowing the user to set the number of shares and purchase date, which will then translate into a net profit/loss binding in the UI. What follows is a full schedule of features I have imagined for this app:
 
 UPCOMING FEATURES:
-1. Ability to set number of shares and purchase date.
-	a. Automatic calculation of profit/loss according to current date and purchase date.
-	b. Calculation of breakeven point
-2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.
+1. Ability to set number of shares and purchase date.<br>
+	<span class = "margin-left:10px">a. Automatic calculation of profit/loss according to current date and purchase date.<span><br>
+	<span class = "margin-left:10px">b. Calculation of breakeven point</span><br>
+2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
 	a. Portfolio Tab
 		I. Date
 		II. Purchase Date
