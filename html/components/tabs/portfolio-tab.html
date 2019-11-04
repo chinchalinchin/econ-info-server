@@ -1,0 +1,34 @@
+<div id = "portfolio-app" class = "container" ng-controller = "market_controller as market">
+    <div class = "title">Finneas Stockholm: Portfolio Manager</div>
+        <table ng-if ="market.portfolio.tickers && market.portfolio.tickers.length>0">
+            <tr>
+                <div class = "manager"> Manage Portfolio
+                    <div class = "manager-grid">   
+                        <div class = "manager-grid-item">
+                            <select ng-model = 'market.selection'>
+                                <option ng-if ="!market.portfolio.tickers.includes(ticker)"
+                                        ng-repeat = "ticker in market.tickers">{{ticker}}</option>
+                            </select>
+                            <input id = "add-enabled" type = "button" value = "Add Stock"
+                                ng-click = "market.add()" ng-if="market.selection" >
+                            <input type = "button" value ="Add Stock" disabled
+                                ng-if = "!market.selection">
+                            <input type = "button" value = "Clear Search"
+                                ng-if = "market.clearable" ng-click = "market.clear()">
+                            <input type = "button" value = "Clear Search" disabled
+                                ng-if = "!market.clearable">
+                        </div>
+                    </div> 
+                </div>
+            </tr>
+            <tr>
+                <div class = "stock-grid" ng-if = "market.portfolio.tickers.length === market.add_clicks && market.stored">
+                    <div class = "stock-grid-item" ng-repeat = "holding in market.portfolio.tickers">
+                        {{holding}} Holding
+                        <stock-item ticker = "holding" price = "market.getStoredPrice(holding)"></stock-item>
+                    </div>
+                </div>
+            </tr>
+        </table>
+
+</div>

@@ -1,8 +1,8 @@
 var main_module = angular.module('finneas_stockholm')
 
 main_module
-    .component('stockTab', {
-        templateUrl: 'stock-tab.html',
+    .component('stockItem', {
+        templateUrl: 'stock-item.html',
         bindings:{
             ticker:'=',
             price:'='

@@ -27,7 +27,6 @@ function market_controller(price_factory, logger_factory){
     self.stored = false;
     self.add_clicks = 0;
     self.portfolio = { tickers: [], prices: [], dates: [] }
-
     logger_factory.log("Initializing Ticker Data", "market_controller")
     price_factory.getTickers().then(data=>{
         self.tickers = data;
