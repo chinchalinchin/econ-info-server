@@ -1,13 +1,12 @@
-<div id = "portfolio-app" class = "container" ng-controller = "market_controller as market">
+<div id = "portfolio-app" class = "container" ng-controller = "quandl_controller as market">
     <div class = "title">Finneas Stockholm: Portfolio Manager</div>
-        <table ng-if ="market.portfolio.tickers && market.portfolio.tickers.length>0">
+        <table>
             <tr>
                 <div class = "manager"> Manage Portfolio
                     <div class = "manager-grid">   
                         <div class = "manager-grid-item">
                             <select ng-model = 'market.selection'>
-                                <option ng-if ="!market.portfolio.tickers.includes(ticker)"
-                                        ng-repeat = "ticker in market.tickers">{{ticker}}</option>
+                                <option ng-repeat = "ticker in market.tickers">{{ticker.code}}</option>
                             </select>
                             <input id = "add-enabled" type = "button" value = "Add Stock"
                                 ng-click = "market.add()" ng-if="market.selection" >
@@ -24,7 +23,7 @@
             <tr>
                 <div class = "stock-grid" ng-if = "market.portfolio.tickers.length === market.add_clicks && market.stored">
                     <div class = "stock-grid-item" ng-repeat = "holding in market.portfolio.tickers">
-                        {{holding}} Holding
+                        {{holding.code}} Holding
                         <stock-item ticker = "holding" price = "market.getStoredPrice(holding)"></stock-item>
                     </div>
                 </div>

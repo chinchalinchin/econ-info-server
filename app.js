@@ -30,7 +30,7 @@ app.use('/home/', function(req, res, next){
     res.sendFile(path.join(__dirname,'html', 'home.html'));
 });
 
-app.use('/api/', quandl_router);
+app.use('/api/quandl/', quandl_router);
 
 app.listen(8001, function(){
     helper.log("Listening On Port 8001", "app.js")

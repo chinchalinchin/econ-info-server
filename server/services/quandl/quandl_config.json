@@ -1,0 +1,83 @@
+{
+    "APIKey": "api_key=UwpqQhVzYdzm7-szfqdj",
+    "JSON": "data.json",
+    "baseURL": "https://www.quandl.com/api/v3",
+    "WikiURL": "datasets/WIKI",
+    "FredURL": "datasets/FRED",
+    "collapseValues": { 
+        "daily": "daily", 
+        "weekly": "weekly", 
+        "monthly": "monthly", 
+        "quarterly": "quarterly",
+        "annual":"annual" 
+    },
+    "orderValues":{
+        "ascending": "asc",
+        "descending": "desc"
+    },
+    "transformValues":{
+        "none": "none",
+        "first_difference": "diff",
+        "arithmetic_return": "rdiff"
+    },
+    "columnValues":{
+        "date": 0,
+        "open": 1,
+        "high": 2,
+        "low": 3,
+        "close": 4,
+        "volume": 5,
+        "dividend": 6
+    },
+    "codes":{
+        "growth":
+            [{"code": "GDP", "description": "Gross Domestic Product"},
+             {"code":"GDPC1", "description": "Real Gross Domestic Product"}],
+        "prices_and_inflation":    
+            [{"code": "CPIAUCSL", "description": "Consumer Price Index For All Urban Consumers: All Items"},
+             {"code": "CPILFESL", "description": "Consumer Price Index For All Urban Consumers: All Items Less Food & Energy"}],
+        "money_supply":
+            [{"code": "M1", "description": "M1 Money Stock"},
+             {"code": "M2", "description": "M2 Money Stock"},
+             {"code":  "M1V", "description": "Velocity of M1 Money Stock"},
+             {"code": "M2V", "description": "Velocity of M2 Money Stock"}],
+        "interest_rates": 
+            [{"code":"DFF","description": "Effective Federal Funds Rate"},
+             {"code": "DTB3", "description": "3-Month Treasury Bill: Secondary Market Rate"},
+             {"code": "DGS5", "description": "5-Year Treasury Constant Maturity Rate"},
+             {"code": "DGS10", "description": "10-Year Treasury Constant Maturity Rate"},
+             {"code": "DGS30", "description": "30-Year Treasury Constant Maturity Rate"},
+             {"code": "DPRIME", "description": "Bank Prime Loan Rate"}],
+        "employment": 
+            [{"code": "UNRATE", "description": "Civilian Unemployment Rate"} ,
+             {"code": "NROU", "description": "Natural Rate of Unemployment (Long-Term)"},
+             {"code": "NROUST", "description" : "Natural Rate of Unemployment (Short-Term)"},
+             {"code": "CIVPART", "description" :" Civilian Labor Force Participation Rate"} ,
+             {"code": "EMRATIO", "description": "Civilian Employment-Population Ratio"},
+             {"code": "UNEMPLOY", "description": "Unemployed"},
+             {"code": "PAYEMS", "description": "All Employees: Total Nonfarm"},
+             {"code":"MANEMP", "description": "All Employees: Manufacturing"}],
+        "income_and_expenditure":
+            [{"code": "PSAVERT", "description": "Personal Savings Rate"},
+             {"code":"DSPI", "description": "Disposable Personal Income"},
+             {"code": "DSPIC96", "description": "Real Disposable Personal Income"},
+             {"code": "PCE", "description": "Personal Consumption Expenditures"},
+             {"code": "PCEDG", "description": "Personal Consumption Expenditures: Durable Goods"},
+             {"code": "RRSFS", "description": "Real Retail and Food Services Sales"}],
+        "debt":
+            [{"code": "GFDEBTN", "description": "Federal Debt: Total Public Debt"},
+             {"code": "GFDEGDQ188S", "description": "Federal Debt: Total Public Debt as Percent of Gross Domestic Product"},
+             {"code": "EXCSRESNW", "description": "Excess Resrves of Depository Institutions"},
+             {"code": "TOTCI", "description": "Commerical and Industrial Loans, All Commerical Banks"}],
+        "other_indicators":
+            [{"code": "INDPRO", "description": "Industrial Production Index"},
+             {"code": "TCU", "description": "Capacity Utilization: Total Industry"},
+             {"code": "HOUST", "description": "Housing Starts: Total: New Privately Owned Housing Units Started"},
+             {"code": "GPDI", "description": "Gross Private Domestic Investment"},
+             {"code":"CP", "description":"Corporate Profits After Tax (without IVA and CCAdj)"},
+             {"code": "DCOILWTICO", "description": "Crude Oil Prices: West Texas Intermediate (WTI) - Cushing, Oklakhoma"},
+             {"code": "DTWEXM", "description": "Trade Weighted U.S. Dollar Index: Major Currencides"}, 
+             {"code": "DTWEXB", "description": "Trade Weighted U.S. Dollar Index: Broad"}]
+
+    }
+}

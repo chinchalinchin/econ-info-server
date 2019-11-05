@@ -1,6 +1,6 @@
 module.exports={
-    tickers: getTickers,
-    getEODUrl: getEODUrl,
+    getWikiUrl: getWikiUrl,
+    getFredUrl: getFredUrl,
     from: appendFrom,
     to: appendTo,
     limit: appendLimit,
@@ -10,10 +10,11 @@ module.exports={
     columnValues: getColumnValues,
     orderValues: getOrderValues,
     collapseValues: getCollapseValues,
-    transformValues: getTransformValues
+    transformValues: getTransformValues,
+    codes: getCodes,
 }
 
-var quandl = require('./json/quandl_config.json')
+var quandl = require('./quandl_config.json')
 
 function getColumnValues(){ 
     return quandl.columnValues; 
@@ -31,12 +32,16 @@ function getTransformValues(){
     return quandl.transformValues;
 }
 
-function getTickers(){
-    return quandl.tickers;
+function getCodes(){
+    return quandl.codes;
 }
 
-function getEODUrl(ticker){
-    return `${quandl.WikiURL}/${ticker}/${quandl.JSON}?${quandl.APIKey}`;
+function getWikiUrl(ticker){
+    return `${quandl.baseURL}/${quandl.WikiURL}/${ticker}/${quandl.JSON}?${quandl.APIKey}`;
+}
+
+function getFredUrl(code){
+    return `${quandl.baseURL}/${quandl.FredURL}/${code}/${quandl.JSON}?${quandl.APIKey}`
 }
 
 // Format: yyyy-mm-dd

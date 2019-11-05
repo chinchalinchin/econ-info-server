@@ -19,7 +19,7 @@
 //                  this so HTML template binding can wait on asynchronous operation
 // self.portfolio: A JSON containing information about the user's portfolio.
 // self.tickers: A list of all tickers that can be accessed through the backend API.
-function market_controller(price_factory, logger_factory){
+function quandl_controller(quandl_factory, logger_factory){
     logger_factory.log("Initializing Controller Variables", "market_controller")
     var self = this;
     self.selection = null;
@@ -27,15 +27,19 @@ function market_controller(price_factory, logger_factory){
     self.stored = false;
     self.add_clicks = 0;
     self.portfolio = { tickers: [], prices: [], dates: [] }
+    
     logger_factory.log("Initializing Ticker Data", "market_controller")
-    price_factory.getTickers().then(data=>{
+    quandl_factory.getTickers().then(data=>{
+        logger_factory.log("Ticker Date Received From 'quandl_price_factory'", "market_controller.getTickers")
         self.tickers = data;
     })
+    .catch(function(err){
+        logger_factory.warn(err, "market_controller.getTickers")
+    });
     
     self.getClosingPrice = function(ticker){
-        logger_factory.log("Retrieving Prices From 'price_factory", 
-                            "market_controller.getClosingPrice");
-        return price_factory.getClosingPrice(ticker);
+        logger_factory.log("Retrieving Prices From 'price_factory", "market_controller.getClosingPrice");
+        return quandl_factory.getClosingPrice(ticker);
     };
 
     self.getStoredPrice = function(ticker){
