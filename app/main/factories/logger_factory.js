@@ -2,17 +2,18 @@ function logger_factory(){
     var logs = [];
     var log = function log(msg, route){
         const now = new Date().toLocaleTimeString();
-        thisLog = `log: ${now}: ${route}: ${msg}`
+        thisLog = `${now}: ${route}: ${msg}`
         console.log(thisLog);      
         logs.push(thisLog)
     };
     var warn = function warn(msg, route){
         const now = new Date().toLocaleTimeString();
-        thisWarn = `app WARN: !!! ${now}: ${route}: ${msg} !!!`;
+        thisWarn = `!!! ${now}: ${route}: ${msg} !!!`;
         console.log(thisWarn);
         logs.push(thisWarn);
     }
     var getLogs = function getLogs(){
+        log("Retrieving Logs", "logger_factory.getLogs")
         return logs;
     };
     return{

@@ -21,29 +21,24 @@
         <script src = "router_module.js"></script>
     </head>
 
-    <body ng-app = "finneas_stockholm">
+    <body ng-app = "finneas_stockholm" class = "app">
 
-        <table>
-            <tr>
-                <td>
-                    <input type ="text" value = "username" disabled>
-                    <input type ="button" value = "Login" disabled>
-                    <input type ="button" value = "Logout" disabled>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href ="#!/welcome">Home</a>
-                    <a href="#!/equity">Equity Data</a>
-                    <a href="#!/economic">Economic Data</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div ng-view></div>
-                </td>
-            </tr>
-        </table><br><br>
+        <div>
+            <input type ="text" value = "username" disabled>
+            <input type ="button" value = "Login" disabled>
+            <input type ="button" value = "Logout" disabled>
+        </div>
+        <div>
+            <a href ="#!/welcome">Home</a>
+            <a href="#!/equity">Equity Data</a>
+            <a href="#!/economic">Economic Data</a>
+        </div>
+        <div>
+            <div ng-view></div>
+        </div>
+        <div>
+            <logger></logger>
+        </div>
 
     </body>
 

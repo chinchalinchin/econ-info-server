@@ -1,12 +1,13 @@
 function logger_controller(logger_factory){
     var self = this;
+    self.logs = logger_factory.logs()
 
     self.log = function(msg){
         logger_factory.log(msg);
     };
 
-    self.logs = function(){
-        return logger_factory.logs();
+    self.warn = function(msg){
+        logger_factory.warn(msg);
     }
 
 }

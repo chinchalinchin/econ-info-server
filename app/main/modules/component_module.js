@@ -9,6 +9,8 @@ main_module
             desc:'=',
             date: '='
         }
-    }
-); 
+    })
+    .component('logger',{
+        templateUrl: 'logger.html'
+    }); 
 
