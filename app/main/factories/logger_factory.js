@@ -2,13 +2,13 @@ function logger_factory(){
     var logs = [];
     var log = function log(msg, route){
         const now = new Date().toLocaleTimeString();
-        thisLog = `app log: ${route}: ${now}: ${msg}`
+        thisLog = `log: ${now}: ${route}: ${msg}`
         console.log(thisLog);      
         logs.push(thisLog)
     };
     var warn = function warn(msg, route){
         const now = new Date().toLocaleTimeString();
-        thisWarn = `app WARN: !!! ${route}: ${now}: ${msg} !!!`;
+        thisWarn = `app WARN: !!! ${now}: ${route}: ${msg} !!!`;
         console.log(thisWarn);
         logs.push(thisWarn);
     }

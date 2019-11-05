@@ -7,5 +7,5 @@ main_module
                 )
     .controller('quandl_controller', 
                     ['quandl_factory', 'logger_factory',
-                        market_controller]
+                        quandl_controller]
                 )

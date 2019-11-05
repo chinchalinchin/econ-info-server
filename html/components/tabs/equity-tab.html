@@ -1,8 +1,8 @@
 <div id = "portfolio-app" class = "container" ng-controller = "quandl_controller as market">
-    <div class = "title">Finneas Stockholm: Portfolio Manager</div>
+    <div class = "title">Finneas Stockholm: Financial Analysis</div>
         <table>
             <tr>
-                <div class = "manager"> Manage Portfolio
+                <div class = "manager"> Equity Data
                     <div class = "manager-grid">   
                         <div class = "manager-grid-item">
                             <select ng-model = 'market.selection'>
@@ -23,8 +23,10 @@
             <tr>
                 <div class = "stock-grid" ng-if = "market.portfolio.tickers.length === market.add_clicks && market.stored">
                     <div class = "stock-grid-item" ng-repeat = "holding in market.portfolio.tickers">
-                        {{holding.code}} Holding
-                        <stock-item ticker = "holding" price = "market.getStoredPrice(holding)"></stock-item>
+                        <stock-item ticker = "holding" 
+                                    price = "market.getStoredPrice(holding)" 
+                                    desc = "market.getPriceDescription(holding)"
+                                    date = "market.getStoredDate(holding)"></stock-item>
                     </div>
                 </div>
             </tr>

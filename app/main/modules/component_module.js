@@ -5,7 +5,9 @@ main_module
         templateUrl: 'stock-item.html',
         bindings:{
             ticker:'=',
-            price:'='
+            price:'=',
+            desc:'=',
+            date: '='
         }
     }
 ); 

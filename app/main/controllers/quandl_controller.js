@@ -30,28 +30,47 @@ function quandl_controller(quandl_factory, logger_factory){
     
     logger_factory.log("Initializing Ticker Data", "market_controller")
     quandl_factory.getTickers().then(data=>{
-        logger_factory.log("Ticker Date Received From 'quandl_price_factory'", "market_controller.getTickers")
+        logger_factory.log("Ticker Date Received From 'quandl_factory'", "quandl_controller.getTickers");
         self.tickers = data;
     })
     .catch(function(err){
-        logger_factory.warn(err, "market_controller.getTickers")
+        logger_factory.warn(err, "quandl_controller.getTickers");
     });
+    logger_factory.log("Initializing Code Data", "quandl_controller")
+    quandl_factory.getCodes().then(data=>{
+        logger_factory.log("Code Date Received From 'quandl_factory'", "quandl_controller.getCodes");
+        self.codes = data;
+    })
+    .catch(function(err){
+        logger_factory.warn(err, "quandl_controller.getCodes");
+    })
     
-    self.getClosingPrice = function(ticker){
-        logger_factory.log("Retrieving Prices From 'price_factory", "market_controller.getClosingPrice");
-        return quandl_factory.getClosingPrice(ticker);
+    self.getPrice = function(ticker){
+        logger_factory.log("Retrieving Prices From 'price_factory", "quandl_controller.getPrice");
+        return quandl_factory.getPrice(ticker);
     };
+
+    self.getPriceDescription = function(ticker){
+        logger_factory.log(`Retrieving Description For ${ticker}`, "quandl_controller.getPriceDescription");
+        for(let tick of self.tickers){
+            if(tick.code === ticker){
+                return tick.name;
+            }
+        }
+        logger_factory.log(`No Description For ${ticker}`, "quandl_controller.getPriceDescription");
+        return "No Description Found";
+    }
 
     self.getStoredPrice = function(ticker){
         var index = self.portfolio.tickers.indexOf(ticker);
         if(index > 0 || index === 0){
             logger_factory.log(`Retrieving Stored Price For ${ticker}: ${self.portfolio.prices[index]}`, 
-                                "market_controller.getStoredPrice");
+                                "quandl_controller.getStoredPrice");
             return self.portfolio.prices[index];
         }
         else{
             logger_factory.warn(`Error: Could Not Find Stored Price for ${ticker}`,
-                                "market_controller.getStoredPrice")
+                                "quandl_controller.getStoredPrice")
             return null;
         }
     }
@@ -60,12 +79,12 @@ function quandl_controller(quandl_factory, logger_factory){
         var index = self.portfolio.tickers.indexOf(ticker);
         if(index > 0 || index == 0){
             logger_factory.log(`Retrieving Stored Date For ${ticker}: ${self.portfolio.dates[index]}`,
-                                "market_controller.getStoredDate")
+                                "quandl_controller.getStoredDate")
             return self.portfolio.dates[index];
         }
         else{
             logger_factory.warn(`Error: Could Not Find Stored Date for ${ticker}`,
-                                "market_controller.getStoredDate");
+                                "quandl_controller.getStoredDate");
             return null;
         }
     }
@@ -73,11 +92,11 @@ function quandl_controller(quandl_factory, logger_factory){
     self.add = function(){
         if(!self.portfolio.tickers.includes(self.selection)){
             self.add_clicks++;
-            logger_factory.log(`Adding ${self.selection} To Portfolio`, "market_controller.add")
-            self.getClosingPrice(self.selection).then((date_and_price)=>{
+            logger_factory.log(`Adding ${self.selection} To Portfolio`, "quandl_controller.add")
+            self.getPrice(self.selection).then((date_and_price)=>{
                 logger_factory.log(`Storing Returned ${self.selection} {date, price}: ` + 
                                    `{${date_and_price.date}, ${date_and_price.price}}`,
-                                    "market_controller.add")
+                                    "quandl_controller.add")
                 self.portfolio.prices.push(date_and_price.price);
                 self.portfolio.dates.push(date_and_price.date);
                 self.portfolio.tickers.push(self.selection);
@@ -88,13 +107,13 @@ function quandl_controller(quandl_factory, logger_factory){
         }
         else{
             logger_factory.warn(`Error: Portfolio Already Contained ${self.selection}`, 
-                                    "market_controller.add");
+                                    "quandl_controller.add");
         }
         
     }
 
     self.clear = function(){
-        logger_factory.log("Clearing Portfolio", "market_controller.clear")
+        logger_factory.log("Clearing Portfolio", "quandl_controller.clear")
         self.clearable = false;
         self.stored = false;
         self.selection = null; 
