@@ -9,10 +9,10 @@ The app simulates a portfolio manager where you can add stocks to your portfolio
 UPCOMING FEATURES:
 1. Ability to set number of shares and purchase date.<br>
 a. Automatic calculation of profit/loss according to current date and purchase date.<br>
-b. Calculation of breakeven point
+b. Calculation of breakeven point<br>
 2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
-a. <b>Portfolio Tab</b>
-* Purchase Date
+a. <b>Portfolio Tab</b><br>
+* Purchase Date<br>
 * Number of Days Held (=date - purchase_date)<br>
 * Price<br>
 * Purchase Price<br>
@@ -30,19 +30,18 @@ b. <b>Economic Data Tab</b><br>
 * VIX 3 Month Future<br>
 c. <b>Black-Scholes Analysis Tab</b><br>
 * Input<br>
-- Observed: Spot, Interest, Dividend, Volatility (VIX)<br>
-- User: Strike, Expiration, Call/Put<br>
+* Observed: Spot, Interest, Dividend, Volatility (VIX)<br>
+* User: Strike, Expiration, Call/Put<br>
 * Output<br>
-- Black-Scholes Price Call/Put<br>
-- Greeks<br>
-- Breakeven Underlying Price<br><br>
+* Black-Scholes Price Call/Put<br>
+* Greeks<br>
+* Breakeven Underlying Price<br><br>
 d. <b>Grafana Tab</b><br>
-- Notes: Will connect with DB<br>
-	
+* Notes: Will connect with DB<br>
 3. OAuth2 Authentication/Authorization Flow And Features<br>
-	a. Storage of Users in Database<br>
-	b. Storage of User's Portfolios in Database<br>
-	c. Retrieval of Portfolio Upon Login<br><br>
+a. Storage of Users in Database<br>
+b. Storage of User's Portfolios in Database<br>
+c. Retrieval of Portfolio Upon Login<br>
 
 <h1>Adding To The Code</h1>
 
