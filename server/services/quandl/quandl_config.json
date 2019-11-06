@@ -31,18 +31,18 @@
     },
     "codes":{
         "growth":
-            [{"code": "GDP", "description": "Gross Domestic Product, unit: $1,000,000,0000/year"},
-             {"code":"GDPC1", "description": "Real Gross Domestic Product, unit: $1,000,000,0000/year"}],
+            [{"code": "GDP", "description": "Gross Domestic Product"},
+             {"code":"GDPC1", "description": "Real Gross Domestic Product"}],
         "prices_and_inflation":    
             [{"code": "CPIAUCSL", "description": "Consumer Price Index For All Urban Consumers: All Items"},
              {"code": "CPILFESL", "description": "Consumer Price Index For All Urban Consumers: All Items Less Food & Energy"}],
         "money_supply":
             [{"code": "M1", "description": "M1 Money Stock"},
              {"code": "M2", "description": "M2 Money Stock"},
-             {"code":  "M1V", "description": "Velocity of M1 Money Stock"},
+             {"code": "M1V", "description": "Velocity of M1 Money Stock"},
              {"code": "M2V", "description": "Velocity of M2 Money Stock"}],
         "interest_rates": 
-            [{"code":"DFF","description": "Effective Federal Funds Rate"},
+            [{"code": "DFF","description": "Effective Federal Funds Rate"},
              {"code": "DTB3", "description": "3-Month Treasury Bill: Secondary Market Rate"},
              {"code": "DGS5", "description": "5-Year Treasury Constant Maturity Rate"},
              {"code": "DGS10", "description": "10-Year Treasury Constant Maturity Rate"},
