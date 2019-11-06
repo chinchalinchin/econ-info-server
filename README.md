@@ -35,7 +35,7 @@ c. <b>Black-Scholes Analysis Tab</b><br>
 * Output<br>
 * Black-Scholes Price Call/Put<br>
 * Greeks<br>
-* Breakeven Underlying Price<br><br>
+* Breakeven Underlying Price<br>
 d. <b>Grafana Tab</b><br>
 * Notes: Will connect with DB<br>
 3. OAuth2 Authentication/Authorization Flow And Features<br>
