@@ -54,7 +54,11 @@ HTML components can either be added as AngularJS components by adding them to th
 	var main_module = angular.module('finneas_stockholm');
 	main_module.component('newComponentName', {config_json});
 
-Then, the HTML component "<new-component-name></new-component-name>" can be inserted in file <i>/html/home.html</i> where appropriate.
+Then, the HTML component 
+
+	<new-component-name></new-component-name>
+
+can be inserted in file <i>/html/home.html</i> where appropriate.
 
 A component's HTML can also registered through the routing-module to be included in the ng-view outlet, if the user navigates to the route through an in-app hashbang URL link. A component's HTML template is registered in <i>/app/main/modules/router_module.js</i>. The following code snippet registers a component's HTML template with a given route,
 
