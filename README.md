@@ -8,7 +8,7 @@ The app simulates a portfolio manager where you can add stocks to your portfolio
 
 UPCOMING FEATURES:
 1. Ability to set number of shares and purchase date.<br>
-	a. Automatic calculation of profit/loss according to current date and purchase date.
+	a. Automatic calculation of profit/loss according to current date and purchase date.<br>
 	b. Calculation of breakeven point
 2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
 	a. <b>Portfolio Tab</b><br>
@@ -20,7 +20,7 @@ UPCOMING FEATURES:
 	* Shares<br>
 	* Liquidity (=current_price*shares)<br>
 	* Trade Price (=purchase_price*shares)<br>
-	* Profit/Loss (=shares*(current_price-purchase_price))<br><br>
+	* Profit/Loss (=shares*(current_price-purchase_price))<br>
 	b. <b>Economic Data Tab</b><br>
 	* US Treasury 3 Month, Continuous<br>
 	* US Treasury 1 Year, Continuous<br>
@@ -28,7 +28,7 @@ UPCOMING FEATURES:
 	* VIX Spot<br>
 	* VIX 1 Month Future<br>
 	* VIX 2 Month Future<br>
-	* VIX 3 Month Future<br><br>
+	* VIX 3 Month Future<br>
 	c. <b>Black-Scholes Analysis Tab</b><br>
 	* Input<br>
 	- Observed: Spot, Interest, Dividend, Volatility (VIX)<br>
@@ -38,7 +38,7 @@ UPCOMING FEATURES:
 	- Greeks<br>
 	- Breakeven Underlying Price<br><br>
 	d. <b>Grafana Tab</b><br>
-	- Notes: Will connect with DB<br><br>
+	- Notes: Will connect with DB<br>
 	
 3. OAuth2 Authentication/Authorization Flow And Features<br>
 	a. Storage of Users in Database<br>
