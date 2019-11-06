@@ -10,7 +10,8 @@ UPCOMING FEATURES:
 1. Ability to set number of shares and purchase date.<br>
 	a. Automatic calculation of profit/loss according to current date and purchase date.<br>
 	b. Calculation of breakeven point<br><br>
-2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br><br>
+2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
+
 <b>Portfolio Tab</b><br>
 	* Date<br>
 	* Purchase Date<br>
