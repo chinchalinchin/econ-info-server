@@ -1,32 +1,32 @@
-<div id = "portfolio-app" class = "container" ng-controller = "quandl_controller as market">
-    <div class = "title">Finneas Stockholm: Equity Data</div>
+<div id = "equity-app" class = "container" ng-controller = "quandl_price_controller as market">
+    <div class = "title tab">Finneas Stockholm: Equity Data</div>
         <table>
             <tr>
-                <div class = "manager">
-                    <div class = "manager-grid">   
-                        <div class = "manager-grid-item">
-                            <select ng-model = 'market.selection'>
-                                <option ng-repeat = "ticker in market.tickers">{{ticker.code}}</option>
-                            </select>
-                            <input id = "add-enabled" type = "button" value = "Add Stock"
-                                ng-click = "market.add()" ng-if="market.selection" >
-                            <input type = "button" value ="Add Stock" disabled
-                                ng-if = "!market.selection">
-                            <input type = "button" value = "Clear Search"
-                                ng-if = "market.clearable" ng-click = "market.clear()">
-                            <input type = "button" value = "Clear Search" disabled
-                                ng-if = "!market.clearable">
-                        </div>
-                    </div> 
-                </div>
+                <div class = "manager-grid" ng-if="market.tickers.length>0">   
+                    <select class = "manager-grid-item" ng-model = 'market.selection'>
+                        <option ng-repeat = "ticker in market.tickers">{{ticker.code}}</option>
+                    </select>
+                    <input class = "manager-grid-item" id = "add-enabled" type = "button" value = "Add Stock"
+                        ng-click = "market.addToPortfolio()" ng-if="market.selection" >
+                    <input class = "manager-grid-item" type = "button" value ="Add Stock" disabled
+                        ng-if = "!market.selection">
+                    <input class = "manager-grid-item" type = "button" value = "Clear Portfolio"
+                        ng-if = "market.clearable" ng-click = "market.clearPortfolio()">
+                    <input class = "manager-grid-item" type = "button" value = "Clear Portfolio" disabled
+                        ng-if = "!market.clearable">
+                </div> 
+                <div class = "data-preview" ng-if = "market.selection">{{market.getPriceDescription(market.selection)}}</div>
             </tr>
             <tr>
-                <div class = "stock-grid" ng-if = "market.portfolio.tickers.length === market.add_clicks && market.stored">
-                    <div class = "stock-grid-item" ng-repeat = "holding in market.portfolio.tickers">
-                        <stock-item ticker = "holding" 
-                                    price = "market.getStoredPrice(holding)" 
-                                    desc = "market.getPriceDescription(holding)"
-                                    date = "market.getStoredDate(holding)"></stock-item>
+                <div ng-if = "market.portfolio.tickers.length === market.portfolio_add_clicks && market.stored">
+                    <div class = "sub-title tab">Portfolio</div>
+                    <div class = "data-grid">
+                        <div class = "data-grid-item" ng-repeat = "holding in market.portfolio.tickers">
+                            <equity-item ticker = "holding" 
+                                        price = "market.getStoredPrice(holding)" 
+                                        desc = "market.getPriceDescription(holding)"
+                                        date = "market.getStoredDate(holding)"></stock-item>
+                        </div>
                     </div>
                 </div>
             </tr>

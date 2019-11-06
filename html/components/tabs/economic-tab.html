@@ -1,1 +1,26 @@
-This is the economic data tab
+<div class ="tab">This is the economic data tab</div>
+<div id = "economic-app" class = container ng-controller = "quandl_stat_controller as sample">
+    <div class = "title">Finneas Stockholm: Economic Data</div>
+    <table>
+        <tr>
+            <div class = "manager-grid">
+                <select class = "manager-grid-item" ng-model = "sample.selection">
+                    <option ng-repeat = "value in sample.codes.growth">{{value.code}}</option>
+                </select>
+                <input class = "manager-grid-item" id = "add-enabled" type ="button" value = "Add Statistic"
+                        ng-if = "sample.selection">
+                <input class = "manager-grid-item" id = "add-disabled" type ="button" value = "Add Statistic"
+                        ng-if = "!sample.selection" disabled>
+                <input class = "manager-grid-item" id = "clear-enabled" type = "button" value = "Clear Statistics">
+                <input class = "manager-grid-item" id = clear-disable type = "button" value = "Clear Statistics" disabled>
+            </div>
+            <div class ="data-preview" ng-if = "sample.selection">{{sample.getDescription(sample.selection)}}</div>
+        </tr>
+        <tr>
+            <div class = "data-grid">
+            
+            </div>
+        </tr>
+    </table>
+
+</div>

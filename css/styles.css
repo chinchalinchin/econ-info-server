@@ -1,3 +1,6 @@
+.tab{
+    margin-left: 20px;
+}
 .container{
     border-style: solid;
     border-width: 2px;
@@ -13,18 +16,20 @@
     font-size:150%;
     color: darkblue;
 }
+.sub-title{
+    font-size:135%;
+    color:midnightblue;
+}
 .app{
     display:grid;
     grid-template-columns: auto;
     grid-row-gap: 10px;
     max-width:600px;
 }
-.manager{
+.manager-grid{
     border-style: solid;
     border-width: 2px;
     border-color:darkblue;
-}
-.manager-grid{
     display:grid;
     grid-template-columns: auto auto auto;
     padding: 10px;
@@ -34,13 +39,21 @@
     text-align: left;
     float: left;
 }
-.stock-grid{
+.data-preview{
+    border-style:solid;
+    border-color: lightseagreen;
+    text-align:center;
+}
+.data-grid{
+    border-style: groove;
+    border-width: 2px;
+    border-color:mediumblue;
     display: grid;
     grid-template-columns: auto auto auto;
     max-height:400px;
     overflow-y: auto;
 }
-.stock-grid-item{
+.data-grid-item{
     text-align:left;
     border-style:solid;
     border-width: 2px;
