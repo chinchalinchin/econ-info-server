@@ -1,0 +1,8 @@
+<table>
+    <tr><td>Description: {{$ctrl.desc}}</td></tr>
+    <tr><td>Code: {{$ctrl.code}}</td></tr>
+    <tr>
+        <td ng-if="value === 'GDP' || value === 'GDPC1'">Value: {{$ctrl.value | currency | GDP}}</td>
+    </tr>
+    <tr><td>Date: {{$ctrl.date}}</td></tr>
+</table>

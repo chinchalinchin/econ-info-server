@@ -9,9 +9,9 @@
         </span>
         <span class = "manager-grid-item">
             <span class = "sub-title">Debugger</span><br>
-            <label><input type = "radio" value = 0
-                        ng-model = "appctrl.debug">Enable</label><br>
-            <label><input type = "radio" value = 1
-                        ng-model = "appctrl.debug">Disable</label><br>
+            <input id="enable-debug" type = "button" value = "Enable Debugger" 
+                ng-click = "appctrl.debugger(true)" ng-if="!appctrl.debug">
+            <input id="disable-debug" type = "button" value = "Disable Debugger" 
+                ng-click = "appctrl.debugger(false)" ng-if="appctrl.debug">
         </span>
 </div>

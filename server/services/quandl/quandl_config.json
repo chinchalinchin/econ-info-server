@@ -31,8 +31,8 @@
     },
     "codes":{
         "growth":
-            [{"code": "GDP", "description": "Gross Domestic Product"},
-             {"code":"GDPC1", "description": "Real Gross Domestic Product"}],
+            [{"code": "GDP", "description": "Gross Domestic Product, unit: $1,000,000,0000/year"},
+             {"code":"GDPC1", "description": "Real Gross Domestic Product, unit: $1,000,000,0000/year"}],
         "prices_and_inflation":    
             [{"code": "CPIAUCSL", "description": "Consumer Price Index For All Urban Consumers: All Items"},
              {"code": "CPILFESL", "description": "Consumer Price Index For All Urban Consumers: All Items Less Food & Energy"}],

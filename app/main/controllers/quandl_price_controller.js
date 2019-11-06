@@ -31,23 +31,15 @@ function quandl_price_controller(quandl_factory, logger_factory){
     
     logger_factory.log("Initializing Ticker Data", "market_controller")
     quandl_factory.getTickers().then(data=>{
-        logger_factory.log("TickersReceived From 'quandl_factory'", "quandl_price_controller.getTickers");
+        logger_factory.log("Tickers Received From 'quandl_factory'", "quandl_price_controller.getTickers");
         self.tickers = data;
     })
     .catch(function(err){
         logger_factory.warn(err, "quandl_controller.getTickers");
     });
-    logger_factory.log("Initializing Code Data", "quandl_controller")
-    quandl_factory.getCodes().then(data=>{
-        logger_factory.log("Codes Received From 'quandl_factory'", "quandl_price_controller.getCodes");
-        self.codes = data;
-    })
-    .catch(function(err){
-        logger_factory.warn(err, "quandl_price_controller.getCodes");
-    })
     
     self.getPrice = function(ticker){
-        logger_factory.log("Retrieving Prices From 'price_factory", "quandl_price_controller.getPrice");
+        logger_factory.log(`Retrieving ${ticker} Price From 'quandl_factory'`, "quandl_price_controller.getPrice");
         return quandl_factory.getPrice(ticker);
     };
 
@@ -93,11 +85,11 @@ function quandl_price_controller(quandl_factory, logger_factory){
     self.addToPortfolio = function(){
         if(!self.portfolio.tickers.includes(self.selection)){
             self.portfolio_add_clicks++;
-            logger_factory.log(`Adding ${self.selection} To Portfolio`, "quandl_controller.add")
+            logger_factory.log(`Adding ${self.selection} To Portfolio`, "quandl_price_controller.addToPortfolio")
             self.getPrice(self.selection).then((date_and_price)=>{
                 logger_factory.log(`Storing Returned ${self.selection} {date, price}: ` + 
                                    `{${date_and_price.date}, ${date_and_price.price}}`,
-                                    "quandl_controller.add")
+                                    "quandl_price_controller.addToPortfolio")
                 self.portfolio.prices.push(date_and_price.price);
                 self.portfolio.dates.push(date_and_price.date);
                 self.portfolio.tickers.push(self.selection);
@@ -108,13 +100,13 @@ function quandl_price_controller(quandl_factory, logger_factory){
         }
         else{
             logger_factory.warn(`Error: Portfolio Already Contained ${self.selection}`, 
-                                    "quandl_controller.add");
+                                    "quandl_price_controller.addToPortfolio");
         }
         
     }
 
     self.clearPortfolio = function(){
-        logger_factory.log("Clearing Portfolio", "quandl_controller.clear")
+        logger_factory.log("Clearing Portfolio", "quandl_price_controller.clearPortfolio")
         self.clearable = false;
         self.stored = false;
         self.selection = null; 

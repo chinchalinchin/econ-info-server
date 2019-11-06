@@ -1,5 +1,5 @@
 function quandl_factory(logger_factory, $http){
-    logger_factory.log('Initializing quandl_factory', 'quandl_factory');
+    logger_factory.log('Initializing', 'quandl_factory');
     var getCodes = function(){
         logger_factory.log('Retrieving Codes From Node Server', "quandl_factory.getCodes")
         var url = quandl_endpoints.host.concat(quandl_endpoints.data.FRED)
@@ -48,12 +48,12 @@ function quandl_factory(logger_factory, $http){
 
     var getStatistic = function (code) {
         logger_factory.log(`Retrieving Statistic For ${code} From Node Server`, 'quandl_factory.getStatistics');
-        var url = quandl.endpoints.host.concat(quandl_endpoints.data.FRED)
+        var url = quandl_endpoints.host.concat(quandl_endpoints.data.FRED)
                                         .concat(quandl_endpoints.statistics)
                                         .concat(code)
         return $http.get(url).then(function(response){
             new_response = response.data;
-            logger_factory.log(`Response: ${code} Date: ${new_response.data}`, "quandl_factory.getStatistic");
+            logger_factory.log(`Response: ${code} Date: ${new_response.date}`, "quandl_factory.getStatistic");
             logger_factory.log(`Response: ${code} Value: ${new_response.value}`, "quandl_factory.getStatistic");
             return new_response;
         })

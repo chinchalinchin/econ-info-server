@@ -23,6 +23,7 @@
         <script src = "controller_module.js"></script>
         <script src = "component_module.js"></script>
         <script src = "router_module.js"></script>
+        <script src = "filter_module.js"></script>
     </head>
 
     <body ng-app = "finneas_stockholm"  ng-controller = "app_controller as appctrl" class = "app">
@@ -39,7 +40,7 @@
             <div ng-view></div>
         </div>
 
-        <div id = "logger-view" ng-if="appctrl.debug === '0'">
+        <div id = "logger-view" ng-if="appctrl.debug">
             <logger></logger>
         </div>
 
