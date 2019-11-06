@@ -10,9 +10,11 @@
         <script src = "config.js"></script>
         <!--Factories-->
         <script src = "logger_factory.js"></script>
+        <script src = "app_factory.js"></script>
         <script src = "quandl_factory.js"></script>
         <!--Controllers-->
         <script src = "logger_controller.js"></script>
+        <script src = "app_controller.js"></script>
         <script src = "quandl_price_controller.js"></script>
         <script src = "quandl_stat_controller.js"></script>
         <!--Modules-->
@@ -23,22 +25,21 @@
         <script src = "router_module.js"></script>
     </head>
 
-    <body ng-app = "finneas_stockholm" class = "app">
+    <body ng-app = "finneas_stockholm"  ng-controller = "app_controller as appctrl" class = "app">
 
-        <div>
-            <input type ="text" value = "username" disabled>
-            <input type ="button" value = "Login" disabled>
-            <input type ="button" value = "Logout" disabled>
-        </div>
-        <div>
+        <user-info></user-info>
+
+        <div id = "nav-bar" class = "menu">
             <a href ="#!/welcome">Home</a>
-            <a href="#!/equity">Equity Data</a>
-            <a href="#!/economic">Economic Data</a>
+            <a href="#!/equity" class = "tab">Equity Data</a>
+            <a href="#!/economic" class = "tab">Economic Data</a>
         </div>
-        <div>
+
+        <div id = "app-view">
             <div ng-view></div>
         </div>
-        <div>
+
+        <div id = "logger-view" ng-if="appctrl.debug === '0'">
             <logger></logger>
         </div>
 

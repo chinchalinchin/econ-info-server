@@ -33,5 +33,5 @@ app.use('/home/', function(req, res, next){
 app.use('/api/quandl/', quandl_router);
 
 app.listen(8001, function(){
-    helper.log("Listening On Port 8001", "app.js")
+    helper.log("Listening On Port 8001", "/")
 });

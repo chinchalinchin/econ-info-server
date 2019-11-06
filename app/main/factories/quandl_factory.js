@@ -1,5 +1,5 @@
 function quandl_factory(logger_factory, $http){
-    
+    logger_factory.log('Initializing quandl_factory', 'quandl_factory');
     var getCodes = function(){
         logger_factory.log('Retrieving Codes From Node Server', "quandl_factory.getCodes")
         var url = quandl_endpoints.host.concat(quandl_endpoints.data.FRED)

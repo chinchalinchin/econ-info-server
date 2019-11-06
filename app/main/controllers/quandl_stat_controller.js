@@ -1,4 +1,5 @@
 function quandl_stat_controller(quandl_factory, logger_factory){
+    logger_factory.log("Initializing Controller Variables", "quandl_stat_controller")
     var self = this;
     self.selection = null;
     self.clearable = false;

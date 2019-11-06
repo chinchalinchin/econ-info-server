@@ -1,4 +1,5 @@
 function logger_factory(){
+    console.log('Initializing Logger Factory. About To Pass Logging Off To Logger...')
     var logs = [];
     var log = function log(msg, route){
         const now = new Date().toLocaleTimeString();

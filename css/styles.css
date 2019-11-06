@@ -1,16 +1,9 @@
-.tab{
-    margin-left: 20px;
-}
+.tab{ margin-left: 20px; }
 .container{
-    border-style: solid;
+    border-style: outset;
     border-width: 2px;
     border-color: midnightblue;
     min-width: 480;
-}
-.cell{
-    border-style:solid;
-    border-width: 2px;
-    border-color: mediumblue;
 }
 .title{
     font-size:150%;
@@ -20,6 +13,10 @@
     font-size:135%;
     color:midnightblue;
 }
+.menu{
+    border-style:outset;
+    border-color: royalblue;
+}
 .app{
     display:grid;
     grid-template-columns: auto;
@@ -27,7 +24,7 @@
     max-width:600px;
 }
 .manager-grid{
-    border-style: solid;
+    border-style: inset;
     border-width: 2px;
     border-color:darkblue;
     display:grid;

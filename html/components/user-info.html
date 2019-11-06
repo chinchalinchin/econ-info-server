@@ -1,0 +1,17 @@
+<div id = "user-info" class = "manager-grid" ng-controller = "app_controller as appctrl">
+        <span class = "manager-grid-item">
+            <input type ="text" value = "username" disabled><br>
+            <input type ="text" value = "password" disabled>
+        </span>
+        <span class = "manager-grid-item">
+            <input type ="button" value = "Login" disabled><br>
+            <input type ="button" value = "Logout" disabled>
+        </span>
+        <span class = "manager-grid-item">
+            <span class = "sub-title">Debugger</span><br>
+            <label><input type = "radio" value = 0
+                        ng-model = "appctrl.debug">Enable</label><br>
+            <label><input type = "radio" value = 1
+                        ng-model = "appctrl.debug">Disable</label><br>
+        </span>
+</div>
