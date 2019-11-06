@@ -12,7 +12,7 @@ UPCOMING FEATURES:
 	b. Calculation of breakeven point<br><br>
 2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
 
-<b>Portfolio Tab</b><br>
+	a. <b>Portfolio Tab</b><br>
 	* Date<br>
 	* Purchase Date<br>
 	* Number of Days Held (=date - purchase_date)<br>
@@ -22,7 +22,7 @@ UPCOMING FEATURES:
 	* Liquidity (=current_price*shares)<br>
 	* Trade Price (=purchase_price*shares)<br>
 	* Profit/Loss (=shares*(current_price-purchase_price))<br><br>
-<b>Economic Data Tab</b><br>
+	b. <b>Economic Data Tab</b><br>
 	* US Treasury 3 Month, Continuous<br>
 	* US Treasury 1 Year, Continuous<br>
 	* US Treasury 10 Year, Continuous<br>
@@ -30,7 +30,7 @@ UPCOMING FEATURES:
 	* VIX 1 Month Future<br>
 	* VIX 2 Month Future<br>
 	* VIX 3 Month Future<br><br>
-<b>Black-Scholes Analysis Tab</b><br>
+	c. <b>Black-Scholes Analysis Tab</b><br>
 	* Input<br>
 	- Observed: Spot, Interest, Dividend, Volatility (VIX)<br>
 	- User: Strike, Expiration, Call/Put<br>
@@ -38,7 +38,7 @@ UPCOMING FEATURES:
 	- Black-Scholes Price Call/Put<br>
 	- Greeks<br>
 	- Breakeven Underlying Price<br><br>
-	<b>Grafana Tab</b><br>
+	d. <b>Grafana Tab</b><br>
 	- Notes: Will connect with DB<br><br>
 	
 3. OAuth2 Authentication/Authorization Flow And Features<br>
