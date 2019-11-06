@@ -8,36 +8,36 @@ The app simulates a portfolio manager where you can add stocks to your portfolio
 
 UPCOMING FEATURES:
 1. Ability to set number of shares and purchase date.<br>
-	a. Automatic calculation of profit/loss according to current date and purchase date.<br>
-	b. Calculation of breakeven point
+a. Automatic calculation of profit/loss according to current date and purchase date.<br>
+b. Calculation of breakeven point
 2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
-	a. <b>Portfolio Tab</b>
-	* Purchase Date
-	* Number of Days Held (=date - purchase_date)<br>
-	* Price<br>
-	* Purchase Price<br>
-	* Shares<br>
-	* Liquidity (=current_price*shares)<br>
-	* Trade Price (=purchase_price*shares)<br>
-	* Profit/Loss (=shares*(current_price-purchase_price))
-	b. <b>Economic Data Tab</b><br>
-	* US Treasury 3 Month, Continuous<br>
-	* US Treasury 1 Year, Continuous<br>
-	* US Treasury 10 Year, Continuous<br>
-	* VIX Spot<br>
-	* VIX 1 Month Future<br>
-	* VIX 2 Month Future<br>
-	* VIX 3 Month Future<br>
-	c. <b>Black-Scholes Analysis Tab</b><br>
-	* Input<br>
-	- Observed: Spot, Interest, Dividend, Volatility (VIX)<br>
-	- User: Strike, Expiration, Call/Put<br>
-	* Output<br>
-	- Black-Scholes Price Call/Put<br>
-	- Greeks<br>
-	- Breakeven Underlying Price<br><br>
-	d. <b>Grafana Tab</b><br>
-	- Notes: Will connect with DB<br>
+a. <b>Portfolio Tab</b>
+* Purchase Date
+* Number of Days Held (=date - purchase_date)<br>
+* Price<br>
+* Purchase Price<br>
+* Shares<br>
+* Liquidity (=current_price*shares)<br>
+* Trade Price (=purchase_price*shares)<br>
+* Profit/Loss (=shares*(current_price-purchase_price))<br>
+b. <b>Economic Data Tab</b><br>
+* US Treasury 3 Month, Continuous<br>
+* US Treasury 1 Year, Continuous<br>
+* US Treasury 10 Year, Continuous<br>
+* VIX Spot<br>
+* VIX 1 Month Future<br>
+* VIX 2 Month Future<br>
+* VIX 3 Month Future<br>
+c. <b>Black-Scholes Analysis Tab</b><br>
+* Input<br>
+- Observed: Spot, Interest, Dividend, Volatility (VIX)<br>
+- User: Strike, Expiration, Call/Put<br>
+* Output<br>
+- Black-Scholes Price Call/Put<br>
+- Greeks<br>
+- Breakeven Underlying Price<br><br>
+d. <b>Grafana Tab</b><br>
+- Notes: Will connect with DB<br>
 	
 3. OAuth2 Authentication/Authorization Flow And Features<br>
 	a. Storage of Users in Database<br>
