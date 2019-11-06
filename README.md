@@ -11,16 +11,15 @@ UPCOMING FEATURES:
 	a. Automatic calculation of profit/loss according to current date and purchase date.<br>
 	b. Calculation of breakeven point
 2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
-	a. <b>Portfolio Tab</b><br>
-	* Date<br>
-	* Purchase Date<br>
+	a. <b>Portfolio Tab</b>
+	* Purchase Date
 	* Number of Days Held (=date - purchase_date)<br>
 	* Price<br>
 	* Purchase Price<br>
 	* Shares<br>
 	* Liquidity (=current_price*shares)<br>
 	* Trade Price (=purchase_price*shares)<br>
-	* Profit/Loss (=shares*(current_price-purchase_price))<br>
+	* Profit/Loss (=shares*(current_price-purchase_price))
 	b. <b>Economic Data Tab</b><br>
 	* US Treasury 3 Month, Continuous<br>
 	* US Treasury 1 Year, Continuous<br>
