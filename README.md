@@ -1,47 +1,51 @@
 <h1>Introduction</h1>
 
-Finneas-Stockholm is a simple UI built from the AngularJS framework and served up through Node Express. The app makes calls to a free API provided by Quandl, retrieving financial data for the user to view. Currently, the app displays stock price data by date, but in the future, it will also display relevant economic data from other datasets on Quandl, such as interest rates on US treasuries and implied volatility term structures on the S&P 500. In other words, Quandl is a great resource and everyone should use it. <a href = "http://www.quandl.com">QUANDL!</a>. 
+<a href = "https://docs.quandl.com/">Quandl API Documentation</a>
 
-However, there are limitations to Quandl. Most of the data is historical. The free data stops at the date 3/27/2018 and will remain there until Quandl dumps another set of prices into their WIKI database. Another free API this app uses as a backend is Alpha Vantage. Alpha Vantage provides up-to-date quotes on the stock exchange. Alpha Vantage is used to retrieve the latest price information in lieu of Quandl, where appropriate. Alpha Vantage lacks economic infromation, such as interest rates and GDP estimates, however. So, both Alpha Vantagae and Quandl are necessary to get all the information required for this app. 
+<a href = "https://www.alphavantage.co/documentation/">Alpha Vantage API Documentation</a>
 
-The app simulates a portfolio manager where you can add stocks to your portfolio. Currently only price information is displayed, but I am working on allowing the user to set the number of shares and purchase date, which will then translate into a net profit/loss binding in the UI. What follows is a full schedule of features I have imagined for this app:
+<u>Finneas-Stockholm</u> is a simple UI built from the AngularJS framework and served up through Node Express. The app makes calls to a free API provided by <b>Quandl</b>, retrieving financial data for the user to view. Currently, the app displays stock price data from a free WIKI database and economic information from a FRED dataset maintained by the Saint Louis Federal Reserve, both provided on <b>Quandl</b>'s servers.
 
-UPCOMING FEATURES:
-1. Ability to set number of shares and purchase date.<br>
-a. Automatic calculation of profit/loss according to current date and purchase date.<br>
-b. Calculation of breakeven point<br>
-2. Routing to Portfolio, Economic Data, Black-Scholes Analysis, Grafana Data tabs.<br>
-a. <b>Portfolio Tab</b><br>
-* Purchase Date<br>
-* Number of Days Held (=date - purchase_date)<br>
-* Price<br>
-* Purchase Price<br>
-* Shares<br>
-* Liquidity (=current_price*shares)<br>
-* Trade Price (=purchase_price*shares)<br>
-* Profit/Loss (=shares*(current_price-purchase_price))<br>
-b. <b>Economic Data Tab</b><br>
-* US Treasury 3 Month, Continuous<br>
-* US Treasury 1 Year, Continuous<br>
-* US Treasury 10 Year, Continuous<br>
-* VIX Spot<br>
-* VIX 1 Month Future<br>
-* VIX 2 Month Future<br>
-* VIX 3 Month Future<br>
-c. <b>Black-Scholes Analysis Tab</b><br>
-* Input<br>
-* Observed: Spot, Interest, Dividend, Volatility (VIX)<br>
-* User: Strike, Expiration, Call/Put<br>
-* Output<br>
-* Black-Scholes Price Call/Put<br>
-* Greeks<br>
-* Breakeven Underlying Price<br>
-d. <b>Grafana Tab</b><br>
-* Notes: Will connect with DB<br>
-3. OAuth2 Authentication/Authorization Flow And Features<br>
-a. Storage of Users in Database<br>
-b. Storage of User's Portfolios in Database<br>
-c. Retrieval of Portfolio Upon Login<br>
+However, there are limitations to <b>Quandl</b>. Most of their equity data is historical. The free data stops at the date March 27th, 2018 and will remain there until Quandl dumps another set of equity prices into their WIKI database. Luckily, another free API exists for this app to use as backend: <b>Alpha Vantage</b>. <b>Alpha Vantage</b> provides up-to-date quotes on the stock exchange (and also forex markets! A possible future addition to <u>Finneas-Stockholm<u>). <b>Alpha Vantage</b> is used to retrieve the latest price information in lieu of <b>Quandl</b>, where appropriate. Alpha Vantage lacks economic infromation, such as interest rates and GDP estimates, however. So, both <b>Alpha Vantage</b> and <b>Quandl</b> are necessary to get all the information required for this app. 
+
+Note: API keys are stored in <i>/server/services/alpha_vantage/alpha_vantage_config.json</i> and <i>/server/services/quandl/quandl_config.json</i>. These are free services, so have at it. 
+
+UPCOMING/CURRENT FEATURES:
+1. Front-End: Node Server
+	- [x] Angular Service
+	- [x] Quandl Redirect For Node API
+	- [ ] Alpha Vantage Redirect For Node API 
+	- [ ] Authentication/OAuth2 Flow
+2. Angular App: Functionality
+	- [x] Controller Data Binding
+	- [x] Service Injection
+	- [x] HTTP 
+	- [x] Routing
+	- [ ] Custom Filters
+	- [ ] Form Validation
+2. Angular App: Home Tab
+	- [ ] Splash Page 
+	- [ ] User Login Functionality
+3. Angular App: Equity Data Tab
+	- [x] Quandl WIKI Data Binding
+	- [ ] Alpha Vantage Data Binding
+	- [ ] Ability To Save Portfolio To rootScope 
+	- [ ] Copy/Download Portfolio Report
+4. Angular App: Economic Data Tab
+	- [x] Quandl FRED Data Binding
+	- [ ] FRED Filters
+	- [ ] Copy/Download Statistics Report
+5. Angular App: Black-Scholes Analysis Tab
+	- [ ] Form Binding For User Inputs
+	- [ ] Service/Controller Calls For Market Inputs
+	- [ ] Black-Scholes Price Components
+	- [ ] Black-Scholes Greek Components
+	- [ ] Implied Volatility Calculator Component
+6. Angular App: Grafana Service
+	- [ ] Populate Database With Date From Quandl/Alpha Vantage
+	- [ ] Connect Database To Grafana
+	- [ ] Set Up Queries To Filter By Ticker, Start Date, End Date
+	- [ ] Embed Iframes In Equity & Economic Data Tabs
 
 <h1>Adding To The Code</h1>
 
