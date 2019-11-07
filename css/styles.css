@@ -1,5 +1,6 @@
 /*quick formats*/
 .tab{ margin-left: 20px; }
+.block { display: block; }
 /*text styles */
 .growth{ color: red; } .prices_and_inflation{ color: indianred; }
 .interest_rates{color: tomato} .employment{ color: lightcoral; }
