@@ -14,14 +14,14 @@ UPCOMING/CURRENT FEATURES:
 1. Front-End: Node Server
 	- [x] Angular Service
 	- [x] Quandl Redirect For Node API
-	- [ ] Alpha Vantage Redirect For Node API 
+	- [x] Alpha Vantage Redirect For Node API 
 	- [ ] Authentication/OAuth2 Flow
 2. Angular App: Functionality
 	- [x] Controller Data Binding
 	- [x] Service Injection
 	- [x] HTTP 
 	- [x] Routing
-	- [ ] Custom Filters
+	- [x] Custom Filters
 	- [ ] Form Validation
 2. Angular App: Home Tab
 	- [ ] Splash Page 
@@ -33,7 +33,7 @@ UPCOMING/CURRENT FEATURES:
 	- [ ] Copy/Download Portfolio Report
 4. Angular App: Economic Data Tab
 	- [x] Quandl FRED Data Binding
-	- [ ] FRED Filters
+	- [x] FRED Filters
 	- [ ] Copy/Download Statistics Report
 5. Angular App: Black-Scholes Analysis Tab
 	- [ ] Form Binding For User Inputs
