@@ -4,7 +4,9 @@ const bodyParser = require('body-parser')
 const path = require('path');
 const helper = require('./server/scripts/helper.js');
 const quandl_router = require('./server/routers/quandl_router.js')
+const alpha_vantage_router = require('./server/routers/alpha_vantage_router.js')
 const tickers = require('./server/resources/tickers.json')
+const server_config = require('./server/resources/config.json')
 
 // Initialize node-express
 const app = express();
@@ -12,6 +14,8 @@ const app = express();
 // Setup middleware
 app.use(cors());
 app.use(bodyParser.json());  
+app.use('/', helper.getDebugMiddleware(server_config.debug));
+
 
 // Setup root directory 
 app.use(express.static(path.join(__dirname, "css")));
@@ -28,17 +32,19 @@ app.use(express.static(path.join(__dirname, "app", "main", "modules")));
 app.use(express.static(path.join(__dirname, "app", "main", "factories")));
 
 app.use('/home/', function(req, res, next){
-    helper.log('GET "home.html" Request Received', '/home/');
+    helper.log('GET "home.html" Request Received', 'Route: /home/');
     res.sendFile(path.join(__dirname,'html', 'home.html'));
 });
 
 app.use('/api/quandl/', quandl_router);
 
+app.use('/api/alpha-vantage/', alpha_vantage_router)
+
 app.get('/api/tickers/', function(req,res,next){
-    helper.log('GET ALL TICKERS Request Received', '/api/tickers/')
-    res.json(tickers)
+    helper.log('GET ALL TICKERS Request Received', 'Route: /api/tickers/')
+    res.status(200).json(tickers)
 });
 
 app.listen(8001, function(){
-    helper.log("Listening On Port 8001", "/")
+    helper.log("Listening On Port 8001", "Server")
 });

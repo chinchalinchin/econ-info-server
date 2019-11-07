@@ -20,7 +20,7 @@
 //                  this so HTML template binding can wait on asynchronous operation
 // self.portfolio: A JSON containing information about the user's portfolio.
 // self.tickers: A list of all tickers that can be accessed through the backend API.
-function quandl_price_controller(quandl_factory, logger_factory){
+function quandl_price_controller(quandl_factory, logger_factory, app_factory){
     logger_factory.log("Initializing Controller Variables", "quandl_price_controller")
     var self = this;
     self.selection = null;
@@ -30,7 +30,7 @@ function quandl_price_controller(quandl_factory, logger_factory){
     self.portfolio = { tickers: [], prices: [], dates: [] }
     
     logger_factory.log("Initializing Ticker Data", "market_controller")
-    quandl_factory.getTickers().then(data=>{
+    app_factory.getTickers().then(data=>{
         logger_factory.log("Tickers Received From 'quandl_factory'", "quandl_price_controller.getTickers");
         self.tickers = data;
     })
@@ -88,9 +88,9 @@ function quandl_price_controller(quandl_factory, logger_factory){
             logger_factory.log(`Adding ${self.selection} To Portfolio`, "quandl_price_controller.addToPortfolio")
             self.getPrice(self.selection).then((date_and_price)=>{
                 logger_factory.log(`Storing Returned ${self.selection} {date, price}: ` + 
-                                   `{${date_and_price.date}, ${date_and_price.price}}`,
+                                   `{${date_and_price.date}, ${date_and_price.value}}`,
                                     "quandl_price_controller.addToPortfolio")
-                self.portfolio.prices.push(date_and_price.price);
+                self.portfolio.prices.push(date_and_price.value);
                 self.portfolio.dates.push(date_and_price.date);
                 self.portfolio.tickers.push(self.selection);
                 self.stored = true;

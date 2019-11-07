@@ -1,4 +1,4 @@
-function quandl_stat_controller(quandl_factory, logger_factory){
+function quandl_stat_controller(quandl_factory, logger_factory, app_factory){
     logger_factory.log("Initializing Controller Variables", "quandl_stat_controller")
     var self = this;
     self.selection = null;
@@ -8,7 +8,7 @@ function quandl_stat_controller(quandl_factory, logger_factory){
     self.statistics = { stats: [], values: [], dates: []};
 
     logger_factory.log("Initializing Code Data", "quandl_stat_controller")
-    quandl_factory.getCodes().then(data=>{
+    app_factory.getCodes().then(data=>{
         logger_factory.log("Code Date Received From 'quandl_stat_factory'", "quandl_stat_controller.getCodes");
         self.codes = data;
     })

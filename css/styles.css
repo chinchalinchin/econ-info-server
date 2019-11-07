@@ -1,21 +1,18 @@
+/*quick formats*/
 .tab{ margin-left: 20px; }
+/*text styles */
 .growth{ color: red; } .prices_and_inflation{ color: indianred; }
 .interest_rates{color: tomato} .employment{ color: lightcoral; }
 .income_and_expenditure{ color:lightsalmon; } .debt{ color: orange;}
-.other_indicators{ color:moccasin}
+.other_indicators{ color:darkgoldenrod}
+.title{ font-size:150%; color: darkblue; }
+.sub-title{ font-size:135%; color:midnightblue; }
+/*container styles*/
 .container{
     border-style: outset;
     border-width: 2px;
     border-color: midnightblue;
     min-width: 480;
-}
-.title{
-    font-size:150%;
-    color: darkblue;
-}
-.sub-title{
-    font-size:135%;
-    color:midnightblue;
 }
 .menu{
     border-style:outset;

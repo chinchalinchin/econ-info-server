@@ -1,6 +1,7 @@
 module.exports={
     getWikiUrl: getWikiUrl,
     getFredUrl: getFredUrl,
+    formatResponseBody: formatResponseBody,
     from: appendFrom,
     to: appendTo,
     limit: appendLimit,
@@ -72,4 +73,13 @@ function appendOrder(url, order){
 // Format: String
 function appendColumn(url, column){
     return `${url}&column_index=${column}`
+}
+
+function formatResponseBody(body){
+    body_json = JSON.parse(body);
+    response_json = {
+        date: body_json.dataset_data.data[0][0],
+        value: body_json.dataset_data.data[0][1]
+    };
+    return response_json;
 }
