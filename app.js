@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, "html")));
 app.use(express.static(path.join(__dirname, "html", "components")));
 app.use(express.static(path.join(__dirname, "html", "components", "items")));
 app.use(express.static(path.join(__dirname, "html", "components", "tabs")));
+app.use(express.static(path.join(__dirname, "html", "components", "utilities")));
 app.use(express.static(path.join(__dirname, "app")))
 app.use(express.static(path.join(__dirname, "app", "angularjs")));
 app.use(express.static(path.join(__dirname, "app", "main")));

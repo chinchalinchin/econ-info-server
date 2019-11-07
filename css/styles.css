@@ -1,4 +1,8 @@
 .tab{ margin-left: 20px; }
+.growth{ color: red; } .prices_and_inflation{ color: indianred; }
+.interest_rates{color: tomato} .employment{ color: lightcoral; }
+.income_and_expenditure{ color:lightsalmon; } .debt{ color: orange;}
+.other_indicators{ color:moccasin}
 .container{
     border-style: outset;
     border-width: 2px;
@@ -46,7 +50,7 @@
     border-width: 2px;
     border-color:mediumblue;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     max-height:400px;
     overflow-y: auto;
 }

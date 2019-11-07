@@ -32,10 +32,10 @@
     "codes":{
         "growth":
             [{"code": "GDP", "description": "Gross Domestic Product"},
-             {"code":"GDPC1", "description": "Real Gross Domestic Product"}],
+             {"code": "GDPC1", "description": "Real Gross Domestic Product"}],
         "prices_and_inflation":    
-            [{"code": "CPIAUCSL", "description": "Consumer Price Index For All Urban Consumers: All Items"},
-             {"code": "CPILFESL", "description": "Consumer Price Index For All Urban Consumers: All Items Less Food & Energy"}],
+            [{"code": "CPIAUCSL", "description": "Consumer Price Index For All Urban Consumers: \n All Items: Base: 1982-1984"},
+             {"code": "CPILFESL", "description": "Consumer Price Index For All Urban Consumers: \n All Items Less Food & Energy: Base: 1982-1984"}],
         "money_supply":
             [{"code": "M1", "description": "M1 Money Stock"},
              {"code": "M2", "description": "M2 Money Stock"},
@@ -56,28 +56,29 @@
              {"code": "EMRATIO", "description": "Civilian Employment-Population Ratio"},
              {"code": "UNEMPLOY", "description": "Unemployed"},
              {"code": "PAYEMS", "description": "All Employees: Total Nonfarm"},
-             {"code":"MANEMP", "description": "All Employees: Manufacturing"}],
+             {"code": "MANEMP", "description": "All Employees: Manufacturing"}],
         "income_and_expenditure":
-            [{"code": "PSAVERT", "description": "Personal Savings Rate"},
-             {"code":"DSPI", "description": "Disposable Personal Income"},
+            [{"code": "MEHOINUSA672N", "description": "Real Median Household Income In United States"},
+             {"code": "PSAVERT", "description": "Personal Savings Rate"},
+             {"code": "DSPI", "description": "Disposable Personal Income"},
              {"code": "DSPIC96", "description": "Real Disposable Personal Income"},
              {"code": "PCE", "description": "Personal Consumption Expenditures"},
              {"code": "PCEDG", "description": "Personal Consumption Expenditures: Durable Goods"},
-             {"code": "RRSFS", "description": "Real Retail and Food Services Sales"}],
+             {"code": "RRSFS", "description": "Real Retail and Food Services Sales:\n Deflated Using CPI Base: 1982 - 1984"}],
         "debt":
             [{"code": "GFDEBTN", "description": "Federal Debt: Total Public Debt"},
              {"code": "GFDEGDQ188S", "description": "Federal Debt: Total Public Debt as Percent of Gross Domestic Product"},
-             {"code": "EXCSRESNW", "description": "Excess Resrves of Depository Institutions"},
+             {"code": "EXCSRESNW", "description": "Excess Reserves of Depository Institutions"},
              {"code": "TOTCI", "description": "Commerical and Industrial Loans, All Commerical Banks"}],
         "other_indicators":
-            [{"code": "INDPRO", "description": "Industrial Production Index"},
+            [{"code": "INDPRO", "description": "Industrial Production Index,\n Base: 2007"},
              {"code": "TCU", "description": "Capacity Utilization: Total Industry"},
              {"code": "HOUST", "description": "Housing Starts: Total: New Privately Owned Housing Units Started"},
              {"code": "GPDI", "description": "Gross Private Domestic Investment"},
-             {"code":"CP", "description":"Corporate Profits After Tax (without IVA and CCAdj)"},
+             {"code": "CP", "description":"Corporate Profits After Tax (without IVA and CCAdj)"},
              {"code": "DCOILWTICO", "description": "Crude Oil Prices: West Texas Intermediate (WTI) - Cushing, Oklakhoma"},
-             {"code": "DTWEXM", "description": "Trade Weighted U.S. Dollar Index: Major Currencides"}, 
-             {"code": "DTWEXB", "description": "Trade Weighted U.S. Dollar Index: Broad"}]
+             {"code": "DTWEXM", "description": "Trade Weighted U.S. Dollar Index: Major Currencides, \n Base: 1973"}, 
+             {"code": "DTWEXB", "description": "Trade Weighted U.S. Dollar Index: Broad, \n Base: 1997"}]
 
     }
 }

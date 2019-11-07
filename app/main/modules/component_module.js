@@ -20,6 +20,13 @@ main_module
             date:'='
         }
     })
+    .component('economicFormatter', {
+        templateUrl: 'economic-formatter.html',
+        bindings:{
+            code:'=',
+            value:'='
+        }
+    })
     .component('userInfo', {
         templateUrl: 'user-info.html',
     })

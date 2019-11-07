@@ -1,0 +1,49 @@
+<span ng-switch="$ctrl.code">
+    <span id = 'apr-format-switcher'
+        ng-switch-when ="DFF|DTB3|DGS5|DGS10|DGS30|DPRIME" 
+        ng-switch-when-separator="|">
+        Value: {{$ctrl.value | APR}}
+    </span>
+    <span id = 'million-format-switcher'
+        ng-switch-when="GFDEBTN|RRSFS"
+        ng-switch-when-separator="|">
+        Value: {{$ctrl.value | currency | millionPerYear}}
+    </span>
+    <span id = 'billion-format-switcher'
+        ng-switch-when="GDP|GDPC1|GPDI|M1|M2|PCE|PCEDG|DSPI|CP|TOTCI"
+        ng-switch-when-separator="|">
+        Value: {{$ctrl.value | currency | billionPerYear}}
+    </span>
+    <span id = 'velocity-format-switcher'
+        ng-switch-when="M1V|M2V"
+        ng-switch-when-separator="|">
+        Value: {{$ctrl.value | moneyVelocity}}
+    </span>
+    <span id = 'percent-format-switcher'
+        ng-switch-when="CPIAUCSL|CPILFESL|UNRATE|NROU|NROUST|CIVPART|EMRATIO|PAYEMS|MANEMP|PSAVERT|TCU|INDPRO|DTWEXM|DTWEXB|GFDEGDQ188S"
+        ng-switch-when-separator="|">
+        Value: {{$ctrl.value | percent}}
+    </span>
+    <span id = 'payroll-format-switcher'
+        ng-switch-when="PAYEMS|MANEMP"
+        ng-switch-when-separator="|">
+        Value: {{$ctrl.value | payroll}}
+    </span>
+    <span id = 'curreny-format-switcher'
+        ng-switch-when="MEHOINUSA672N|DSPIC96|EXCSRESNW"
+        ng-switch-when-separator="|">
+        Value: {{$ctrl.value | currency}}
+    </span>
+    <span id = 'house-format-switcher'
+        ng-switch-when="HOUST">
+        Value: {{$ctrl.value | houses}}
+    </span>
+    <span id = 'oil-format-switcher'
+        ng-switch-when="DCOILWTICO">
+        Value: {{$ctrl.value | oil}}
+    </span>
+    <span id = 'default-switcher'
+        ng-switch-default>
+        Value: {{$ctrl.value}}
+    </span>
+</span>
