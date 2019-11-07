@@ -3,26 +3,26 @@
     <table>
         <tr>
             <div class = "manager-grid">
-                <select class = "manager-grid-item" ng-model = "sample.selection">
-                    <option class = "growth" 
-                            ng-repeat = "value in sample.codes.growth">{{value.code}}</option>
-                    <option class = "prices_and_inflation" 
-                            ng-repeat = "value in sample.codes.prices_and_inflation">{{value.code}}</option>
-                    <option class = "interest_rates"
-                            ng-repeat = "value in sample.codes.interest_rates">{{value.code}}</option>
-                    <option class = "employment"
-                            ng-repeat = "value in sample.codes.employment">{{value.code}}</option>
-                    <option class = "income_and_expenditure"
-                            ng-repeat = "value in sample.codes.income_and_expenditure">{{value.code}}</option>
-                    <option class = "debt"
-                            ng-repeat = "value in sample.codes.debt">{{value.code}}</option>
-                    <option class ="other_indicators"
-                            ng-repeat = "value in sample.codes.other_indicators">{{value.code}}</option>
-                </select>
-                <input class = "manager-grid-item" id = "add-enabled" type ="button" value = "Add Statistic"
-                    ng-if = "sample.selection" ng-click = "sample.addStatistic()">
-                <input class = "manager-grid-item" id = "add-disabled" type ="button" value = "Add Statistic"
-                    ng-if = "!sample.selection" disabled>
+                <form name = "statForm" ng-submit = "sample.addStatistic()">
+                    <select class = "manager-grid-item" ng-model = "sample.selection">
+                        <option class = "growth" 
+                                ng-repeat = "value in sample.codes.growth">{{value.code}}</option>
+                        <option class = "prices_and_inflation" 
+                                ng-repeat = "value in sample.codes.prices_and_inflation">{{value.code}}</option>
+                        <option class = "interest_rates"
+                                ng-repeat = "value in sample.codes.interest_rates">{{value.code}}</option>
+                        <option class = "employment"
+                                ng-repeat = "value in sample.codes.employment">{{value.code}}</option>
+                        <option class = "income_and_expenditure"
+                                ng-repeat = "value in sample.codes.income_and_expenditure">{{value.code}}</option>
+                        <option class = "debt"
+                                ng-repeat = "value in sample.codes.debt">{{value.code}}</option>
+                        <option class ="other_indicators"
+                                ng-repeat = "value in sample.codes.other_indicators">{{value.code}}</option>
+                    </select>
+                    <input class = "manager-grid-item" id = "add-enabled" type ="submit" value = "Add Statistic"
+                            ng-disabled = "statForm.$invalid">
+                </form>
                 <input class = "manager-grid-item" id = "clear-enabled" type = "button" value = "Clear Statistics"
                     ng-if = "sample.clearable" ng-click = "sample.clearStatistics()">
                 <input class = "manager-grid-item" id = clear-disable type = "button" value = "Clear Statistics" 
