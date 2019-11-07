@@ -1,3 +1,9 @@
 {
-    "APIKey": "C9KONDLH5VBKQO79"
+    "APIKey": "C9KONDLH5VBKQO79",
+    "baseURL": "https://www.alphavantage.co/query?",
+    "functions": {
+        "daily": "TIME_SERIES_DAILY",
+        "weekly": "TIME_SERIES_WEEKLY",
+        "monthly": "TIME_SERIES_MONTHLY"
+    }
 }

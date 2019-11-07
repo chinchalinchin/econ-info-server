@@ -1,11 +1,15 @@
+const resource_endpoints = {
+    tickers: 'http://localhost:8001/api/tickers/'
+}
+
 const quandl_endpoints = {
     host: 'http://localhost:8001/api/quandl/',
     data: {
         FRED: "FRED/",
         WIKI: "WIKI/"
     },
-    tickers: 'tickers/',
-    closing_price: 'prices/',
+    daily_close: 'closing-daily-price/',
+    weekly_close: 'closing-weekly-price/',
     codes: 'codes/',
     statistics: 'statistics/'
 }

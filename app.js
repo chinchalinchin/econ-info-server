@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const path = require('path');
 const helper = require('./server/scripts/helper.js');
 const quandl_router = require('./server/routers/quandl_router.js')
+const tickers = require('./server/resources/tickers.json')
 
 // Initialize node-express
 const app = express();
@@ -31,6 +32,11 @@ app.use('/home/', function(req, res, next){
 });
 
 app.use('/api/quandl/', quandl_router);
+
+app.get('/api/tickers/', function(req,res,next){
+    helper.log('GET ALL TICKERS Request Received', '/api/tickers/')
+    res.json(tickers)
+});
 
 app.listen(8001, function(){
     helper.log("Listening On Port 8001", "/")

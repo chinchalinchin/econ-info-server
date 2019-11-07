@@ -9,7 +9,7 @@ module.exports={
     column: appendColumn,
     columnValues: getColumnValues,
     orderValues: getOrderValues,
-    collapseValues: getCollapseValues,
+    frequencyValues: getCollapseValues,
     transformValues: getTransformValues,
     codes: getCodes,
 }

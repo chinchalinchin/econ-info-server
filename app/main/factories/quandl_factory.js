@@ -1,5 +1,20 @@
 function quandl_factory(logger_factory, $http){
+    
     logger_factory.log('Initializing', 'quandl_factory');
+
+    var getTickers = function(){
+        logger_factory.log('Retrieving Tickers From Node Server', "quandl_factory.getTickers");
+        var url = resource_endpoints.tickers;
+        return $http.get(url).then(function(response){
+            logger_factory.log("Response Received From Node Server", "quandl_factory.getTickers")
+            new_response = response.data;
+            return new_response;
+        })
+        .catch(function(err){
+            logger_factory.warn(`Response Error: Status ${err.status}: ${err.statusText}`, 'quandl_factory.getTickers');
+        });
+    };
+
     var getCodes = function(){
         logger_factory.log('Retrieving Codes From Node Server', "quandl_factory.getCodes")
         var url = quandl_endpoints.host.concat(quandl_endpoints.data.FRED)
@@ -14,24 +29,10 @@ function quandl_factory(logger_factory, $http){
         });
     }
 
-    var getTickers = function(){
-        logger_factory.log('Retrieving Tickers From Node Server', "quandl_factory.getTickers");
-        var url = quandl_endpoints.host.concat(quandl_endpoints.data.WIKI)
-                                        .concat(quandl_endpoints.tickers);
-        return $http.get(url).then(function(response){
-            logger_factory.log("Response Received From Node Server", "quandl_factory.getTickers")
-            new_response = response.data;
-            return new_response;
-        })
-        .catch(function(err){
-            logger_factory.warn(`Response Error: Status ${err.status}: ${err.statusText}`, 'quandl_factory.getTickers');
-        });
-    };
-
     var getPrice = function(ticker){
         logger_factory.log(`Retrieving Price For ${ticker} From Node Server`, 'quandl_factory.getPirce');
         var url = quandl_endpoints.host.concat(quandl_endpoints.data.WIKI)
-                                        .concat(quandl_endpoints.closing_price)
+                                        .concat(quandl_endpoints.daily_close)
                                         .concat(ticker);
         return $http.get(url).then(function(response){
             new_response = response.data;
@@ -43,8 +44,6 @@ function quandl_factory(logger_factory, $http){
             logger_factory.warn(`Response Error: Status ${err.status}: ${err.statusText}`, 'quandl_factory.getPrice');
         });
     };
-
-    var getPriceByDate = function (ticker, date){ };
 
     var getStatistic = function (code) {
         logger_factory.log(`Retrieving Statistic For ${code} From Node Server`, 'quandl_factory.getStatistics');
@@ -62,14 +61,10 @@ function quandl_factory(logger_factory, $http){
         });
      };
 
-    var getStatisticByDate = function(code, date) { };
-
     return{
         getCodes: getCodes,
         getTickers: getTickers,
         getPrice: getPrice,
-        getPriceByDate: getPriceByDate,
-        getStatistic: getStatistic,
-        getStatisticByDate: getStatisticByDate
+        getStatistic: getStatistic
     };
 }
