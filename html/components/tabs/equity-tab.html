@@ -1,4 +1,4 @@
-<div id = "equity-app" class = "container" ng-controller = "price_controller as market">
+<div id = "equity-app" class = "tab-container" ng-controller = "price_controller as market">
     <div class = "title tab">Finneas Stockholm: Equity Data</div>
     <table>
         <tr><td>
@@ -10,7 +10,8 @@
                 <input id = "add-enabled" type = "submit" value = "Add Stock"
                     ng-disabled = "equityForm.$invalid" >
                 <input type = "button" value = "Clear Portfolio"
-                    ng-disabled= "!market.clearable">
+                    ng-disabled= "!market.clearable"
+                    ng-click = "market.clearPortfolio()">
             </form>
         </td></tr>
 

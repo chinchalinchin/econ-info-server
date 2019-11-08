@@ -8,12 +8,9 @@
 .other_indicators{ color:darkgoldenrod}
 .title{ font-size:150%; color: darkblue; }
 .sub-title{ font-size:135%; color:midnightblue; }
-/*container styles*/
-.container{
-    border-style: outset;
-    border-width: 2px;
-    border-color: midnightblue;
-    min-width: 480;
+/*app styles*/
+.root-container{
+    display:inline-flex
 }
 .app{
     display: grid;
@@ -36,9 +33,14 @@
     grid-column: 1 / span 1;
     grid-row: 3 / span 1;
 }
-.app-logger-view{
-    grid-column: 2 / span 1;
-    grid-row: 3 / span 1;
+.logger-view{
+    float:left;
+}
+.tab-container{
+    border-style: outset;
+    border-width: 2px;
+    border-color: midnightblue;
+    min-width: 480px;
 }
 .manager-grid{
     border-style: inset;
@@ -63,8 +65,7 @@
     border-width: 2px;
     border-color:mediumblue;
     display: grid;
-    grid-template-columns: auto auto;
-    max-height:400px;
+    grid-template-columns: auto;
     overflow-y: auto;
 }
 .data-grid-item{

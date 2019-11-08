@@ -23,7 +23,6 @@
 function price_controller(price_factory, logger_factory, app_factory){
     logger_factory.log("Initializing Controller Variables", "price_controller")
     var self = this;
-    self.selection = null;
     self.clearable= false;
     self.stored = false;
     self.portfolio_add_clicks = 0;
