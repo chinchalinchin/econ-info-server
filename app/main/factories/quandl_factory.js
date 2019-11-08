@@ -2,6 +2,8 @@ function quandl_factory(logger_factory, $http){
     
     logger_factory.log('Initializing', 'quandl_factory');
 
+    var getName = function() { return "quandl_factory"};
+
     var getPrice = function(ticker){
         logger_factory.log(`Retrieving Price For ${ticker} From Node Server`, 'quandl_factory.getPirce');
         var url = quandl_endpoints.host.concat(quandl_endpoints.data.WIKI)
@@ -39,6 +41,7 @@ function quandl_factory(logger_factory, $http){
      };
 
     return{
+        getName: getName,
         getPrice: getPrice,
         getStatistic: getStatistic
     };

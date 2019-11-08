@@ -9,10 +9,10 @@ main_module
     .controller('app_controller', 
                     ['logger_factory', 'app_factory', '$scope',
                         app_controller])
-    .controller('quandl_price_controller', 
+    .controller('price_controller', 
                     ['quandl_factory', 'logger_factory', 'app_factory',
-                        quandl_price_controller]
+                        price_controller]
                 )
-    .controller('quandl_stat_controller',
+    .controller('stat_controller',
                     ['quandl_factory', 'logger_factory', 'app_factory',
-                        quandl_stat_controller])
+                        stat_controller])

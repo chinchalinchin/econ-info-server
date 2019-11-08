@@ -1,5 +1,5 @@
-function quandl_stat_controller(quandl_factory, logger_factory, app_factory){
-    logger_factory.log("Initializing Controller Variables", "quandl_stat_controller")
+function stat_controller(stat_factory, logger_factory, app_factory){
+    logger_factory.log("Initializing Controller Variables", "stat_controller")
     var self = this;
     self.clearable = false;
     self.stored = false;
@@ -8,39 +8,39 @@ function quandl_stat_controller(quandl_factory, logger_factory, app_factory){
 
     logger_factory.log("Initializing Code Data", "quandl_stat_controller")
     app_factory.getCodes().then(data=>{
-        logger_factory.log("Code Date Received From 'quandl_stat_factory'", "quandl_stat_controller.getCodes");
+        logger_factory.log("Code Date Received From 'app_factory'", "stat_controller.getCodes");
         self.codes = data;
     })
     .catch(function(err){
-        logger_factory.warn(err, "quandl_stat_controller.getCodes");
+        logger_factory.warn(err, "stat_controller.getCodes");
     })
 
     self.getStoredValue = function(stat){
         var index = self.statistics.stats.indexOf(stat);
         if(index>0|| index == 0){
-            logger_factory.log(`Retrieving Stored Value For ${stat}`, "quandl_stat_controller.getStoredValue")
+            logger_factory.log(`Retrieving Stored Value For ${stat}`, "stat_controller.getStoredValue")
             return self.statistics.values[index]
         }
         else{
-            logger_factory.log(`Error: Could Not Find Stored Value For ${stat}`, "quandl_stat_controller.getStoredValue")
+            logger_factory.log(`Error: Could Not Find Stored Value For ${stat}`, "stat_controller.getStoredValue")
         }
     }
 
     self.getStoredDate = function(stat){
         var index = self.statistics.stats.indexOf(stat);
         if(index>0 ||index ==0){
-            logger_factory.log(`Retrieving Stored Date For ${stat}`, "quandl_stat_controller.getStoredDate");
+            logger_factory.log(`Retrieving Stored Date For ${stat}`, "stat_controller.getStoredDate");
             return self.statistics.dates[index];
         }
         else{
-            logger_factory.log(`Error: Coulf Not Find Stored Date For ${stat}`, "quandl_stat_controller.getStoredDate")
+            logger_factory.log(`Error: Coulf Not Find Stored Date For ${stat}`, "stat_controller.getStoredDate")
         }
     }
 
     self.getStatistic = function(stat){
-        logger_factory.log(`Retrieving ${stat} Statistic From 'quandl_factory'`, 
-                            "quandl_stat_controller.getStatistic");
-        return quandl_factory.getStatistic(stat)
+        logger_factory.log(`Retrieving ${stat} Statistic From ${stat_factory.getName()}`, 
+                            "stat_controller.getStatistic");
+        return stat_factory.getStatistic(stat)
     }
 
     self.getDescription = function(stat){
@@ -75,11 +75,11 @@ function quandl_stat_controller(quandl_factory, logger_factory, app_factory){
         if(!self.statistics.stats.includes(self.selection)){
             self.stat_add_clicks++;
             logger_factory.log(`Ading ${self.selection} To Statistics`, 
-                                "quandl_stat_controller.addStatistic");
+                                "stat_controller.addStatistic");
             self.getStatistic(self.selection).then(date_and_value =>{
                 logger_factory.log(`Storing Returned ${self.selection} {date, value}: `+
                                     `{${date_and_value.date}, ${date_and_value.value}}`,
-                                    "quandl_stat_controller.addStatistic")
+                                    "stat_controller.addStatistic")
                 self.statistics.stats.push(self.selection);
                 self.statistics.values.push(date_and_value.value);
                 self.statistics.dates.push(date_and_value.date);
@@ -90,12 +90,12 @@ function quandl_stat_controller(quandl_factory, logger_factory, app_factory){
         }
         else{
             logger_factory.warn(`Error: Statistics Already Contains ${self.selection}`,
-                                "quandl_stat_controller.addStatistic")
+                                "stat_controller.addStatistic")
         }
     }
 
     self.clearStatistics = function(){
-        logger_factory.log("Clearing Statistics", "quandl_stat_controller.clearStatistics")
+        logger_factory.log("Clearing Statistics", "stat_controller.clearStatistics")
         self.clearable = false;
         self.stored = false;
         self.selection = null; 
