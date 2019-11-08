@@ -10,7 +10,8 @@ However, there are limitations to <b>Quandl</b>. Most of their equity data is hi
 
 Note: API keys are stored in <i>/server/services/alpha_vantage/alpha_vantage_config.json</i> and <i>/server/services/quandl/quandl_config.json</i>. These are free services, so have at it. 
 
-UPCOMING/CURRENT FEATURES:
+<h1>Feature Checklist</h1>
+
 1. Front-End: Node Server
 	- [x] Angular Service
 	- [x] Quandl Redirect For Node API
