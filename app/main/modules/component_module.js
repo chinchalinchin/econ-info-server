@@ -27,6 +27,12 @@ main_module
             value:'='
         }
     })
+    .component('economicOptions', {
+        templateUrl: 'economic-options.html',
+        bindings:{
+            codes:'='
+        }
+    })
     .component('userInfo', {
         templateUrl: 'user-info.html',
     })

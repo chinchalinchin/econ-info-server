@@ -85,14 +85,14 @@ function quandl_price_controller(quandl_factory, logger_factory, app_factory){
     self.addToPortfolio = function(){
         if(!self.portfolio.tickers.includes(self.selection)){
             self.portfolio_add_clicks++;
-            logger_factory.log(`Adding ${self.selection} To Portfolio`, "quandl_price_controller.addToPortfolio")
-            self.getPrice(self.selection).then((date_and_price)=>{
-                logger_factory.log(`Storing Returned ${self.selection} {date, price}: ` + 
+            logger_factory.log(`Adding ${self.selection.code} To Portfolio`, "quandl_price_controller.addToPortfolio")
+            self.getPrice(self.selection.code).then((date_and_price)=>{
+                logger_factory.log(`Storing Returned ${self.selection.code} {date, price}: ` + 
                                    `{${date_and_price.date}, ${date_and_price.value}}`,
                                     "quandl_price_controller.addToPortfolio")
                 self.portfolio.prices.push(date_and_price.value);
                 self.portfolio.dates.push(date_and_price.date);
-                self.portfolio.tickers.push(self.selection);
+                self.portfolio.tickers.push(self.selection.code);
                 self.stored = true;
                 self.selection = null;
                 if(!self.clearable){ self.clearable = true; }

@@ -18,7 +18,7 @@ router.get('/FRED/statistics/*', function(req, res,next){
     request(url, function(error, response, body){
         if(error){
             helper.log(error, 'Route: /api/quandl/FRED/statisitcs/')
-            res.statust(404).end()
+            res.status(404).end()
         }
         else{
             response_json = quandl.formatResponseBody(body)
