@@ -27,22 +27,24 @@
         <script src = "filter_module.js"></script>
     </head>
 
-    <body ng-app = "finneas_stockholm"  ng-controller = "app_controller as appctrl" class = "app">
+    <body ng-app = "finneas_stockholm"  ng-controller = "app_controller as appctrl">
+        <div class = "app">
+            <user-info class = "app-user-view"></user-info>
 
-        <user-info></user-info>
+            <div id = "nav-bar" class = "app-nav-view">
+                <a href ="#!/welcome">Home</a>
+                <a href="#!/equity" class = "tab">Equity Data</a>
+                <a href="#!/economic" class = "tab">Economic Data</a>
+            </div>
+    
+            <div id = "app-router-view">
+                <div ng-view></div>
+            </div>
+    
+            <div id = "app-logger-view" ng-if="appctrl.debug">
+                <logger></logger>
+            </div>
 
-        <div id = "nav-bar" class = "menu">
-            <a href ="#!/welcome">Home</a>
-            <a href="#!/equity" class = "tab">Equity Data</a>
-            <a href="#!/economic" class = "tab">Economic Data</a>
-        </div>
-
-        <div id = "app-view">
-            <div ng-view></div>
-        </div>
-
-        <div id = "logger-view" ng-if="appctrl.debug">
-            <logger></logger>
         </div>
 
     </body>
