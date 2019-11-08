@@ -93,9 +93,9 @@ The backend Quandl API can be accessed through
 
 	http://localhost:8001/api/quandl/PATH_PARAMETERS
 
-With the appropriate path parameters passed in. There are two datasets on Quandl the app interacts with: WIKI and FRED. WIKI provides equity price information and FRED provides economic data and statistics. For instance, to access the latest closing price of Facebook (Ticker: FB), navigate to (GET request),
+With the appropriate path parameters passed in. There are two datasets on Quandl the app interacts with: WIKI and FRED. WIKI provides equity price information and FRED provides economic data and statistics. For instance, to access the latest closing daily price of Facebook (Ticker: FB), navigate to (GET request),
 
-	http://localhost:8001/api/quandl/WIKI/prices/FB
+	http://localhost:8001/api/quandl/WIKI/closing-daily-prices/FB
 
 This will return a JSON file {date, price} containing the date and the last closing price the WIKI dataset has access to. The FRED dataset can similarly be accessed. For example, to see the latest US GDP Estimate, navigate to (GET request),
 
@@ -110,6 +110,10 @@ To see a list of all stock tickers and their descriptions,
 To see a list of all economic statistics and their descriptions,
 
 	http://localhost:8001/api/quandl/FRED/codes
+
+The Alpha Vantage API can be accessed in a similar manner. To see the latest closing daily price of Facebook, navigate to (GET request),
+
+	http://localhost:8001/api/alpha-vantage/closing-daily-prices/FB
 
 <h1>Thoughts</h1>
 
