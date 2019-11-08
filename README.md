@@ -23,13 +23,14 @@ UPCOMING/CURRENT FEATURES:
 	- [x] Routing
 	- [x] Custom Filters
 	- [x] Form Validation
+	- [ ] Quandl/Alpha Vantage Factory Service Plugins
 2. Angular App: Home Tab
 	- [ ] Splash Page 
 	- [ ] User Login Functionality
 3. Angular App: Equity Data Tab
 	- [x] Quandl WIKI Data Binding
-	- [ ] Alpha Vantage Data Binding
-	- [ ] Ability To Save Portfolio To rootScope 
+	- [x] Alpha Vantage Data Binding
+	- [ ] Ability To Save Portfolio
 	- [ ] Copy/Download Portfolio Report
 4. Angular App: Economic Data Tab
 	- [x] Quandl FRED Data Binding
