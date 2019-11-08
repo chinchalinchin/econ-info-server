@@ -111,7 +111,11 @@ To see a list of all economic statistics and their descriptions,
 
 	http://localhost:8001/api/quandl/FRED/codes
 
-The Alpha Vantage API can be accessed in a similar manner. To see the latest closing daily price of Facebook, navigate to (GET request),
+The Alpha Vantage API can be accessed in a similar manner. The base URL for all Alpha Vantage API calls is,
+
+	http://localhost:8001/api/alpha-vantage /PATH_PARAMETERS
+
+Note, just like the Quandl API exposed by the Node Server, all of the parameters to the Alpha Vantage API are passed in through the path (instead of the body or headers). For example, to see the latest closing daily price of Facebook, navigate to (GET request),
 
 	http://localhost:8001/api/alpha-vantage/closing-daily-prices/FB
 
