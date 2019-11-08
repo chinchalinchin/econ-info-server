@@ -15,22 +15,23 @@ function app_factory(logger_factory, $http, $rootScope){
     }
 
     var getTickers = function(){
-        logger_factory.log('Retrieving Tickers From Node Server', "quandl_factory.getTickers");
-        var url = resource_endpoints.tickers;
+        logger_factory.log('Retrieving Tickers From Node Server', "app_factory.getTickers");
+        var url = application_properties.resource_endpoints.tickers;
         return $http.get(url).then(function(response){
-            logger_factory.log("Response Received From Node Server", "quandl_factory.getTickers")
+            logger_factory.log("Response Received From Node Server", "app_factory.getTickers")
             new_response = response.data;
             return new_response;
         })
         .catch(function(err){
-            logger_factory.warn(`Response Error: Status ${err.status}: ${err.statusText}`, 'quandl_factory.getTickers');
+            logger_factory.warn(`Response Error: Status ${err.status}: ${err.statusText}`, 'app_factory.getTickers');
         });
     };
 
     var getCodes = function(){
         logger_factory.log('Retrieving Codes From Node Server', "quandl_factory.getCodes")
-        var url = quandl_endpoints.host.concat(quandl_endpoints.data.FRED)
-                                        .concat(quandl_endpoints.codes);
+        var url = application_properties.quandl_endpoints.host
+                                                            .concat(application_properties.quandl_endpoints.data.FRED)
+                                                            .concat(application_properties.quandl_endpoints.codes);
         return $http.get(url).then(function(response){
             logger_factory.log("Response Received From Node Server", "quandl_factory.getCodes")
             new_response = response.data;

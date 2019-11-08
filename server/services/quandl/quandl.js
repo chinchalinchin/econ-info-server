@@ -75,6 +75,7 @@ function appendColumn(url, column){
     return `${url}&column_index=${column}`
 }
 
+// Note: Response
 function formatResponseBody(body){
     body_json = JSON.parse(body);
     response_json = {

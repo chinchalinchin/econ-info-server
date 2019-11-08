@@ -21,7 +21,7 @@
 // self.portfolio: A JSON containing information about the user's portfolio.
 // self.tickers: A list of all tickers that can be accessed through the backend API.
 function price_controller(price_factory, logger_factory, app_factory){
-    logger_factory.log("Initializing Controller Variables", "quandl_price_controller")
+    logger_factory.log("Initializing Controller Variables", "price_controller")
     var self = this;
     self.selection = null;
     self.clearable= false;
@@ -29,13 +29,13 @@ function price_controller(price_factory, logger_factory, app_factory){
     self.portfolio_add_clicks = 0;
     self.portfolio = { tickers: [], prices: [], dates: [] }
     
-    logger_factory.log("Initializing Ticker Data", "market_controller")
+    logger_factory.log("Initializing Ticker Data", "price_controller")
     app_factory.getTickers().then(data=>{
         logger_factory.log(`Tickers Received From '${price_factory.getName()}'`, "price_controller.getTickers");
         self.tickers = data;
     })
     .catch(function(err){
-        logger_factory.warn(err, "quandl_controller.getTickers");
+        logger_factory.warn(err, "price_controller.getTickers");
     });
     
     self.getPrice = function(ticker){

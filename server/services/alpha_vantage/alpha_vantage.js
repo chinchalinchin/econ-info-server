@@ -2,7 +2,7 @@ module.exports = {
     getDailyUrl: getDailyUrl,
     getWeeklyUrl: getWeeklyUrl,
     getMonthlyUrl: getMonthlyUrl,
-    formatResponseBody: formatResponseBody
+    formatCloseResponseBody: formatCloseResponseBody
 }
 
 var alpha_vantage = require('./alpha_vantage_config.json');
@@ -24,15 +24,21 @@ function getMonthlyUrl(ticker){
     return `${getSecureUrl()}&function=${alpha_vantage.functions.monthly}&symbol=${ticker}`
 }
 
-function formatResponseBody(body){
+function formatCloseResponseBody(body){
     format_body = JSON.parse(body);
-    format_body = format_body['Time Series (Daily)'];
-    format_date = Object.keys(format_body)[0];
-    format_body = format_body[format_date];
-    format_body = format_body['4. close'];
+    if(format_body['Error Message']){
+        format_date = 'cannot find';
+        format_body = 'cannot find';
+    }
+    else{
+        format_body = format_body['Time Series (Daily)'];
+        format_date = Object.keys(format_body)[0];
+        format_body = format_body[format_date];
+        format_body = format_body['4. close'];
+    }
     response_json = {
         date: format_date,
-        price: format_body
+        value: format_body
     }
     return response_json;
 }
