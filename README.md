@@ -22,7 +22,7 @@ UPCOMING/CURRENT FEATURES:
 	- [x] HTTP 
 	- [x] Routing
 	- [x] Custom Filters
-	- [ ] Form Validation
+	- [x] Form Validation
 2. Angular App: Home Tab
 	- [ ] Splash Page 
 	- [ ] User Login Functionality
