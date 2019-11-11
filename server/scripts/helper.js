@@ -6,6 +6,8 @@ module.exports = {
     getDebugMiddleware: getDebugMiddleware
 }
 
+const queryString = require('query-string')
+
 function log(msg, route){
     const now = new Date().toLocaleTimeString();
     console.log(`app.js: ${now}: ${route}: ${msg}`);
@@ -24,6 +26,10 @@ function getDebugMiddleware(debug){
     return function(req, res, next){
         if(debug){ 
             log(`${req.url}`, 'Incoming Request');
+            incomingQuery = queryString.parseUrl(req.url).query
+            Object.keys(incomingQuery).forEach((key)=>{
+                log(`Query Param {"${key}": "${incomingQuery[key]}"}`, 'Incoming Request');
+            })
         }
         return next();
     }

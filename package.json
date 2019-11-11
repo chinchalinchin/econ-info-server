@@ -1,7 +1,7 @@
 {
   "name": "finneas_stockholm",
   "version": "1.0.0",
-  "description": "an angularjs app that provides technical analysis for stocks",
+  "description": "an angularjs app that provides and displays quote economic information from Quandl and Alpha Vantage",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -14,13 +14,20 @@
     "analysis",
     "node",
     "express",
-    "angularjs"
+    "angularjs",
+    "quandl",
+    "alpha vantage",
+    "FRED",
+    "economics",
+    "equities",
+    "securities"
   ],
   "author": "Grant Moore",
   "license": "UNLICENSED",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "query-string": "^6.8.3",
     "request": "^2.88.0"
   }
 }

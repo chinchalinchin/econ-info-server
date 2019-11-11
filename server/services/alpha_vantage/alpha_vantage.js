@@ -1,8 +1,26 @@
-module.exports = {
-    getDailyUrl: getDailyUrl,
-    getWeeklyUrl: getWeeklyUrl,
-    getMonthlyUrl: getMonthlyUrl,
-    formatCloseResponseBody: formatCloseResponseBody
+/*
+ * The first function of this module is to format request URLs to the Alpha Vantage API. The API is pulled 
+ * in through a JSON file in the same folder as this file, along with other parameters Alpha Vantage needs.
+ * 
+ * The second function of this module is to format response bodys from Alpha Vantage and boil them down
+ * into the salient values that will be consumed by the end-user. 
+ * 
+ * Use the 'response_format' object to statically access formatting options for the Alpha Vantage response.
+ * Any time a function in this module requires a parameterized value, it can be accessed through this field.
+ * I.e., if a function is defined to have the arguments function(frequency), then the possible values of 
+ * frequency can be found in 'response_format.frequency'. Please use this object to prevent the module 
+ * from breaking. 
+*/
+
+var response_format = {
+    frequency: {
+        daily: 'Daily',
+        weekly: 'Weekly',
+        monthly: 'Monthly'
+    },
+    columns: {
+        close: '4. close'
+    }
 }
 
 var alpha_vantage = require('./alpha_vantage_config.json');
@@ -24,21 +42,78 @@ function getMonthlyUrl(ticker){
     return `${getSecureUrl()}&function=${alpha_vantage.functions.monthly}&symbol=${ticker}`
 }
 
-function formatCloseResponseBody(body){
+/* Parameters
+ *    body: Response Body from Alpha Vantage to parse
+ *    frequency: Frequency of Response to parse. Use 'response_format' to pass in correct value.
+*/
+function formatJSONResBody(body, frequency){
     format_body = JSON.parse(body);
     if(format_body['Error Message']){
         format_date = 'cannot find';
         format_body = 'cannot find';
     }
     else{
-        format_body = format_body['Time Series (Daily)'];
-        format_date = Object.keys(format_body)[0];
-        format_body = format_body[format_date];
-        format_body = format_body['4. close'];
+        format_body = format_body[formatIndex(frequency)];
+        format_date = Object.keys(format_body)[0]; // grab first date
+        format_body = format_body[format_date]; // get prices on date
+        format_body = format_body[response_format.columns.close]; // get closing price
     }
     response_json = {
         date: format_date,
         value: format_body
     }
     return response_json;
+}
+
+/* Parameters
+ *    body: Response Body from Alpha Vantage to parse
+ *    frequency: Frequency of Response to parse. Use 'response_format' to pass in correct value.
+ *    length: number of dates to retrieve. Pass in null to get everything provided by Alpha Vantage.
+*/
+function formatJSONArrayResBody(body, frequency, length){
+    let format_body = JSON.parse(body)
+    let format_date;
+
+    let everything_flag = true; 
+    if(!length){ everything_flag = false; }
+
+    if(format_body['Error Message']){
+        format_date = 'cannot find';
+        format_body = 'cannot find';
+    }
+    else{
+        format_body = format_body[formatIndex(frequency)];
+        format_date = Object.keys(format_body);
+        response_json = {}
+        let i = 1
+        for(let day of format_date){
+            response_json[day] = format_body[day][response_format.columns.close]
+            i++;
+            if(everything_flag && i.toString()===length){ break; }
+        }
+    }
+    return response_json;
+    
+}
+
+// For some reason, Alpha Vantage formats the properties of their JSON response 
+// differently for different frequencies. Go figure.
+function formatIndex(frequency){
+    if(frequency === response_format.frequency.daily){
+        index = `Time Series (${frequency})`
+    }
+    else{
+        index = `${frequency} Time Series` 
+    }
+    return index;
+}
+
+module.exports = {
+    getDailyUrl: getDailyUrl,
+    getWeeklyUrl: getWeeklyUrl,
+    getMonthlyUrl: getMonthlyUrl,
+    formatJSONResBody: formatJSONResBody,
+    formatJSONArrayResBody: formatJSONArrayResBody,
+    response_format: response_format
+
 }
