@@ -9,7 +9,7 @@ function stat_controller(stat_factory, logger_factory, app_factory){
     logger_factory.log("Initializing Code Data", "quandl_stat_controller")
     app_factory.getCodes().then(data=>{
         logger_factory.log("Code Date Received From 'app_factory'", "stat_controller.getCodes");
-        self.codes = data;
+        self.codes = data.codes;
     })
     .catch(function(err){
         logger_factory.warn(err, "stat_controller.getCodes");

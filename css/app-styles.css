@@ -1,12 +1,11 @@
 /*app styles*/
-.root-container{ display:inline-flex }
-
+.root-container{ display:inline-flex; }
 .app{
     display: grid;
     grid-template-columns: auto auto;
     grid-row-gap: 10px;
     column-gap: 5px;
-    min-width:480px;
+    min-width:500px;
     max-width:800px;
 }
 .app-user-view{
@@ -17,21 +16,13 @@
 .app-nav-view{
     grid-column: 1 / span 2;
     grid-row: 2 / span 1;
+    height:100%;
 }
 .app-router-view{
-    grid-column: 1 / span 1;
+    grid-column: 1 / span 2;
     grid-row: 3 / span 1;
 }
-
-.tab-container{
-    border-style: outset;
-    border-width: 2px;
-    min-width: 480px;
-}
-
 .manager-grid{
-    border-style: inset;
-    border-width: 2px;
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 10px;
@@ -39,21 +30,11 @@
 .manager-grid-item{
     justify-self: left;
     text-align: left;
-    float: left;
 }
-
-.data-preview{ text-align: center; }
 .data-grid{
-    border-style: groove;
-    border-width: 2px;
     display: grid;
     grid-template-columns: auto;
     overflow-y: auto;
 }
-.data-grid-item{
-    text-align: left;
-    border-style: solid;
-    border-width: 2px;
-    padding-right:5px;
-}
+.data-grid-item{ text-align: left; }
 

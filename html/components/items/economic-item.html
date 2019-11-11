@@ -1,10 +1,12 @@
-<table>
-    <tr><td class = "note">Date: {{$ctrl.date}}</td></tr>
-    <tr><td class = "note">Code: {{$ctrl.code}}</td></tr>
-    <tr>
-        <td>
-            <economic-formatter class="note" code = "$ctrl.code" value = "$ctrl.value"></economic-formatter>
-        </td>
-    </tr>
-</table>
-<u class ="half-tab">Description:</u><br> <span class = "tab block">{{$ctrl.desc}}</span>
+<div class = "child-fill">
+    <table class ="fit-width-to-parent">
+        <tr><td class = "note">Date: {{$ctrl.date}}</td></tr>
+        <tr><td class = "note">Code: {{$ctrl.code}}</td></tr>
+        <tr>
+            <td>
+                <economic-formatter code = "$ctrl.code" value = "$ctrl.value"></economic-formatter>
+            </td>
+        </tr>
+    </table>
+    <span class ="half-tab note">Description:</span><br> <span class = "tab note">{{$ctrl.desc}}</span>
+</div>

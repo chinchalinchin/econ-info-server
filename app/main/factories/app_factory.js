@@ -29,9 +29,7 @@ function app_factory(logger_factory, $http, $rootScope){
 
     var getCodes = function(){
         logger_factory.log('Retrieving Codes From Node Server', "quandl_factory.getCodes")
-        var url = application_properties.quandl_endpoints.host
-                                                            .concat(application_properties.quandl_endpoints.data.FRED)
-                                                            .concat(application_properties.quandl_endpoints.codes);
+        var url = application_properties.resource_endpoints.codes;
         return $http.get(url).then(function(response){
             logger_factory.log("Response Received From Node Server", "quandl_factory.getCodes")
             new_response = response.data;

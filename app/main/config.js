@@ -1,7 +1,8 @@
 const application_properties = {
     price_factory: 'alpha_vantage',
     resource_endpoints: {
-        tickers: 'http://localhost:8001/api/tickers/'
+        tickers: 'http://localhost:8001/api/tickers/',
+        codes: 'http://localhost:8001/api/codes/'
     },
     quandl_endpoints: {
         host: 'http://localhost:8001/api/quandl/',
@@ -11,7 +12,6 @@ const application_properties = {
         },
         daily_close: 'closing-daily-price/',
         weekly_close: 'closing-weekly-price/',
-        codes: 'codes/',
         statistics: 'statistics/'
     },
     alpha_vantage_endpoints: {

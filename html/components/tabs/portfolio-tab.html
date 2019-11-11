@@ -1,0 +1,45 @@
+<div id = "equity-app" class = "parent-fill" ng-controller = "price_controller as market">
+    <div class = "title tab">Finneas Stockholm</div>
+    <div class = "sub-title double-tab quarter-fade">Portfolio Data</div><br>
+
+    <table class = "fit-width-to-parent">
+        <tr><td>
+            <div class = "child-fill">
+                <form name ="equityForm" ng-submit="market.addToPortfolio()" class = "center-align">
+                    <select id = "equity-selector" class = "half-padding"
+                            ng-model = 'market.selection' 
+                            ng-required="true"
+                            ng-options = 'ticker.code for ticker in market.tickers'>
+                        <option value = "">Please Select A Ticker</option> 
+                    </select>
+                    <input id = "add-equity-button" type = "submit" 
+                            value = "Add Stock" class = "half-padding"
+                            ng-disabled = "equityForm.$invalid" >
+                    <input id = "clear-portfolio-button" type = "button" 
+                            value = "Clear Portfolio" class = "half-padding"
+                            ng-disabled= "!market.clearable" ng-click = "market.clearPortfolio()">
+                </form>
+            </div>
+        </td></tr>
+
+        <tr><td>
+            <div class ="note highlight-fill center-align" ng-if = "market.selection">{{market.getPriceDescription(market.selection.code)}}</div>
+            <div class ="note highlight-fill center-align" 
+                    ng-if = "!market.selection"><span class = "half-fade">Equity Description Goes Here</span></div>
+        </td></tr>
+
+        <tr><td>
+            <div ng-if = "market.portfolio.tickers.length === market.portfolio_add_clicks && market.stored">
+                <div class = "sub-title tab">Portfolio</div>
+                <div class = "data-grid">
+                    <div class = "data-grid-item" ng-repeat = "holding in market.portfolio.tickers">
+                        <equity-item ticker = "holding" 
+                                    price = "market.getStoredPrice(holding)" 
+                                    desc = "market.getPriceDescription(holding)"
+                                    date = "market.getStoredDate(holding)"></stock-item>
+                    </div>
+                </div>
+            </div>
+        </td></tr>
+    </table>
+</div>

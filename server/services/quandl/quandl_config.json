@@ -28,57 +28,5 @@
         "close": 4,
         "volume": 5,
         "dividend": 6
-    },
-    "codes":{
-        "growth":
-            [{"code": "GDP", "description": "Gross Domestic Product"},
-             {"code": "GDPC1", "description": "Real Gross Domestic Product"}],
-        "prices_and_inflation":    
-            [{"code": "CPIAUCSL", "description": "Consumer Price Index For All Urban Consumers, \n All Items, Base: 1982-1984"},
-             {"code": "CPILFESL", "description": "Consumer Price Index For All Urban Consumers, \n All Items Less Food & Energy, Base: 1982-1984"}],
-        "money_supply":
-            [{"code": "M1", "description": "M1 Money Stock"},
-             {"code": "M2", "description": "M2 Money Stock"},
-             {"code": "M1V", "description": "Velocity of M1 Money Stock"},
-             {"code": "M2V", "description": "Velocity of M2 Money Stock"}],
-        "interest_rates": 
-            [{"code": "DFF","description": "Effective Federal Funds Rate"},
-             {"code": "DTB3", "description": "3-Month Treasury Bill, Secondary Market Rate"},
-             {"code": "DGS5", "description": "5-Year Treasury Constant Maturity Rate"},
-             {"code": "DGS10", "description": "10-Year Treasury Constant Maturity Rate"},
-             {"code": "DGS30", "description": "30-Year Treasury Constant Maturity Rate"},
-             {"code": "DPRIME", "description": "Bank Prime Loan Rate"}],
-        "employment": 
-            [{"code": "UNRATE", "description": "Civilian Unemployment Rate"} ,
-             {"code": "NROU", "description": "Natural Rate of Unemployment (Long-Term)"},
-             {"code": "NROUST", "description" : "Natural Rate of Unemployment (Short-Term)"},
-             {"code": "CIVPART", "description" :" Civilian Labor Force Participation Rate"} ,
-             {"code": "EMRATIO", "description": "Civilian Employment-Population Ratio"},
-             {"code": "UNEMPLOY", "description": "Unemployed"},
-             {"code": "PAYEMS", "description": "All Employees, Total Nonfarm"},
-             {"code": "MANEMP", "description": "All Employee, Manufacturing"}],
-        "income_and_expenditure":
-            [{"code": "MEHOINUSA672N", "description": "Real Median Household Income In United States"},
-             {"code": "PSAVERT", "description": "Personal Savings Rate"},
-             {"code": "DSPI", "description": "Disposable Personal Income"},
-             {"code": "DSPIC96", "description": "Real Disposable Personal Income"},
-             {"code": "PCE", "description": "Personal Consumption Expenditures"},
-             {"code": "PCEDG", "description": "Personal Consumption Expenditures, Durable Goods"},
-             {"code": "RRSFS", "description": "Real Retail And Food Services Sales,\n Deflated Using CPI Base: 1982 - 1984"}],
-        "debt":
-            [{"code": "GFDEBTN", "description": "Federal Debt: Total Public Debt"},
-             {"code": "GFDEGDQ188S", "description": "Federal Debt: Total Public Debt As Percent Of Gross Domestic Product"},
-             {"code": "EXCSRESNW", "description": "Excess Reserves Of Depository Institutions"},
-             {"code": "TOTCI", "description": "Commerical And Industrial Loans, All Commerical Banks"}],
-        "other_indicators":
-            [{"code": "INDPRO", "description": "Industrial Production Index,\n Base: 2007"},
-             {"code": "TCU", "description": "Capacity Utilization: Total Industry"},
-             {"code": "HOUST", "description": "Total Housing Starts, New Privately Owned Housing Units Started"},
-             {"code": "GPDI", "description": "Gross Private Domestic Investment"},
-             {"code": "CP", "description":"Corporate Profits After Tax (without IVA and CCAdj)"},
-             {"code": "DCOILWTICO", "description": "Crude Oil Prices, West Texas Intermediate (WTI), Cushing, Oklakhoma"},
-             {"code": "DTWEXM", "description": "Trade Weighted U.S. Dollar Index, Major Currencides, \n Base: 1973"}, 
-             {"code": "DTWEXB", "description": "Trade Weighted U.S. Dollar Index, Broad, \n Base: 1997"}]
-
     }
 }

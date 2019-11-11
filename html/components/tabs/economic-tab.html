@@ -1,47 +1,52 @@
-<div id = "economic-app" class = "tab-container parent-fill" ng-controller = "stat_controller as sample">
+<div id = "economic-app" class = "parent-fill" ng-controller = "stat_controller as sample">
     <div class = "title tab">Finneas Stockholm</div>
-    <div class = "sub-title double-tab">Economic Data</div><br>
+    <div class = "sub-title double-tab quarter-fade">Economic Data</div><br>
 
-    <table class = "tab">
+    <table class = "fit-width-to-parent">
         <tr><td>
-            <form ng-submit = "sample.addStatistic()" name = "statForm">
-                <select id='growthSelector' ng-model = "sample.selection" ng-required = 'true'>
-                    <option value = "">Please Select A Statistic</option>
-                    <option class = "growth" 
-                            ng-repeat = "value in sample.codes.growth">{{value.code}}</option>
-                    <option class = "prices_and_inflation" 
-                            ng-repeat = "value in sample.codes.prices_and_inflation">{{value.code}}</option>
-                    <option class = "interest_rates"
-                            ng-repeat = "value in sample.codes.interest_rates">{{value.code}}</option>
-                    <option class = "employment"
-                            ng-repeat = "value in sample.codes.employment">{{value.code}}</option>
-                    <option class = "income_and_expenditure"
-                            ng-repeat = "value in sample.codes.income_and_expenditure">{{value.code}}</option>
-                    <option class = "debt"
-                            ng-repeat = "value in sample.codes.debt">{{value.code}}</option>
-                    <option class ="other_indicators"
-                            ng-repeat = "value in sample.codes.other_indicators">{{value.code}}</option>
-                </select>
-                <input id = "add-stat-button" type ="submit" value = "Add Statistic"
-                        ng-disabled = "statForm.$invalid">
-                <input id = "clear-stat-button" type = "button" value = "Clear Statistics"
-                        ng-disabled = "!sample.clearable" ng-click = "sample.clearStatistics()">
-            </form>
+                <div class = "child-fill">
+                        <form ng-submit = "sample.addStatistic()" name = "statForm" class = "center-align">
+                                <select id='growthSelector' class = "half-padding"
+                                        ng-model = "sample.selection" ng-required = 'true'>
+                                        <option value = "">Please Select A Statistic</option>
+                                        <option class = "growth" 
+                                                ng-repeat = "value in sample.codes.growth">{{value.code}}</option>
+                                        <option class = "prices_and_inflation" 
+                                                ng-repeat = "value in sample.codes.prices_and_inflation">{{value.code}}</option>
+                                        <option class = "interest_rates"
+                                                ng-repeat = "value in sample.codes.interest_rates">{{value.code}}</option>
+                                        <option class = "employment"
+                                                ng-repeat = "value in sample.codes.employment">{{value.code}}</option>
+                                        <option class = "income_and_expenditure"
+                                                ng-repeat = "value in sample.codes.income_and_expenditure">{{value.code}}</option>
+                                        <option class = "debt"
+                                                ng-repeat = "value in sample.codes.debt">{{value.code}}</option>
+                                        <option class ="other_indicators"
+                                                ng-repeat = "value in sample.codes.other_indicators">{{value.code}}</option>
+                                </select>
+                                <input id = "add-stat-button" class = "half-padding"
+                                        type ="submit" value = "Add Statistic"
+                                        ng-disabled = "statForm.$invalid && !sample.statistics.stats.includes(sample.selection)">
+                                <input id = "clear-stat-button" class ="half-padding"
+                                        type = "button" value = "Clear Statistics"
+                                        ng-disabled = "!sample.clearable" ng-click = "sample.clearStatistics()">
+                        </form>
+                </div>
         </td></tr>
 
-        <tr><div class ="data-preview note highlight-fill" 
-                ng-if = "sample.selection"> {{sample.getDescription(sample.selection)}}</div></tr>
-        <tr><div class ="data-preview note highlight-fill" 
-                ng-if = "!sample.selection">
-                <div class = "half-fade">Statistic Description Goes Here</div>
-        </div></tr>
+        <tr><td>
+                <div class ="center-align note highlight-fill" 
+                        ng-if = "sample.selection"> {{sample.getDescription(sample.selection)}}</div>
+                <div class ="center-align note highlight-fill" 
+                        ng-if = "!sample.selection"><span class ="half-fade">Statistic Description Goes Here</span></div>
+        </td></tr>
 
         <tr><td>
             <div ng-if = "sample.statistics.stats.length === sample.stat_add_clicks && sample.stored">
                 <div class = "sub-title tab">Statistics</div>
                 <div class = "data-grid">
-                    <div class ="data-grid-item" ng-repeat="stat in sample.statistics.stats">
-                        <economic-item class = "note"
+                        <div class ="data-grid-item" ng-repeat="stat in sample.statistics.stats">
+                        <economic-item 
                                     code ="stat" 
                                     value = "sample.getStoredValue(stat)" 
                                     date = "sample.getStoredDate(stat)"

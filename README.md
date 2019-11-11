@@ -81,6 +81,8 @@ Note the use of the hashbang URL (i.e., the "!#" prefix). This prevents the brow
 
 <h1>Usage</h1>
 
+1. Starting Node Server
+
 To start the server, navigate to the project's root folder and run,
 
 	npm start
@@ -88,6 +90,8 @@ To start the server, navigate to the project's root folder and run,
 This will set the server to listen on Port 8001. The app UI can be accessed through the url,
 
 	http://localhost:8001/home
+
+2. API
 
 The backend Quandl API can be accessed through
 
@@ -105,11 +109,11 @@ This will return a JSON file {date, value} containing the date and the latest va
 
 To see a list of all stock tickers and their descriptions,
 
-	http://localhost:8001/api/quandl/WIKI/tickers
+	http://localhost:8001/api/tickers
 
 To see a list of all economic statistics and their descriptions,
 
-	http://localhost:8001/api/quandl/FRED/codes
+	http://localhost:8001/api/codes
 
 The Alpha Vantage API can be accessed in a similar manner. The base URL for all Alpha Vantage API calls is,
 

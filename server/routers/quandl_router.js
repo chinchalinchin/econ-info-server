@@ -6,11 +6,6 @@ const helper = require('../scripts/helper.js')
 var router = express.Router();
 
 // FRED DATASET
-router.get('/FRED/codes/', function(req, res, next){
-    helper.log('GET ALL CODES Request Received', 'Route: /api/quandl/FRED/codes/')
-    res.status(200).send(quandl.codes());
-});
-
 router.get('/FRED/statistics/*', function(req, res,next){
     var code = req.url.split('/')[3]
     helper.log(`GET ${code} Request Received`, 'Route: /api/quandl/FRED/statistics/')

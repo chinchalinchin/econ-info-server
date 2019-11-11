@@ -1,3 +1,9 @@
+.root-fill{
+    background-color: lightblue;
+    border-style: inset;
+    border-color:cornflowerblue;
+    border-width:5px;
+}
 .parent-fill{
     border-style: inset;
     border-width: 2px;
@@ -8,14 +14,20 @@
     border-style:groove;
     border-width: 2px;
     border-color: darkblue;
-    background-color:lightskyblue;
+    background-color:lightblue
 }
 .highlight-fill{
     border-style:inset;
     border-width: 2px;
-    border-color: mediumblue;
-    background-color:lightblue;
+    border-color: navy;
+    background-color:lightcyan;
 }
 .navbar-fill{
     border-color: royalblue;
+}
+.debug-fill{
+    border-style:double;
+    border-color:purple;
+    background-color:plum;
+    color: maroon;
 }

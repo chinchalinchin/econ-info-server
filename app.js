@@ -6,7 +6,8 @@ const helper = require('./server/scripts/helper.js');
 const quandl_router = require('./server/routers/quandl_router.js')
 const alpha_vantage_router = require('./server/routers/alpha_vantage_router.js')
 const tickers = require('./server/resources/tickers.json')
-const server_config = require('./server/resources/config.json')
+const codes = require('./server/resources/codes.json')
+const server_config = require('./server/resources/server_config.json')
 
 // Initialize node-express
 const app = express();
@@ -44,6 +45,12 @@ app.get('/api/tickers/', function(req,res,next){
     helper.log('GET ALL TICKERS Request Received', 'Route: /api/tickers/')
     res.status(200).json(tickers)
 });
+
+app.get('/api/codes/', function(req, res, next){
+    helper.log('GET ALL CODES Request Received', 'Route: /api/codes/')
+    res.status(200).json(codes);
+});
+
 
 app.listen(8001, function(){
     helper.log("Listening On Port 8001", "Server")
