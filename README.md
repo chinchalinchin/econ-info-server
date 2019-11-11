@@ -24,7 +24,7 @@ Note: API keys are stored in <i>/server/services/alpha_vantage/alpha_vantage_con
 	- [x] Routing
 	- [x] Custom Filters
 	- [x] Form Validation
-	- [ ] Quandl/Alpha Vantage Factory Service Plugins
+	- [x] Quandl/Alpha Vantage Factory Service Plugins
 2. Angular App: Home Tab
 	- [ ] Splash Page 
 	- [ ] User Login Functionality
