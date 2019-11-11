@@ -15,7 +15,9 @@
             </form>
         </td></tr>
 
-        <tr><div class ="data-preview" ng-if = "market.selection">{{market.getPriceDescription(market.selection.code)}}</div></tr>
+        <tr><div class ="data-preview note half-fade" ng-if = "!market.selection">Equity Description Goes Here</div></tr>
+        <tr><div class ="data-preview note" ng-if = "market.selection">{{market.getPriceDescription(market.selection.code)}}</div></tr>
+
 
         <tr><td>
             <div ng-if = "market.portfolio.tickers.length === market.portfolio_add_clicks && market.stored">

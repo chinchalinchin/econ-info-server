@@ -1,0 +1,6 @@
+/*quick formats*/
+.half-tab{ margin-left: 10px; }
+.tab{ margin-left: 20px; }
+.double-tab{margin-left:40px;}
+.block { display: block; }
+.half-fade{ opacity: 0.5 }

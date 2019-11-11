@@ -1,0 +1,21 @@
+.parent-fill{
+    border-style: inset;
+    border-width: 2px;
+    border-color:midnightblue;
+    background-color:skyblue;
+}
+.child-fill{
+    border-style:groove;
+    border-width: 2px;
+    border-color: darkblue;
+    background-color:lightskyblue;
+}
+.highlight-fill{
+    border-style:inset;
+    border-width: 2px;
+    border-color: mediumblue;
+    background-color:lightblue;
+}
+.navbar-fill{
+    border-color: royalblue;
+}

@@ -30,7 +30,6 @@ function context_factory(logger_factory){
     }
 
     return {
-        transform: appendTransform,
         getDailyCloseUrl: getDailyCloseUrl,
     }
 

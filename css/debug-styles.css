@@ -1,0 +1,15 @@
+.logger-display{
+    border-style: solid;
+    border-width: 2px;
+    border-color: rebeccapurple;
+    overflow-y: auto;
+    max-height: 200px;
+}
+.logger-view{ float:left; }
+.logger-title{
+    font-size: 150%;
+    color: purple;
+    border-style: solid;
+    border-width: 2px;
+    border-color: purple;
+}

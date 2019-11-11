@@ -1,10 +1,10 @@
 <table>
-    <tr><td>Date: {{$ctrl.date}}</td></tr>
-    <tr><td>Code: {{$ctrl.code}}</td></tr>
+    <tr><td class = "note">Date: {{$ctrl.date}}</td></tr>
+    <tr><td class = "note">Code: {{$ctrl.code}}</td></tr>
     <tr>
         <td>
-            <economic-formatter code = "$ctrl.code" value = "$ctrl.value"></economic-formatter>
+            <economic-formatter class="note" code = "$ctrl.code" value = "$ctrl.value"></economic-formatter>
         </td>
     </tr>
 </table>
-<u style ="margin-left:10px;">Description:</u><br> <span class = "tab block">{{$ctrl.desc}}</span>
+<u class ="half-tab">Description:</u><br> <span class = "tab block">{{$ctrl.desc}}</span>

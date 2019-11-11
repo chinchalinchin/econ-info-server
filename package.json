@@ -8,19 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "stock",
-    "black-scholes",
-    "technical",
-    "analysis",
-    "node",
-    "express",
-    "angularjs",
-    "quandl",
-    "alpha vantage",
-    "FRED",
-    "economics",
-    "equities",
-    "securities"
+    "stock", "black-scholes", "technical", "analysis",
+    "node", "express", "angularjs", "angular",
+    "quandl", "alpha vantage", "FRED", "Saint Louis Fed",
+    "economics", "equities", "securities"
   ],
   "author": "Grant Moore",
   "license": "UNLICENSED",

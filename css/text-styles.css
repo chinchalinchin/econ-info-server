@@ -1,0 +1,11 @@
+/*text styles */
+.growth{ color: red; } 
+.prices_and_inflation{ color: indianred; }
+.interest_rates{color: tomato} 
+.employment{ color: lightcoral; }
+.income_and_expenditure{ color:lightsalmon; } 
+.debt{ color: orange;}
+.other_indicators{ color:darkgoldenrod}
+.title{ font-size:175%; color: darkblue; }
+.sub-title{ font-size:135%; color:midnightblue; }
+.note{ font-size: 75%; color: darkred; }

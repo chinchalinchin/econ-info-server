@@ -1,6 +1,8 @@
-<div id = "economic-app" class = "tab-container" ng-controller = "stat_controller as sample">
-    <div class = "title tab">Finneas Stockholm: Economic Data</div>
-    <table>
+<div id = "economic-app" class = "tab-container parent-fill" ng-controller = "stat_controller as sample">
+    <div class = "title tab">Finneas Stockholm</div>
+    <div class = "sub-title double-tab">Economic Data</div><br>
+
+    <table class = "tab">
         <tr><td>
             <form ng-submit = "sample.addStatistic()" name = "statForm">
                 <select id='growthSelector' ng-model = "sample.selection" ng-required = 'true'>
@@ -27,14 +29,20 @@
             </form>
         </td></tr>
 
-        <tr><div class ="data-preview" ng-if = "sample.selection">{{sample.getDescription(sample.selection)}}</div></tr>
+        <tr><div class ="data-preview note highlight-fill" 
+                ng-if = "sample.selection"> {{sample.getDescription(sample.selection)}}</div></tr>
+        <tr><div class ="data-preview note highlight-fill" 
+                ng-if = "!sample.selection">
+                <div class = "half-fade">Statistic Description Goes Here</div>
+        </div></tr>
 
         <tr><td>
             <div ng-if = "sample.statistics.stats.length === sample.stat_add_clicks && sample.stored">
                 <div class = "sub-title tab">Statistics</div>
                 <div class = "data-grid">
                     <div class ="data-grid-item" ng-repeat="stat in sample.statistics.stats">
-                        <economic-item code ="stat" 
+                        <economic-item class = "note"
+                                    code ="stat" 
                                     value = "sample.getStoredValue(stat)" 
                                     date = "sample.getStoredDate(stat)"
                                     desc = "sample.getDescription(stat)"></economic-item>

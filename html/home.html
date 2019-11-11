@@ -2,7 +2,11 @@
     <head>
         <title>Finneas Stockholm</title>
         <!--Styles-->
-        <link rel="stylesheet" type = "text/css" href="styles.css">
+        <link rel="stylesheet" type = "text/css" href="app-styles.css">
+        <link rel="stylesheet" type = "text/css" href="text-styles.css">
+        <link rel="stylesheet" type = "text/css" href="themes.css">
+        <link rel="stylesheet" type = "text/css" href="debug-styles.css">
+        <link rel="stylesheet" type = "text/css" href="helper-styles.css">
         <!--Angular-->
         <script src = "angular.min.js"></script> 
         <script src = "angular-route.min.js"></script>
@@ -30,22 +34,22 @@
     <body ng-app = "finneas_stockholm"  ng-controller = "app_controller as appctrl">
         <div class = "root-container">
             <div class = "app">
-                    <user-info class = "app-user-view"></user-info>
-        
-                    <div class = "app-nav-view">
-                        <a href ="#!/welcome">Home</a>
-                        <a href="#!/equity" class = "tab">Equity Data</a>
-                        <a href="#!/economic" class = "tab">Economic Data</a>
-                    </div>
-            
-                   <div class = "app-router-view" ng-view></div>
-                
-        
+                <user-info class = "app-user-view"></user-info>
+    
+                <div class = "app-nav-view">
+                    <a href ="#!/welcome">Home</a>
+                    <a href="#!/equity" class = "tab">Equity Data</a>
+                    <a href="#!/economic" class = "tab">Economic Data</a>
                 </div>
+        
+                <div class = "app-router-view" ng-view></div>
+            
+        
+            </div>
                 
-                <span class = "app-logger-view" ng-if="appctrl.debug">
-                    <logger></logger>
-                </span>
+            <span class = "app-logger-view" ng-if="appctrl.debug">
+                <logger></logger>
+            </span>
         </div>
 
     </body>
