@@ -10,7 +10,7 @@ main_module
                     ['logger_factory', 'app_factory', '$scope',
                         app_controller])
     .controller('price_controller', 
-                    ['price_factory', 'logger_factory', 'app_factory',
+                    ['price_factory', 'logger_factory', 'app_factory', '$rootScope',
                         price_controller]
                 )
     .controller('stat_controller',

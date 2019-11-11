@@ -5,10 +5,11 @@ function stat_controller(stat_factory, logger_factory, app_factory){
     self.stored = false;
     self.stat_add_clicks = 0;
     self.statistics = { stats: [], values: [], dates: []};
+    self.codes = null;
 
     logger_factory.log("Initializing Code Data", "quandl_stat_controller")
     app_factory.getCodes().then(data=>{
-        logger_factory.log("Code Date Received From 'app_factory'", "stat_controller.getCodes");
+        logger_factory.log("Codes Received From 'app_factory'", "stat_controller.getCodes");
         self.codes = data.codes;
     })
     .catch(function(err){

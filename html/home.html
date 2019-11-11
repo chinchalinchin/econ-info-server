@@ -36,11 +36,11 @@
             <div class = "app">
                 <user-info class = "app-user-view parent-fill"></user-info>
     
-                <div id="nav-bar" class = "app-nav-view parent-fill">
+                <div id="nav-bar" class = "app-nav-view nav-bar-fill">
                     <div class = "sub-title tab quarter-fade">Nav Bar</div>
-                    <a href ="#!/welcome" class = "double-tab">Home</a>
-                    <a href="#!/portfolio" class = "tab">Equity Data</a>
-                    <a href="#!/economic" class = "tab">Economic Data</a>
+                    <a href ="#!/welcome" class = "double-tab" ng-click="appctrl.navbarClick()">Home</a>
+                    <a href="#!/portfolio" class = "tab" ng-click="appctrl.navbarClick()">Equity Data</a>
+                    <a href="#!/economic" class = "tab" ng-click="appctrl.navbarClick()">Economic Data</a>
                 </div>
         
                 <div class = "app-router-view" ng-view></div>

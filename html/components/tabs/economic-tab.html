@@ -36,9 +36,17 @@
 
         <tr><td>
                 <div class ="center-align note highlight-fill" 
-                        ng-if = "sample.selection"> {{sample.getDescription(sample.selection)}}</div>
+                        ng-if = "sample.selection && !sample.statistics.stats.includes(sample.selection)"> 
+                        {{sample.getDescription(sample.selection)}}
+                </div>
                 <div class ="center-align note highlight-fill" 
-                        ng-if = "!sample.selection"><span class ="half-fade">Statistic Description Goes Here</span></div>
+                        ng-if = "!sample.selection && !sample.statistics.stats.includes(sample.selection)">
+                        <span class ="half-fade">Statistic Description Goes Here</span>
+                </div>
+                <div class = "center-align error-fill"
+                        ng-if = 'sample.statistics.stats.includes(sample.selection)'>
+                        List Already Contains {{sample.selection}}!
+                </div>
         </td></tr>
 
         <tr><td>

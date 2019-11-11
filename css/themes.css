@@ -1,7 +1,7 @@
 .root-fill{
-    background-color: lightblue;
+    background-color: lightcyan;
     border-style: inset;
-    border-color:cornflowerblue;
+    border-color:rgb(18, 101, 255);
     border-width:5px;
 }
 .parent-fill{
@@ -14,7 +14,7 @@
     border-style:groove;
     border-width: 2px;
     border-color: darkblue;
-    background-color:lightblue
+    background-color:rgb(176, 235, 255);
 }
 .highlight-fill{
     border-style:inset;
@@ -22,8 +22,18 @@
     border-color: navy;
     background-color:lightcyan;
 }
-.navbar-fill{
-    border-color: royalblue;
+.nav-bar-fill{
+    background-color: rgb(176, 235, 255);
+    border-color:midnightblue;
+    border-style:groove;
+    border-width:2px;
+}
+.error-fill{
+    background-color: pink;
+    border-color: darkred;
+    border-width: 2px;
+    border-style: ridge;
+    color: maroon;
 }
 .debug-fill{
     border-style:double;

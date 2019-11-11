@@ -20,22 +20,27 @@
 //                  this so HTML template binding can wait on asynchronous operation
 // self.portfolio: A JSON containing information about the user's portfolio.
 // self.tickers: A list of all tickers that can be accessed through the backend API.
-function price_controller(price_factory, logger_factory, app_factory){
+function price_controller(price_factory, logger_factory, app_factory, $rootScope){
     logger_factory.log("Initializing Controller Variables", "price_controller")
     var self = this;
     self.clearable= false;
     self.stored = false;
     self.portfolio_add_clicks = 0;
     self.portfolio = { tickers: [], prices: [], dates: [] }
+    self.tickers = null;
     
     logger_factory.log("Initializing Ticker Data", "price_controller")
-    app_factory.getTickers().then(data=>{
-        logger_factory.log(`Tickers Received From '${price_factory.getName()}'`, "price_controller.getTickers");
-        self.tickers = data;
-    })
-    .catch(function(err){
-        logger_factory.warn(err, "price_controller.getTickers");
-    });
+
+    self.getTickers = function(){
+        app_factory.getTickers().then(data=>{
+            logger_factory.log(`Tickers Received From '${price_factory.getName()}'`, "price_controller.getTickers");
+            self.tickers = data
+        })
+        .catch(function(err){
+            logger_factory.warn(err, "price_controller.getTickers");
+        });
+    }
+    self.getTickers();
     
     self.getPrice = function(ticker){
         logger_factory.log(`Retrieving ${ticker} Price From '${price_factory.getName()}'`, "price_controller.getPrice");

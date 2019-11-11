@@ -3,6 +3,8 @@ function app_factory(logger_factory, $http, $rootScope){
     logger_factory.log("Initializing", "app_factory")
 
     var debug = false;
+    var codes = null;
+    var tickers = null;
 
     var getDebug = function(){ 
         return debug;
@@ -15,7 +17,7 @@ function app_factory(logger_factory, $http, $rootScope){
     }
 
     var getTickers = function(){
-        logger_factory.log('Retrieving Tickers From Node Server', "app_factory.getTickers");
+        logger_factory.log('No Store Found, Retrieving Tickers From Node Server', "app_factory.getTickers");
         var url = application_properties.resource_endpoints.tickers;
         return $http.get(url).then(function(response){
             logger_factory.log("Response Received From Node Server", "app_factory.getTickers")
@@ -25,18 +27,21 @@ function app_factory(logger_factory, $http, $rootScope){
         .catch(function(err){
             logger_factory.warn(`Response Error: Status ${err.status}: ${err.statusText}`, 'app_factory.getTickers');
         });
+      
     };
 
     var getCodes = function(){
-        logger_factory.log('Retrieving Codes From Node Server', "quandl_factory.getCodes")
+        logger_factory.log('No Store Found, Retrieving Codes From Node Server', "app_factory.getCodes")
         var url = application_properties.resource_endpoints.codes;
         return $http.get(url).then(function(response){
-            logger_factory.log("Response Received From Node Server", "quandl_factory.getCodes")
+            logger_factory.log("Response Received From Node Server", "app_factory.getCodes")
             new_response = response.data;
+            logger_factory.log("Storing Code Response", "app_factory.getCodes")
+            codes = new_response;
             return new_response;
         })
         .catch(function(err){
-            logger_factory.warn(`Response Error: Status ${err.status}: ${err.statusText}`, 'quandl_factory.getCodes');
+            logger_factory.warn(`Response Error: Status ${err.status}: ${err.statusText}`, 'app_factory.getCodes');
         });
     }
 

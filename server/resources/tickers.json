@@ -1,7 +1,7 @@
 [
  {
    "code": "AACG",
-   "name": "ATA Creativity Global - American Depositary Shares, each representing two common shares"
+   "name": "ATA Creativity Global - American Depositary Shares"
  },
  {
    "code": "AAL",
@@ -101,11 +101,11 @@
  },
  {
    "code": "ACGLO",
-   "name": "Arch Capital Group Ltd. - Depositary Shares Each Representing 1/1,000th Interest in a Share of5.45% Non-Cumulative Preferred Shares, Series F"
+   "name": "Arch Capital Group Ltd. - Non-Cumulative Preferred Shares, Series F"
  },
  {
    "code": "ACGLP",
-   "name": "Arch Capital Group Ltd. - Depositary Shares Representing Interest in 5.25% Non-Cumulative Preferred Series E Shrs"
+   "name": "Arch Capital Group Ltd. - Non-Cumulative Preferred Series E Shrs"
  },
  {
    "code": "ACHC",
@@ -373,19 +373,19 @@
  },
  {
    "code": "AGNCB",
-   "name": "AGNC Investment Corp. - Depositary Shares representing 1/1000th Series B Preferred Stock"
+   "name": "AGNC Investment Corp. - Series B Preferred Stock"
  },
  {
    "code": "AGNCM",
-   "name": "AGNC Investment Corp. - Depositary Shares rep 6.875% Series D Fixed-to-Floating Cumulative Redeemable Preferred Stock"
+   "name": "AGNC Investment Corp. - 6.875% Series D Fixed-to-Floating Cumulative Redeemable Preferred Stock"
  },
  {
    "code": "AGNCN",
-   "name": "AGNC Investment Corp. - Depositary Shares Each Representing a 1/1,000th Interest in a Share of 7.00% Series C Fixed-To-Floating Rate Cumulative Redeemable Preferred Stock"
+   "name": "AGNC Investment Corp. - 7.00% Series C Fixed-To-Floating Rate Cumulative Redeemable Preferred Stock"
  },
  {
    "code": "AGNCO",
-   "name": "AGNC Investment Corp. - Depositary Shares, each representing a 1/1,000th interest in a share of Series E Fixed-to-Floating Cumulative Redeemable Preferred Stock"
+   "name": "AGNC Investment Corp. - Series E Fixed-to-Floating Cumulative Redeemable Preferred Stock"
  },
  {
    "code": "AGND",
@@ -729,7 +729,7 @@
  },
  {
    "code": "AMRN",
-   "name": "Amarin Corporation plc - American Depositary Shares, each representing one Ordinary Share"
+   "name": "Amarin Corporation plc - American Depositary Shares"
  },
  {
    "code": "AMRS",
@@ -829,7 +829,7 @@
  },
  {
    "code": "ANTE",
-   "name": "AirNet Technology Inc. - American Depositary Shares, each representing ten ordinary shares"
+   "name": "AirNet Technology Inc. - American Depositary Shares"
  },
  {
    "code": "ANY",
@@ -885,7 +885,7 @@
  },
  {
    "code": "APOPW",
-   "name": "Cellect Biotechnology Ltd. - Warrants to Purchase ADR (1 WT and $7.50 to purchase 0.2 ADS)"
+   "name": "Cellect Biotechnology Ltd. - Warrants to Purchase ADR"
  },
  {
    "code": "APPF",
@@ -917,7 +917,7 @@
  },
  {
    "code": "APWC",
-   "name": "Asia Pacific Wire & Cable Corporation Limited - Common shares, Par value .01 per share"
+   "name": "Asia Pacific Wire & Cable Corporation Limited - Common Shares"
  },
  {
    "code": "APXT",
@@ -1101,7 +1101,7 @@
  },
  {
    "code": "ASRVP",
-   "name": "AmeriServ Financial Inc. - AmeriServ Financial Trust I - 8.45% Beneficial Unsecured Securities, Series A"
+   "name": "AmeriServ Financial Inc. - 8.45% Beneficial Unsecured Securities, Series A"
  },
  {
    "code": "ASTC",
@@ -1529,7 +1529,7 @@
  },
  {
    "code": "BHFAP",
-   "name": "Brighthouse Financial, Inc. - Depositary Shares 6.6% Non-Cumulative Preferred Stock, Series A"
+   "name": "Brighthouse Financial, Inc. - 6.6% Non-Cumulative Preferred Stock, Series A"
  },
  {
    "code": "BHTG",
@@ -1545,7 +1545,7 @@
  },
  {
    "code": "BIDU",
-   "name": "Baidu, Inc. - American Depositary Shares, each representing one tenth Class A ordinary share"
+   "name": "Baidu, Inc. - Class A Ordinary Shares"
  },
  {
    "code": "BIIB",
@@ -1785,11 +1785,11 @@
  },
  {
    "code": "BPOPM",
-   "name": "Popular, Inc. - Popular Capital Trust II - 6.125% Cumulative Monthly Income Trust Preferred Securities"
+   "name": "Popular, Inc. - 6.125% Cumulative Monthly Income Trust Preferred Securities"
  },
  {
    "code": "BPOPN",
-   "name": "Popular, Inc. - Popular Capital Trust I -6.70% Cumulative Monthly Income Trust Preferred Securities"
+   "name": "Popular, Inc. - 6.70% Cumulative Monthly Income Trust Preferred Securities"
  },
  {
    "code": "BPR",
@@ -2193,7 +2193,7 @@
  },
  {
    "code": "CBSHP",
-   "name": "Commerce Bancshares, Inc. - Depositary Shares, each representing a 1/1000th interest of 6.00% Series B Non-Cumulative Perpetual Preferred Stock"
+   "name": "Commerce Bancshares, Inc. - 6.00% Series B Non-Cumulative Perpetual Preferred Stock"
  },
  {
    "code": "CBTX",
@@ -2597,7 +2597,7 @@
  },
  {
    "code": "CIVBP",
-   "name": "Civista Bancshares, Inc.  - Depositary Shares Each Representing a 1/40th Interest in a 6.50% Noncumulative Redeemable Convertible Perpetual Preferred Share, Series B"
+   "name": "Civista Bancshares, Inc.  - 6.50% Noncumulative Redeemable Convertible Perpetual Preferred Share, Series B"
  },
  {
    "code": "CIZ",
@@ -2985,7 +2985,7 @@
  },
  {
    "code": "CRESY",
-   "name": "Cresud S.A.C.I.F. y A. - American Depositary Shares, each representing ten shares of Common Stock"
+   "name": "Cresud S.A.C.I.F. y A. - American Depositary Shares, Common Stock"
  },
  {
    "code": "CREX",
@@ -3353,7 +3353,7 @@
  },
  {
    "code": "CYOU",
-   "name": "Changyou.com Limited - American Depositary Shares, each representing two Class A ordinary shares"
+   "name": "Changyou.com Limited - American Depositary Shares, Class A Ordinary Shares"
  },
  {
    "code": "CYRN",
@@ -4177,11 +4177,11 @@
  },
  {
    "code": "ESGRO",
-   "name": "Enstar Group Limited - Depository Shares 7.00% Perpetual Non-Cumulative Preference Shares, Series E"
+   "name": "Enstar Group Limited - 7.00% Perpetual Non-Cumulative Preference Shares, Series E"
  },
  {
    "code": "ESGRP",
-   "name": "Enstar Group Limited - Depositary Shares Each Representing 1/1000th of an interest in Preference Shares"
+   "name": "Enstar Group Limited - Preference Shares"
  },
  {
    "code": "ESGU",
@@ -4421,7 +4421,7 @@
  },
  {
    "code": "FANH",
-   "name": "Fanhua Inc. - American depositary shares, each representing 20 ordinary shares"
+   "name": "Fanhua Inc. - American Depositary Shares"
  },
  {
    "code": "FARM",
@@ -4689,15 +4689,15 @@
  },
  {
    "code": "FITBI",
-   "name": "Fifth Third Bancorp - Depositary Share repstg 1/1000th Ownership Interest Perp Pfd Series I"
+   "name": "Fifth Third Bancorp - Ownership Interest Perp Pfd Series I"
  },
  {
    "code": "FITBO",
-   "name": "Fifth Third Bancorp - Depositary Shares each representing a 1/1000th ownership interest in a share of Non-Cumulative Perpetual Preferred Stock, Series K"
+   "name": "Fifth Third Bancorp - Perpetual Preferred Stock, Series K"
  },
  {
    "code": "FITBP",
-   "name": "Fifth Third Bancorp - Depositary Shares each representing 1/40th share of Fifth Third 6.00% Non-Cumulative Perpetual Class B Preferred Stock, Series A"
+   "name": "Fifth Third Bancorp - Perpetual Class B Preferred Stock, Series A"
  },
  {
    "code": "FIVE",
@@ -5661,7 +5661,7 @@
  },
  {
    "code": "GRVY",
-   "name": "GRAVITY Co., Ltd. - American depositary shares, each representing one common share."
+   "name": "GRAVITY Co., Ltd. - Common Stock"
  },
  {
    "code": "GSBC",
@@ -5805,7 +5805,7 @@
  },
  {
    "code": "HBANN",
-   "name": "Huntington Bancshares Incorporated - Depositary Shares each representing a 1/40th interest in a share of 5.875% Series C Non-Cumulative Perpetual Preferred Stock"
+   "name": "Huntington Bancshares Incorporated - 5.875% Series C Non-Cumulative Perpetual Preferred Stock"
  },
  {
    "code": "HBANO",
@@ -5989,7 +5989,7 @@
  },
  {
    "code": "HIMX",
-   "name": "Himax Technologies, Inc. - American depositary shares, each of which represents two ordinary shares."
+   "name": "Himax Technologies, Inc. - Ordinary Shares."
  },
  {
    "code": "HJLI",
@@ -6085,7 +6085,7 @@
  },
  {
    "code": "HOVNP",
-   "name": "Hovnanian Enterprises Inc - Depositary Share representing 1/1000th of 7.625% Series A Preferred Stock"
+   "name": "Hovnanian Enterprises Inc - 7.625% Series A Preferred Stock"
  },
  {
    "code": "HQI",
@@ -6269,7 +6269,7 @@
  },
  {
    "code": "IBKCN",
-   "name": "IBERIABANK Corporation - Depositary Shares each representing a 1/400th ownership interest in a share of our 6.100% Fixed-to-Floating Non-Cumulative Perpetual Preferred Stock, Series D"
+   "name": "IBERIABANK Corporation - 6.100% Fixed-to-Floating Non-Cumulative Perpetual Preferred Stock, Series D"
  },
  {
    "code": "IBKCO",

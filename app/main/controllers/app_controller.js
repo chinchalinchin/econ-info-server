@@ -13,9 +13,17 @@ function app_controller(logger_factory, app_factory, $scope){
                             'app_update event stream')
     })
 
+    $scope.$on('navbar_click', function(event, data){
+
+    })
+
     self.debugger = function(setter){
         logger_factory.log(`Setting Debug Control In 'app_factory' To ${setter}`, 
                             "app_controller.debugger")
         app_factory.setDebug(setter);
     } 
+
+    self.navbarClick= function(){
+        $scope.$broadcast('navbar_click', 'value')
+    }
 }
