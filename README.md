@@ -117,11 +117,15 @@ To see a list of all economic statistics and their descriptions,
 
 The Alpha Vantage API can be accessed in a similar manner. The base URL for all Alpha Vantage API calls is,
 
-	http://localhost:8001/api/alpha-vantage /PATH_PARAMETERS
+	http://localhost:8001/api/alpha-vantage/PATH_PARAMETERS
 
 Note, just like the Quandl API exposed by the Node Server, all of the parameters to the Alpha Vantage API are passed in through the path (instead of the body or headers). For example, to see the latest closing daily price of Facebook, navigate to (GET request),
 
-	http://localhost:8001/api/alpha-vantage/closing-daily-prices/FB
+	http://localhost:8001/api/alpha-vantage/closing-daily-price/FB
+
+You can also retrieve a list of prices, up to 100 days long (Alpha Vantage limit), at the 'closing-daily-prices' endpoint by providing a 'length' paramater in the query string. For example, the following URL will return a list of the last ten closing daily prices for Facebook,
+
+	http://localhost:8001/api/alpha-vantage/closing-daily-prices/FB?length=10
 
 <h1>Thoughts</h1>
 
