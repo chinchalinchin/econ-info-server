@@ -1,4 +1,7 @@
-<table class = "child-fill fit-width-to-parent">
+<table class = "child-fill fit-width-to-parent" 
+    ng-controller = "analysis_controller as analysis"
+    ng-init = "analysis.ticker = $ctrl.ticker"
+>
     <tr><td>Name: {{$ctrl.desc}}</td></tr>
     <tr><td>Ticker: {{$ctrl.ticker}}</td></tr>
     <tr><td>
@@ -9,4 +12,16 @@
         <span ng-show = "$ctrl.price !== 'cannot find'">Price: {{$ctrl.price | currency}}</span>
         <span ng-show = "$ctrl.price === 'cannot find'">Ticker Not Available</span>
     </td></tr>
+    <tr><td>
+        <span ng-if = "analysis.analyzed">
+            <span ng-if = "analysis.MA20">MA(20): {{analysis.MA20}}</span>
+        </span>
+    </td></tr>
+    <tr>
+        <td>
+            <input type ="button" value ="Analyze" class = "justify-right"
+                 ng-click = 'analysis.analyze()'>
+        </td>
+    </tr>
 </table>
+

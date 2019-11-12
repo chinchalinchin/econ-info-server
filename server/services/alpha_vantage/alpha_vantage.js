@@ -51,6 +51,10 @@ function formatJSONResBody(body, frequency){
         format_date = 'cannot find';
         format_body = 'cannot find';
     }
+    else if(format_body['Note']){
+        format_date = 'error'
+        format_body = format_body['Note']
+    }
     else{
         format_body = format_body[formatIndex(frequency)];
         format_date = Object.keys(format_body)[0]; // grab first date
@@ -77,9 +81,26 @@ function formatJSONArrayResBody(body, frequency, length, transform){
     let everything_flag = true; 
     if(!length){ everything_flag = false; }
 
+    console.log(frequency);
+    console.log(length);
+    console.log(transform);
+    console.log(formatIndex(frequency));
+
     if(format_body['Error Message']){
-        format_date = 'cannot find';
-        format_body = 'cannot find';
+        format_date = 'error';
+        format_body = 'cannot find ticker';
+        response_json = {
+            date: format_date, 
+            value: format_body
+        }
+    }
+    else if(format_body['Note']) {
+        format_date = 'error'
+        format_body = format_body['Note']
+        response_json = {
+            date: format_date, 
+            value: format_body
+        }
     }
     else{
         format_body = format_body[formatIndex(frequency)];
@@ -109,8 +130,11 @@ function formatJSONMAResBody(body, period, transform){
     response_json = formatJSONArrayResBody(body, response_format.frequency.daily, period, transform);
     var moving_average = 0;
     var dates = Object.keys(response_json);
+    console.log(`length: ${dates.length}`)
     for(let date of dates){
         moving_average = moving_average + parseInt(response_json[date])/dates.length
+        console.log(`price ${response_json[date]}`)
+        console.log(`average ${moving_average}`)
     }
     return new_response = {
         date: dates[0],

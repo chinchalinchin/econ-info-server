@@ -1,14 +1,18 @@
-// MARKET_CONTROLLER
+// PRICE_CONTROLLER
 //
 // METHODS
-// self.init: 
-// self.getClosingPrice:
+// self.init:
+// self.getTickers: 
+// self.getPrice:
+// self.getPriceDescription: 
 // self.getStoredPrice:
 // self.getStoredDate:
-// self.add: Verifies selected stock isn't already included in portfolio and then
+// self.addToPortfolio: 
+//           Verifies selected stock isn't already included in portfolio and then
 //           retrieves price information from server. Uses 'add_clicks' to verify
 //           server call has been made before displaying price data in template.
-// self.clear:
+// self.clearPortfolio:
+// self.savePortfolio: 
 
 // FIELDS
 // self.selection: Binded to drop-down menu input. Used when the user clicks the 
@@ -125,7 +129,6 @@ function price_controller(price_factory, logger_factory, app_factory, $scope){
 
     // CONSTRUCTOR
     self.init = function(){
-        logger_factory.log("Initializing Controller Variables", "price_controller.init");
         logger_factory.log("Initializing Ticker Data", "price_controller.init")
         self.tickers = null;
         self.getTickers();

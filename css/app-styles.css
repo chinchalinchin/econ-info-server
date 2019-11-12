@@ -36,5 +36,7 @@
     grid-template-columns: auto;
     overflow-y: auto;
 }
-.data-grid-item{ text-align: left; }
+.data-grid-item{ 
+    text-align: left; 
+}
 
