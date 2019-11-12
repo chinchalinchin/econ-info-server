@@ -20,11 +20,10 @@ var response_format = {
     },
     columns: {
         close: '4. close'
-    }
+    },
 }
 
 var alpha_vantage = require('./alpha_vantage_config.json');
-var helper = require('../../scripts/helper.js')
 
 function getSecureUrl(){
     return `${alpha_vantage.baseURL}&apikey=${alpha_vantage.APIKey}&outputsize=compact&datatype=json`
@@ -69,8 +68,9 @@ function formatJSONResBody(body, frequency){
  *    body: Response Body from Alpha Vantage to parse
  *    frequency: Frequency of Response to parse. Use 'response_format' to pass in correct value.
  *    length: number of dates to retrieve. Pass in null to get everything provided by Alpha Vantage.
+ *    transform: takes the natural logarithm of each price in the 
 */
-function formatJSONArrayResBody(body, frequency, length){
+function formatJSONArrayResBody(body, frequency, length, transform){
     let format_body = JSON.parse(body)
     let format_date;
 
@@ -87,24 +87,42 @@ function formatJSONArrayResBody(body, frequency, length){
         response_json = {}
         let i = 1
         for(let day of format_date){
-            response_json[day] = format_body[day][response_format.columns.close]
+            let buffer = format_body[day][response_format.columns.close]
+            if(transform){ buffer = Math.log(buffer); }
+            response_json[day] = buffer;
             i++;
             if(everything_flag && i.toString()===length){ break; }
         }
     }
     return response_json;
-    
+}
+
+/* Description: Calculates the moving average of a stock price.
+ *
+ * Parameters
+ *     body: Response Body from Alpha Vantage to parse
+ *     period: Desired rolling period for the moving average
+ *     transform: returns the average return, instead of average price
+ *
+*/
+function formatJSONMAResBody(body, period, transform){
+    response_json = formatJSONArrayResBody(body, response_format.frequency.daily, period, transform);
+    var moving_average = 0;
+    var dates = Object.keys(response_json);
+    for(let date of dates){
+        moving_average = moving_average + parseInt(response_json[date])/dates.length
+    }
+    return new_response = {
+        date: dates[0],
+        value: moving_average.toFixed(2);
+    }
 }
 
 // For some reason, Alpha Vantage formats the properties of their JSON response 
 // differently for different frequencies. Go figure.
 function formatIndex(frequency){
-    if(frequency === response_format.frequency.daily){
-        index = `Time Series (${frequency})`
-    }
-    else{
-        index = `${frequency} Time Series` 
-    }
+    if(frequency === response_format.frequency.daily){ index = `Time Series (${frequency})` }
+    else{ index = `${frequency} Time Series` }
     return index;
 }
 
@@ -114,6 +132,7 @@ module.exports = {
     getMonthlyUrl: getMonthlyUrl,
     formatJSONResBody: formatJSONResBody,
     formatJSONArrayResBody: formatJSONArrayResBody,
+    formatJSONMAResBody: formatJSONMAResBody,
     response_format: response_format
 
 }
