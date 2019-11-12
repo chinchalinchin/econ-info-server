@@ -14,10 +14,14 @@
                     </select>
                     <input id = "add-equity-button" type = "submit" 
                             value = "Add Stock" class = "half-padding"
-                            ng-disabled = "equityForm.$invalid && market.portfolio.tickers.includes(market.selection.code)" >
+                            ng-disabled = "equityForm.$invalid || market.portfolio.tickers.includes(market.selection.code)" >
                     <input id = "clear-portfolio-button" type = "button" 
                             value = "Clear Portfolio" class = "half-padding"
                             ng-disabled= "!market.clearable" ng-click = "market.clearPortfolio()">
+                    <input id = "save-portfolio-button" type = "button"
+                            value = "Save Portfolio" class = "half-padding"
+                            ng-disabled="market.saved || market.portfolio.tickers.length === 0" 
+                            ng-click = "market.savePortfolio()">
                 </form>
             </div>
         </td></tr>
@@ -29,14 +33,14 @@
             <div class ="note highlight-fill center-align" 
                 ng-if = "!market.selection && !market.portfolio.tickers.includes(market.selection.code)">
                 <span class = "half-fade">Equity Description Goes Here</span></div>
-            <div class = "note center-align error-fill"
+            <div class = "center-align error-fill"
                 ng-if = "market.portfolio.tickers.includes(market.selection.code)">
                 List Already Contains {{market.selection.code}}
             </div>
         </td></tr>
 
         <tr><td>
-            <div ng-if = "market.portfolio.tickers.length === market.portfolio_add_clicks && market.stored">
+            <div ng-if = "market.portfolio.tickers.length === market.portfolio_add_clicks && market.stored && market.tickers">
                 <div class = "sub-title tab">Portfolio</div>
                 <div class = "data-grid">
                     <div class = "data-grid-item" ng-repeat = "holding in market.portfolio.tickers">

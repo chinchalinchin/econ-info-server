@@ -1,20 +1,28 @@
-function stat_controller(stat_factory, logger_factory, app_factory){
-    logger_factory.log("Initializing Controller Variables", "stat_controller")
+function stat_controller(stat_factory, logger_factory, app_factory, $scope){
     var self = this;
-    self.clearable = false;
-    self.stored = false;
-    self.stat_add_clicks = 0;
-    self.statistics = { stats: [], values: [], dates: []};
-    self.codes = null;
 
-    logger_factory.log("Initializing Code Data", "quandl_stat_controller")
-    app_factory.getCodes().then(data=>{
-        logger_factory.log("Codes Received From 'app_factory'", "stat_controller.getCodes");
-        self.codes = data.codes;
-    })
-    .catch(function(err){
-        logger_factory.warn(err, "stat_controller.getCodes");
-    })
+    // EVENT LISTENERS
+    $scope.$on('navbar_click', function(){
+
+    });
+
+    // CONTROLLER METHODS
+    self.getCodes = function(){
+        logger_factory.log("Initializing Code Data", "quandl_stat_controller")
+        app_factory.getCodes().then(data=>{
+            logger_factory.log("Codes Received From 'app_factory'", "stat_controller.getCodes");
+            self.codes = data.codes;
+        })
+        .catch(function(err){
+            logger_factory.warn(err, "stat_controller.getCodes");
+        })
+    }
+
+    self.getStatistic = function(stat){
+        logger_factory.log(`Retrieving ${stat} Statistic From ${stat_factory.getName()}`, 
+                            "stat_controller.getStatistic");
+        return stat_factory.getStatistic(stat)
+    }
 
     self.getStoredValue = function(stat){
         var index = self.statistics.stats.indexOf(stat);
@@ -36,12 +44,6 @@ function stat_controller(stat_factory, logger_factory, app_factory){
         else{
             logger_factory.log(`Error: Coulf Not Find Stored Date For ${stat}`, "stat_controller.getStoredDate")
         }
-    }
-
-    self.getStatistic = function(stat){
-        logger_factory.log(`Retrieving ${stat} Statistic From ${stat_factory.getName()}`, 
-                            "stat_controller.getStatistic");
-        return stat_factory.getStatistic(stat)
     }
 
     self.getDescription = function(stat){
@@ -86,6 +88,7 @@ function stat_controller(stat_factory, logger_factory, app_factory){
                 self.statistics.dates.push(date_and_value.date);
                 self.stored = true;
                 self.selection = null;
+                self.saved = false;
                 if(!self.clearable) { self.clearable = true; }
             })
         }
@@ -100,7 +103,41 @@ function stat_controller(stat_factory, logger_factory, app_factory){
         self.clearable = false;
         self.stored = false;
         self.selection = null; 
+        self.saved = false;
         self.stat_add_clicks = 0;
         self.statistics = { stats: [], values: [], dates: [] }
     }
+
+    self.saveStatistics = function(){
+        logger_factory.log("Storing Statistics In 'price_factory'","stat_controller.saveStatistics")
+        stat_factory.setStatistics(self.statistics);
+        self.saved = true;
+    }
+
+    // CONSTRUCTOR 
+    self.init = function(){
+        logger_factory.log("Initializing Code Data", "stat_controller.init");
+        self.codes = null;
+        self.getCodes();
+        logger_factory.log("Initializing Statistics", "stat_controller.init")
+        stat_store = stat_factory.getStatistics();
+        logger_factory.log("Initializing Controller Variables", "stat_controller.init")
+        self.selection = null;
+        if(stat_store){
+            self.statistics = stat_store;
+            self.stat_add_clicks = self.statistics.stats.length;
+            self.clearable = true;
+            self.saved = true;
+            self.stored = true;
+        }
+        else{
+            self.statistics = { stats: [], values: [], dates: []}; 
+            self.stat_add_clicks = 0; 
+            self.clearable = false;
+            self.saved = false;
+            self.stored = false;        
+        }
+    }
+
+    self.init();
 }

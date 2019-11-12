@@ -26,10 +26,14 @@
                                 </select>
                                 <input id = "add-stat-button" class = "half-padding"
                                         type ="submit" value = "Add Statistic"
-                                        ng-disabled = "statForm.$invalid && !sample.statistics.stats.includes(sample.selection)">
+                                        ng-disabled = "statForm.$invalid || sample.statistics.stats.includes(sample.selection)">
                                 <input id = "clear-stat-button" class ="half-padding"
                                         type = "button" value = "Clear Statistics"
                                         ng-disabled = "!sample.clearable" ng-click = "sample.clearStatistics()">
+                                <input id = "save-stat-button" class = "half-padding"
+                                        type = "button" value = "Save Statistics"
+                                        ng-disabled = "sample.saved || sample.statistics.stats.length === 0"
+                                        ng-click = "sample.saveStatistics()">
                         </form>
                 </div>
         </td></tr>
@@ -50,7 +54,7 @@
         </td></tr>
 
         <tr><td>
-            <div ng-if = "sample.statistics.stats.length === sample.stat_add_clicks && sample.stored">
+            <div ng-if = "sample.statistics.stats.length === sample.stat_add_clicks && sample.stored && sample.codes">
                 <div class = "sub-title tab">Statistics</div>
                 <div class = "data-grid">
                         <div class ="data-grid-item" ng-repeat="stat in sample.statistics.stats">

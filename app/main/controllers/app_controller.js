@@ -1,20 +1,15 @@
 function app_controller(logger_factory, app_factory, $scope){
-    logger_factory.log('Intializing', "app_controller")
+    logger_factory.log('Initializing', "app_controller")
     var self = this;
     self.debug = app_factory.getDebug();
     
     logger_factory.log("Registering app_controller to listen on 'app_update' event stream",
-                        "app_controller")
-                    
+                        "app_controller")         
     $scope.$on('app_update', function(){
         buffer = self.debug;
         self.debug = app_factory.getDebug();
         logger_factory.log(`Updating Debug Control From ${buffer} to ${self.debug}`, 
                             'app_update event stream')
-    })
-
-    $scope.$on('navbar_click', function(event, data){
-
     })
 
     self.debugger = function(setter){
@@ -24,6 +19,6 @@ function app_controller(logger_factory, app_factory, $scope){
     } 
 
     self.navbarClick= function(){
-        $scope.$broadcast('navbar_click', 'value')
+        $scope.$broadcast('navbar_click')
     }
 }

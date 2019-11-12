@@ -1,6 +1,28 @@
 function price_factory(logger_factory, context_factory, $http){
     
     logger_factory.log('Initializing', 'price_factory');
+    var portfolio = null;
+    var statistics = null;
+
+    var setPortfolio = function(thisPortfolio) { 
+        logger_factory.log('Storing Portfolio', "price_factory.setPortfolio")
+        portfolio = thisPortfolio; 
+    }
+
+    var getPortfolio = function() { 
+        logger_factory.log('Returning Portfolio', "price_factory.getPortfolio")
+        return portfolio; 
+    }
+
+    var setStatistics = function(theseStats) {
+        logger_factory.log('Storing Statistics', "price_factory.setPortfolio") 
+        statistics = theseStats; 
+    }
+
+    var getStatistics = function(){ 
+        logger_factory.log('Returning Statistics', "price_factory.getStatistics")
+        return statistics; 
+    }
 
     var getName = function() { return `${application_properties.price_factory} price_factory`};
 
@@ -37,8 +59,12 @@ function price_factory(logger_factory, context_factory, $http){
      };
 
     return{
+        getPortfolio: getPortfolio,
+        getStatistics: getStatistics,
         getName: getName,
         getPrice: getPrice,
-        getStatistic: getStatistic
+        getStatistic: getStatistic,
+        setPortfolio: setPortfolio,
+        setStatistics: setStatistics
     };
 }

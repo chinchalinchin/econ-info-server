@@ -31,11 +31,14 @@ Note: API keys are stored in <i>/server/services/alpha_vantage/alpha_vantage_con
 3. Angular App: Equity Data Tab
 	- [x] Quandl WIKI Data Binding
 	- [x] Alpha Vantage Data Binding
-	- [ ] Ability To Save Portfolio
+	- [x] Ability To Save Portfolio In-App
+	- [ ] Ability To Save Portfolio to User Account
 	- [ ] Copy/Download Portfolio Report
 4. Angular App: Economic Data Tab
 	- [x] Quandl FRED Data Binding
 	- [x] FRED Filters
+	- [x] Ability To Save Statistics In-App
+	- [ ] Ability To Save Statistics To User Account
 	- [ ] Copy/Download Statistics Report
 5. Angular App: Black-Scholes Analysis Tab
 	- [ ] Form Binding For User Inputs
