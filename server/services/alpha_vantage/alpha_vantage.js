@@ -114,7 +114,7 @@ function formatJSONMAResBody(body, period, transform){
     }
     return new_response = {
         date: dates[0],
-        value: moving_average.toFixed(2);
+        value: moving_average.toFixed(2)
     }
 }
 
