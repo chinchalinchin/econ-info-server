@@ -1,7 +1,11 @@
 /*quick formats*/
 .half-tab{ margin-left: 10px; }
 .tab{ margin-left: 20px; }
+.tab-and-a-half { margin-left: 30px; }
 .double-tab{ margin-left:40px; }
+.double-tab-and-a-half { margin-left: 50px; }
+.triple-tab{ margin-left: 60px; }
+.reverse-tab { margin-right: 20px; }
 .block { display: block; }
 .half-fade{ opacity: 0.5 }
 .quarter-fade{ opacity: 0.75 }
@@ -23,6 +27,10 @@
 }
 .fit-width-to-parent{ width: 100%; }
 .fit-height-to-parent{ height: 100%; }
+.dilate-to-parent{
+    width: 80%;
+    height: 80%;
+}
 .center-align{ 
     text-align: center;
     justify-content: center;

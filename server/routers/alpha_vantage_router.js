@@ -69,10 +69,9 @@ router.get('/closing-weekly-price/*', function(req, res, next){
 router.get('/moving-average/*', function(req, res, next){
     var ticker = req.path.split('/')[2];
     var period = req.query.period;
-    var log = req.query.return;
+    var log = req.query.return === 'true' ? true : false;
     helper.log(`GET ${ticker} MA(${period}) Request Received`, '/api/alpha-vantage/moving-average/')
     var url = alpha_vantage.getDailyUrl(ticker);
-    console.log(url);
     request(url, function(error, response, body){
         response_json = alpha_vantage.formatJSONMAResBody(body, period, log);
         helper.log(`Get ${ticker} MA(${period}) Response Sent: {date, value}: {${response_json.date}, ${response_json.value}}`,

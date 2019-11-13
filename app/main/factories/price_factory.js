@@ -64,8 +64,8 @@ function price_factory(logger_factory, context_factory, $http){
         var url = context_factory.getMovingAverageUrl(ticker, period, log);
         return $http.get(url).then(function(response){
             new_response = response.data;
-            logger_factory.log(`Response: ${code} Date: ${new_response.date}`, "price_factory.getStatistic");
-            logger_factory.log(`Response: ${code} Value: ${new_response.value}`, "price_factory.getStatistic");
+            logger_factory.log(`Response: ${ticker} Date: ${new_response.date}`, "price_factory.getMovingAverage");
+            logger_factory.log(`Response: ${ticker} Value: ${new_response.value}`, "price_factory.getMovingAverage");
             return new_response;
         })
         .catch(function(err){

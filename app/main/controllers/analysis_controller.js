@@ -5,23 +5,34 @@ function analysis_controller(logger_factory, price_factory){
     self.analyzed = false;
 
     self.getMA20 = function(transform){
-        self.MA20 = price_factory.getMovingAverage(self.ticker, 20, transform);
+        price_factory.getMovingAverage(self.ticker, 20, transform).then((data)=>{
+            self.MA20 = data;
+        })
     };
     
     self.getMA50 = function(transform){
-        self.MA50 = price_factory.getMovingAverage(self.ticker, 50, transform);
+        price_factory.getMovingAverage(self.ticker, 50, transform).then((data)=>{
+            self.MA50 = data;
+        })
+    }
+
+    self.getMA100 = function(transform){
+        price_factory.getMovingAverage(self.ticker, 100, transform).then((data)=>{
+            self.MA100 = data;
+        })
     }
 
     self.analyze = function(){
-        console.log('analyzed'); 
-        self.analyzed = true; 
         self.getMA20(false);
         self.getMA50(false);
+        self.getMA100(false);
+        self.analyzed = true; 
     }
     
     self.unanalyze = function(){
         self.analyzed = false;
-        MA20 = null;
-        MA50 = null;
+        self.MA20 = null;
+        self.MA50 = null;
+        self.MA100 = null;
     }
 }

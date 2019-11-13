@@ -14,13 +14,28 @@
     </td></tr>
     <tr><td>
         <span ng-if = "analysis.analyzed">
-            <span ng-if = "analysis.MA20">MA(20): {{analysis.MA20}}</span>
+            <span class = "ma20"
+                    ng-if = "analysis.MA20">
+                MA(20): {{analysis.MA20.value | currency}}
+            </span>
+            <span class = "ma50 half-tab" 
+                    ng-if = "analysis.MA50">
+                MA(50): {{analysis.MA50.value | currency }} 
+            </span>
+            <span class = "ma100 half-tab"
+                    ng-if ="analysis.MA100">
+                MA(100): {{analysis.MA100.value | currency}}    
+            </span>
         </span>
     </td></tr>
     <tr>
         <td>
             <input type ="button" value ="Analyze" class = "justify-right"
-                 ng-click = 'analysis.analyze()'>
+                 ng-click = 'analysis.analyze()'
+                 ng-show = "!analysis.analyzed">
+            <input type = "button" value = "Un-Analyze" class = "justify-right"
+                 ng-click = 'analysis.unanalyze()'
+                 ng-show = "analysis.analyzed">
         </td>
     </tr>
 </table>
