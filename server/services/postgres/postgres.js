@@ -9,8 +9,20 @@ const client = new postgresClient({
     port: postgresConfig.port
 })
 
+const default_queries = {
+    exists:{
+        priceTable: "SELECT to_regclass('public.prices') IS NULL",
+        tickerTable: "SELECT to_regclass('public.tickers') IS NULL"
+    },
+    create:{
+        priceTable: "",
+        tickerTable: ""
+    }
+}
+
 module.exports = {
     query: (text, params, callback) => {
       return client.query(text, params, callback)
     },
+    default_queries: default_queries
   }
