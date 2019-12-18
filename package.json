@@ -4,20 +4,32 @@
   "description": "an angularjs app that provides and displays quote economic information from Quandl and Alpha Vantage",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "npm install && node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "stock", "black-scholes", "technical", "analysis",
-    "node", "express", "angularjs", "angular",
-    "quandl", "alpha vantage", "FRED", "Saint Louis Fed",
-    "economics", "equities", "securities"
+    "stock",
+    "black-scholes",
+    "technical",
+    "analysis",
+    "node",
+    "express",
+    "angularjs",
+    "angular",
+    "quandl",
+    "alpha vantage",
+    "FRED",
+    "Saint Louis Fed",
+    "economics",
+    "equities",
+    "securities"
   ],
   "author": "Grant Moore",
   "license": "UNLICENSED",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "pg": "^7.15.0",
     "query-string": "^6.8.3",
     "request": "^2.88.0"
   }

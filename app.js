@@ -54,4 +54,5 @@ app.get('/api/codes/', function(req, res, next){
 
 app.listen(8001, function(){
     helper.log("Listening On Port 8001", "Server")
+    helper.log("Please navigate to http://localhost:8001/home/", "Server");
 });
