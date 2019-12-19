@@ -12,7 +12,7 @@ However, there are limitations to <b>Quandl</b>. Most of their equity data is hi
 
 <u>Note:</u> API keys are stored in <i>/server/services/alpha_vantage/alpha_vantage_config.json</i> and <i>/server/services/quandl/quandl_config.json</i>. These are free services, so have at it. 
 
-Currently working on data persistence by populating a postgres database with API calls to Alpha Vantage and Quandl. Application will determine if database is up to date on startup and populate the missing data where appropriate. See usage section for more information on connecting to a local postgres database.
+Currently working on data persistence by populating a postgres database with API calls to <b>Alpha Vantage</b> and <b>Quandl</b>. Application will determine if database is up to date on startup and populate the missing data where appropriate. See usage section for more information on connecting to a local postgres database.
 
 <h1>Feature Checklist</h1>
 
