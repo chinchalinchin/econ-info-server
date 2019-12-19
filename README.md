@@ -4,7 +4,7 @@
 
 <a href = "https://www.alphavantage.co/documentation/">Alpha Vantage API Documentation</a>
 
-<a href = "https://node-postgres.com/">NodeJS <u>node-postgres</u> Package</a>
+<a href = "https://node-postgres.com/">NodeJS ***node-postgres*** Package</a>
 
 <u>Finneas-Stockholm</u> is a simple UI built from the AngularJS framework and served up through Node Express. The app makes calls to a free API provided by <b>Quandl</b>, retrieving financial data for the user to view. Currently, the app displays stock price data from a free WIKI database and economic information from a FRED dataset maintained by the Saint Louis Federal Reserve, both provided on <b>Quandl</b>'s servers.
 
@@ -13,7 +13,7 @@ However, there are limitations to <b>Quandl</b>. Most of their equity data is hi
 <u>Note:</u> API keys are stored in the following directories
 
 	/server/services/alpha_vantage/alpha_vantage_config.json
-	
+
 	/server/services/quandl/quandl_config.json
 
 Currently working on data persistence by populating a postgres database with API calls to <b>Alpha Vantage</b> and <b>Quandl</b>. Application will determine if database is up to date on startup and populate the missing data where appropriate. See usage section for more information on connecting to a local postgres database.
