@@ -10,7 +10,9 @@
 
 However, there are limitations to <b>Quandl</b>. Most of their equity data is historical. The free data stops at the date March 27th, 2018 and will remain there until Quandl dumps another set of equity prices into their WIKI database. Luckily, another free API exists for this app to use as backend: <b>Alpha Vantage</b>. <b>Alpha Vantage</b> provides up-to-date quotes on the stock exchange (and also forex markets! A possible future addition to <u>Finneas-Stockholm<u>). <b>Alpha Vantage</b> is used to retrieve the latest price information in lieu of <b>Quandl</b>, where appropriate. Alpha Vantage lacks economic information, such as interest rates and GDP estimates, however. So, both <b>Alpha Vantage</b> and <b>Quandl</b> are necessary to get all the information required for this app. 
 
-<u>Note:</u> API keys are stored in <i>/server/services/alpha_vantage/alpha_vantage_config.json</i> and <i>/server/services/quandl/quandl_config.json</i>. These are free services, so have at it. 
+<u>Note:</u> API keys are stored in the following directories
+	/server/services/alpha_vantage/alpha_vantage_config.json
+	/server/services/quandl/quandl_config.json
 
 Currently working on data persistence by populating a postgres database with API calls to <b>Alpha Vantage</b> and <b>Quandl</b>. Application will determine if database is up to date on startup and populate the missing data where appropriate. See usage section for more information on connecting to a local postgres database.
 
@@ -146,7 +148,7 @@ Currently working on connecting to a local postgres database to store equity pri
 
 The database connection is configured by the JSON file found in
 
-	/server/services/postgres/postgres_config
+	/server/services/postgres/postgres_config.json
 
 By default, the app expects a database named 'market' to exist on 'http://localhost:5432/'. The app will try to log in to the database server with the username 'postgres' and password 'root'. Obviously, these can be configured in the aforementioned JSON file. 
 
