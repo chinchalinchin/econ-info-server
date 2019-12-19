@@ -4,19 +4,25 @@
 
 <a href = "https://www.alphavantage.co/documentation/">Alpha Vantage API Documentation</a>
 
+<a href = "https://node-postgres.com/">NodeJS node-postgres package</a>
+
 <u>Finneas-Stockholm</u> is a simple UI built from the AngularJS framework and served up through Node Express. The app makes calls to a free API provided by <b>Quandl</b>, retrieving financial data for the user to view. Currently, the app displays stock price data from a free WIKI database and economic information from a FRED dataset maintained by the Saint Louis Federal Reserve, both provided on <b>Quandl</b>'s servers.
 
-However, there are limitations to <b>Quandl</b>. Most of their equity data is historical. The free data stops at the date March 27th, 2018 and will remain there until Quandl dumps another set of equity prices into their WIKI database. Luckily, another free API exists for this app to use as backend: <b>Alpha Vantage</b>. <b>Alpha Vantage</b> provides up-to-date quotes on the stock exchange (and also forex markets! A possible future addition to <u>Finneas-Stockholm<u>). <b>Alpha Vantage</b> is used to retrieve the latest price information in lieu of <b>Quandl</b>, where appropriate. Alpha Vantage lacks economic infromation, such as interest rates and GDP estimates, however. So, both <b>Alpha Vantage</b> and <b>Quandl</b> are necessary to get all the information required for this app. 
+However, there are limitations to <b>Quandl</b>. Most of their equity data is historical. The free data stops at the date March 27th, 2018 and will remain there until Quandl dumps another set of equity prices into their WIKI database. Luckily, another free API exists for this app to use as backend: <b>Alpha Vantage</b>. <b>Alpha Vantage</b> provides up-to-date quotes on the stock exchange (and also forex markets! A possible future addition to <u>Finneas-Stockholm<u>). <b>Alpha Vantage</b> is used to retrieve the latest price information in lieu of <b>Quandl</b>, where appropriate. Alpha Vantage lacks economic information, such as interest rates and GDP estimates, however. So, both <b>Alpha Vantage</b> and <b>Quandl</b> are necessary to get all the information required for this app. 
 
-Note: API keys are stored in <i>/server/services/alpha_vantage/alpha_vantage_config.json</i> and <i>/server/services/quandl/quandl_config.json</i>. These are free services, so have at it. 
+<u>Note:</u> API keys are stored in <i>/server/services/alpha_vantage/alpha_vantage_config.json</i> and <i>/server/services/quandl/quandl_config.json</i>. These are free services, so have at it. 
+
+Currently working on data persistence by populating a postgres database with API calls to Alpha Vantage and Quandl. Application will determine if database is up to date on startup and populate the missing data where appropriate. See usage section for more information on connecting to a local postgres database.
 
 <h1>Feature Checklist</h1>
 
-1. Front-End: Node Server
+1. Node Server
 	- [x] Angular Service
 	- [x] Quandl Redirect For Node API
 	- [x] Alpha Vantage Redirect For Node API 
 	- [ ] Authentication/OAuth2 Flow
+	- [ ] Data Persistence
+	- [ ] Modularize requests to Alpha Vantage and Quandl for easy database population
 2. Angular App: Functionality
 	- [x] Controller Data Binding
 	- [x] Service Injection
@@ -46,11 +52,15 @@ Note: API keys are stored in <i>/server/services/alpha_vantage/alpha_vantage_con
 	- [ ] Black-Scholes Price Components
 	- [ ] Black-Scholes Greek Components
 	- [ ] Implied Volatility Calculator Component
-6. Angular App: Grafana Service
+6. Grafana Service
 	- [ ] Populate Database With Date From Quandl/Alpha Vantage
 	- [ ] Connect Database To Grafana
 	- [ ] Set Up Queries To Filter By Ticker, Start Date, End Date
 	- [ ] Embed Iframes In Equity & Economic Data Tabs
+7. Persistence: Postgres SQL
+	- [ ] Determine If 'market' Database Exists And If Not, Create.
+	- [ ] Determine If Database Schema Exists And If Not, Create.
+	- [ ] Populate Database With API calls to Alpha Vantage and Quandl
 
 <h1>Adding To The Code</h1>
 
@@ -130,32 +140,14 @@ You can also retrieve a list of prices, up to 100 days long (Alpha Vantage limit
 
 	http://localhost:8001/api/alpha-vantage/closing-daily-prices/FB?length=10
 
-<h1>Thoughts</h1>
+3. Database and Data Persistence
 
-1. Architecture
+Currently working on connecting to a local postgres database to store equity prices and economic statistics. The server app uses a package called <a href = "https://node-postgres.com/">node-postgres</a> to handle queries and connection pools. As of right now, the app connects and checks for the existence of a database schema. If it does not find one, it will populate the database with tables and relations. 
 
-Currently: 
-Front-end AngularJS app accesses Quandl. Quandl API essentially acts as a back-end for front-end app. Technically, all calls to Quandl are pointed back to Node Server which also serves up AngularJS app, hitting endpoints designated for redirects. These endpoints in turn send out requests to Quandl and return the response to the user. In other words, the user never directly accesses Quandl; Node essentially acts as a proxy (specifically, a request is received at a designated Node Express endpoint, a new request is formed via the npm package 'request' and then its response received, and that response is returned as the response to the original request).
+The database connection is configured by the JSON file found in
 
-This flow is set up to prevent the Quandl API key from being exposed to the user. The API key is stored on the Node Server and appended to the redirect in order to authenticate without the user's knowledge. There is, however, nothing to stop a user from endlessly accessing the API, even though they have no access to the API key, since the routes in the Node Server to the backend are not protected. 
+	/server/services/postgres/postgres_config
 
-Future:
-Create proper backend that interfaces with database (MySQL?). Populate database with responses from Quandl. Set trigger for automatic update every morning. Have frontend talk to database through backend. Have user authenticate with backend before access to resources is granted (i.e., OAuth2)
+By default, the app expects a database named 'market' to exist on 'http://localhost:5432/'. The app will try to log in to the database server with the username 'postgres' and password 'root'. Obviously, these can be configured in the aforementioned JSON file. 
 
-Essentially, figure out how to implement this flow:
-
-	Flow 1: USER- > FRONT END SERVER -> BACKEND SERVER -> DATABASE -> BACKEND SERVER -> FRONTEND SERVER-> USER
-		
-In particular, the second data pipe between the frontend and backend, 
-
-	Flow 1B: FRONT END SERVER -> BACKEND SERVER
-	
-Should this be an OAuth2 flow? I.e., Facebook/Google Authentication?
-
-Also, there needs to be a way to feed data from Quandl and Alpha Vantage into a database. There needs to be a trigger mechanism that makes http calls to the Quandl/Alpha Vantage servers and populates a database with new values every so often. Look into triggering mechanisms.
-
-	Flow 2: TRIGGER MECHANISM (SERVER?) -> QUANDL SERVER-> TRIGGER MECHANISM (SERVER?) -> DATABASE
-
-2. Grafana Service
-
-Once the backend is differentiated and the database is separated out from the frontend, Grafana will be able to interface with the database and provide visualizations of the equity and security data provided by Quandl. These visualizations can be embedded within iframes in the AngularJS HTML component templates. The Grafana tab will need to receive the user's portfolio and figure out a way of providing input to Grafana's api to retrieve the correct dataset from the database.
+Currently working on trying to have app check if database exist and if not, create one. 
