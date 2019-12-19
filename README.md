@@ -4,7 +4,7 @@
 
 <a href = "https://www.alphavantage.co/documentation/">Alpha Vantage API Documentation</a>
 
-<a href = "https://node-postgres.com/">NodeJS node-postgres package</a>
+<a href = "https://node-postgres.com/">NodeJS <u>node-postgres</u> Package</a>
 
 <u>Finneas-Stockholm</u> is a simple UI built from the AngularJS framework and served up through Node Express. The app makes calls to a free API provided by <b>Quandl</b>, retrieving financial data for the user to view. Currently, the app displays stock price data from a free WIKI database and economic information from a FRED dataset maintained by the Saint Louis Federal Reserve, both provided on <b>Quandl</b>'s servers.
 
