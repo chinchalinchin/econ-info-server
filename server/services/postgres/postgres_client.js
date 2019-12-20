@@ -7,101 +7,115 @@ const postgresConfig = require('./postgres_config.json');
 const helper = require('../../scripts/helper.js');
 
 const client = new Client({
-    user: postgresConfig.username,
-    host: postgresConfig.host,
-    database: postgresConfig.database,
-    password: postgresConfig.password,
-    port: postgresConfig.port
+    user: postgresConfig.connection.username,
+    host: postgresConfig.connection.host,
+    database: postgresConfig.connection.database,
+    password: postgresConfig.connection.password,
+    port: postgresConfig.connection.port
 })
 
-const queries = {
-    exists:{
-        priceTable: "SELECT to_regclass('public.prices') IS NULL;",
-        tickerTable: "SELECT to_regclass('public.tickers') IS NULL;"
-    },
-    create:{
-        priceTable: "CREATE TABLE prices (date DATE, tickerID INT REFERENCES tickers(tickerID), price DECIMAL);",
-        tickerTable: "CREATE TABLE tickers (tickerID SERIAL PRIMARY KEY, ticker VARCHAR(6), description TEXT);"
-    },
-    insert: {
-        priceTable:"INSERT INTO prices (date, tickerID, price) VALUE ($1, $2, $3);",
-        tickerTable: "INSERT INTO tickers (ticker, description) VALUES ($1, $2);"
-    },
-    select:{
-        tickerID: "SELECT tickerID FROM tickers WHERE ticker = $1;",
-        tickerInfo: "SELECT tickerID, desc FROM tickers WHERE ticker = $1;",
-        tickerPrice: "SELECT date, price FROM prices WHERE tickerID = $1;"
-    }
-}
-
 var initialize = function(){
-    return new Promise( (resolve, reject) => {
-        helper.log('Connecting To Postgres Database...', 'postgres-client.initialize')
-        client.connect();
-        
+    helper.log('Constructing Promise To Database...', 'postgres-client.initialize');
+    return new Promise( (resolve, reject) => {        
         helper.log('Intializing Database Schema...', 'postgres-client.initialize');
-        helper.log('Does Ticker Table Exist?', 'postgres-client.initialize');
-        client.query(queries.exists.tickerTable)
+        helper.log("Does 'tickers' Table Exist?", 'postgres-client.initialize');
+        client.query(postgresConfig.queries.exists.tickerTable)
                 .then(res=>{
                     if(res.rows[0]['?column?']){
-                        helper.log('Ticker Table Does Not Exist!', 'postgres-client.initialize');
-                        helper.log('Creating Ticker Table...', 'postgres-client.initialize');
-                        client.query(queries.create.tickerTable)
+                        helper.log("'tickers' Table Does Not Exist!", 'postgres-client.initialize');
+                        helper.log("Creating 'tickers' Table...", 'postgres-client.initialize');
+                        client.query(postgresConfig.queries.create.tickerTable)
                                 .then(()=>{
-                                    helper.log('Ticker Table Created!', 'postgres-client.initialize');
+                                    helper.log("'tickers' Table Created!", 'postgres-client.initialize');
                                 })
                                 .catch((err)=>{
-                                    helper.warn('Error Creating Ticker Table', 'postgres-client.initialize');
-                                    reject(err);
+                                    helper.warn("...Rejecting Promise! Processing Error...", 'postgres-client.initialize');
+                                    reject(new Error(`Error Creating 'tickers' Table: ${err.message}`));
                                 })
                     }
                     else{
-                        helper.log('Ticker Table Exists.', 'postgres-client.initialize');
+                        helper.log("'tickers' Table Exists!", 'postgres-client.initialize');
                     }
                 })
                 .then(()=>{
-                    helper.log('Does Price Table Exist?', 'postgres-client.initialize');
-                    client.query(queries.exists.priceTable)
+                    helper.log("Does 'prices' Table Exist?", 'postgres-client.initialize');
+                    client.query(postgresConfig.queries.exists.priceTable)
                             .then(res=>{
                                     if(res.rows[0]['?column?']){
-                                        helper.log('Price Table Does Not Exist!', 'postgres-client.initialize');
-                                        helper.log('Creating Price Table...', 'postgres-client.initialize');
-                                        client.query(queries.create.priceTable)
+                                        helper.log("'prices' Table Does Not Exist!", 'postgres-client.initialize');
+                                        helper.log("Creating 'prices' Table...", 'postgres-client.initialize');
+                                        client.query(postgresConfig.queries.create.priceTable)
                                                 .then(()=>{
-                                                    helper.log('Price Table Created!', 'postgres-client.initialize');
-                                                    client.end();
+                                                    helper.log("'prices' Table Created!", 'postgres-client.initialize');
                                                     resolve(true);
                                                     
                                                 })
                                                 .catch((err)=>{
-                                                    helper.warn('Error Creating Price Table!', 'postgres-client.initialize');
-                                                    reject(err);
+                                                    helper.warn('...Rejecting Promise! Processing Error...', 'postgres-client.initialize');
+                                                    reject(new Error(`Error Creating 'prices' Table: ${err.message}`));
                                                 })
                                     }
                                     else{
-                                        helper.log('Price Table Exists!', 'postgres-client.initialize');
-                                        client.end();
+                                        helper.log("'prices' Table Exists!", 'postgres-client.initialize');
                                         resolve(true);
                                     }
                             })
                             //.then( () =>{
                                 // TODO: check if stat and code table exist!
                             //})
+                            .catch(err =>{
+                                helper.warn("...Rejecting Promise! Processing Error..", "postgres-client.initialize");
+                                reject(new Error(`Error Querying 'prices' Table: ${err.message}`));
+                            })
                 })
                 .catch(err=>{
-                    helper.log('Error Occured Querying Database!', 'postgres-client.initialize')
-                    reject(err);
+                    helper.warn("...Rejecting Promise! Processing Error...", 'postgres-client.initialize')
+                    reject(new Error(`Error Querying 'tickers' Table: ${err.message}`));
                 })
     });
 }
 
-var populate = function(tickers, codes){
+var populate = async function(tickers, codes){
+    for(let tick of tickers){
+        tickerName = tick.code;
+        tickerDesc = tick.name;
+        try{
+            const res = await client.query(postgresConfig.queries.select.tickerID, [tickerName]);
+            if(res.rows.length>0){
+                helper.warn(`${tickerName} Exists In 'tickers' Table With ID #${res.rows[0]}`,
+                                "postgres-client.populate")
+            }
+            else{
+                helper.log(`Inserting ${tickerName} Into 'tickers' Table`,
+                                "postgres-client.populate");
+                try{
+                    const nextRes = await client.query(postgresConfig.queries.insert.tickerTable, [tickerName, tickerDesc]);
+                    helper.log(`${nextRes.rows[0]} Inserted Into 'tickers' Table`);
 
+                }
+                catch(nextErr){
+                    helper.warn(`Error Inserting ${tickerName} Into 'tickers' Table: ${nextErr.message}`,
+                                    "postgres-client.populate")
+                }
+            }
+        }
+        catch (err) { 
+            helper.warn(`Error Querying 'tickers' Table: ${err.message}`, "postgres-client.populate");
+        }
+    }
 }
 
 module.exports = {
     init: initialize,
     populate: populate,
+    connect: () => { 
+        helper.log('Connecting To Postgres Database...', 'postgres-client.connect')
+        client.connect(); 
+    }, 
+    disconnect: () => { 
+        helper.log('Disconnecting To Postgres Database...', 'postgres-client.disconnect')
+        client.end(); 
+    },
     basic_query: (text) =>{ 
         client.connect();
         return client.query(text, (res)=>{
@@ -120,5 +134,5 @@ module.exports = {
         client.end();
       })
     },
-    queries: queries
+    queries: postgresConfig.queries
   }

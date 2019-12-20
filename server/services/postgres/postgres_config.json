@@ -1,7 +1,29 @@
+
 {
-    "host": "localhost",
-    "username": "postgres",
-    "password": "root",
-    "database": "market",
-    "port": 5432
+    "queries": {
+        "exists":{
+            "priceTable": "SELECT to_regclass('public.prices') IS NULL;",
+            "tickerTable": "SELECT to_regclass('public.tickers') IS NULL;"
+        },
+        "create":{
+            "priceTable": "CREATE TABLE prices (date DATE, tickerID INT REFERENCES tickers(tickerID), price DECIMAL);",
+            "tickerTable": "CREATE TABLE tickers (tickerID SERIAL PRIMARY KEY, ticker VARCHAR(6), description TEXT);"
+        },
+        "insert": {
+           "priceTable":"INSERT INTO prices (date, tickerID, price) VALUE ($1, $2, $3) RETURNING tickerID, date;",
+            "tickerTable": "INSERT INTO tickers (ticker, description) VALUES ($1, $2) RETURNING tickerID;"
+        },
+        "select":{
+            "tickerID": "SELECT tickerID FROM tickers WHERE ticker = $1;",
+            "tickerInfo": "SELECT tickerID, desc FROM tickers WHERE ticker = $1;",
+            "tickerPrice": "SELECT date, price FROM prices WHERE tickerID = $1;"
+        }
+    },
+    "connection": {
+        "host": "localhost",
+        "username": "postgres",
+        "password": "root",
+        "database": "market",
+        "port": 5432
+    }
 }

@@ -43,9 +43,9 @@ app.use('/home/', function(req, res, next){
 });
 
 // Routing
-
+    // Quandl Router
 app.use('/api/quandl/', quandl_router);
-
+    // Alpha Vantage Router
 app.use('/api/alpha-vantage/', alpha_vantage_router)
 
 // GET endpoints
@@ -60,20 +60,25 @@ app.get('/api/codes/', function(req, res, next){
     res.status(200).json(codes);
 });
 
-// Populate postgres database
+// connect to and initialize postgres database
 helper.log("Initializing 'postgres-client'", "server");
-postgres.init().then((res,err)=>{
-    if(res){
-        helper.log('Database Initialized, Starting Server', "server");
-        app.listen(8001, function(){
-            helper.log("Listening On Port 8001", "server")
-            helper.log("Please Navigate To 'http://localhost:8001/home/' for UI", "server");
-        });
-    }
-    else{
-        helper.warn('Error Initializing Database! Correct Error Given Below And Restart:', "server")
-        console.log(err);
-    }
-});
+postgres.connect();
+postgres.init()
+    .then((res,err)=>{
+        if(res){
+            helper.log('Database Initialized, Starting Server', "server");
+            app.listen(8001, function(){
+                helper.log("Listening On Port 8001", "server")
+                helper.log("Please Navigate To 'http://localhost:8001/home/' for UI", "server");
+            });
+        }
+        else{
+            helper.warn('Error Initializing Database! Correct Error Given Below And Restart Server:', "server")
+            console.log(err);
+        }
+    })
+    .then(()=>{
+        postgres.populate(tickers, codes);
+    });
 // then populate database
-// then start server
+// todo: then start server. current order of promises starts servers before population.
