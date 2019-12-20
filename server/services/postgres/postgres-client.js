@@ -19,60 +19,73 @@ var initialize = function(){
     return new Promise( (resolve, reject) => {        
         helper.log('Intializing Database Schema...', 'postgres-client.initialize');
         helper.log("Does 'tickers' Table Exist?", 'postgres-client.initialize');
+        // TICKER TABLE EXISTENCE QUERY START
         client.query(postgresConfig.queries.exists.tickerTable)
                 .then(res=>{
                     if(res.rows[0]['?column?']){
                         helper.log("'tickers' Table Does Not Exist!", 'postgres-client.initialize');
                         helper.log("Creating 'tickers' Table...", 'postgres-client.initialize');
+                        // TICKER TABLE INSERTION QUERY START
                         client.query(postgresConfig.queries.create.tickerTable)
-                                .then(()=>{
-                                    helper.log("'tickers' Table Created!", 'postgres-client.initialize');
-                                })
-                                .catch((err)=>{
-                                    helper.warn("...Rejecting Promise! Processing Error...", 'postgres-client.initialize');
-                                    reject(new Error(`Error Creating 'tickers' Table: ${err.message}`));
-                                })
+                                .then(()=>{ helper.log("'tickers' Table Created!", 'postgres-client.initialize'); })
+                                .catch((err)=>{ reject(new Error(`Error Creating 'tickers' Table: ${err.message}`)); })
+                        // TICKER TABLE INSERTION QUERY END
                     }
-                    else{
-                        helper.log("'tickers' Table Exists!", 'postgres-client.initialize');
-                    }
+                    else{ helper.log("'tickers' Table Exists!", 'postgres-client.initialize'); }
                 })
                 .then(()=>{
                     helper.log("Does 'prices' Table Exist?", 'postgres-client.initialize');
+                    // PRICE TABLE EXISTENCE QUERY START
                     client.query(postgresConfig.queries.exists.priceTable)
                             .then(res=>{
                                     if(res.rows[0]['?column?']){
                                         helper.log("'prices' Table Does Not Exist!", 'postgres-client.initialize');
                                         helper.log("Creating 'prices' Table...", 'postgres-client.initialize');
+                                        // PRICE TABLE INSERTION QUERY START
                                         client.query(postgresConfig.queries.create.priceTable)
                                                 .then(()=>{
                                                     helper.log("'prices' Table Created!", 'postgres-client.initialize');
-                                                    resolve(true);
-                                                    
                                                 })
-                                                .catch((err)=>{
-                                                    helper.warn('...Rejecting Promise! Processing Error...', 'postgres-client.initialize');
-                                                    reject(new Error(`Error Creating 'prices' Table: ${err.message}`));
-                                                })
+                                                .catch((err)=>{ reject(new Error(`Error Creating 'prices' Table: ${err.message}`)); })
                                     }
                                     else{
                                         helper.log("'prices' Table Exists!", 'postgres-client.initialize');
-                                        resolve(true);
                                     }
                             })
-                            //.then( () =>{
-                                // TODO: check if stat and code table exist!
-                            //})
-                            .catch(err =>{
-                                helper.warn("...Rejecting Promise! Processing Error..", "postgres-client.initialize");
-                                reject(new Error(`Error Querying 'prices' Table: ${err.message}`));
+                            .then( () =>{
+                                helper.log("Does 'codes' Table Exist?", 'postgres-client.initialize');
+                                // CODE TABLE EXISTENCE QUERY
+                                client.query(postgresConfig.queries.exists.codeTable)
+                                        .then(res=>{
+                                            if(res.rows[0]['?column?']){
+                                                helper.log("'codes' Table Does Not Exist!", 'postgres-client.initialize');
+                                                helper.log("Creating 'codes' Table...", 'postgres-client.initialize');
+                                                client.query(postgresConfig.queries.create.codeTable)
+                                                        .then(()=>{
+                                                            helper.log("'codes' Table Created!", 'postgres-client.initialize');
+                                                            // promise end point 1
+                                                            resolve(true); 
+                                                            
+                                                        })
+                                                        .catch((err)=>{ reject(new Error(`Error Creating 'codes' Table: ${err.message}`)); })
+                                            }
+                                            else{
+                                                helper.log("'codes' Table Exists!", 'postgres-client.initialize');
+                                                // promise end point
+                                                resolve(true); 
+                                            }
+                                        })
+                                        .then( () =>{
+                                            //check is stat table exists
+                                        })
+                                        .catch(err => { reject(new Error(`Error Querying 'codes' Table: ${err.message}`))})
                             })
+                            .catch(err =>{ reject(new Error(`Error Querying 'prices' Table: ${err.message}`)); })
                 })
-                .catch(err=>{
-                    helper.warn("...Rejecting Promise! Processing Error...", 'postgres-client.initialize')
-                    reject(new Error(`Error Querying 'tickers' Table: ${err.message}`));
-                })
+                .catch(err=>{ reject(new Error(`Error Querying 'tickers' Table: ${err.message}`));});
+                // PRICE TABLE EXISTENCE QUERY END
     });
+    // TICKER TABLE EXISTENCE QUERY END
 }
 
 var populate = async function(tickers, codes){

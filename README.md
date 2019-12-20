@@ -12,9 +12,9 @@ However, there are limitations to <b>Quandl</b>. Most of their equity data is hi
 
 ***Note*** API keys are stored in the following directories
 
-	/server/services/alpha_vantage/alpha_vantage_config.json
+	/server/services/alpha-vantage/alpha-vantage-config.json
 
-	/server/services/quandl/quandl_config.json
+	/server/services/quandl/quandl-config.json
 
 Currently working on data persistence by populating a postgres database with API calls to <b>Alpha Vantage</b> and <b>Quandl</b>. Application will determine if database is up to date on startup and populate the missing data where appropriate. See usage section for more information on connecting to a local postgres database.
 
@@ -150,7 +150,7 @@ Currently working on connecting to a local postgres database to store equity pri
 
 The database connection is configured by the JSON file found in
 
-	/server/services/postgres/postgres_config.json
+	/server/services/postgres/postgres-config.json
 
 By default, the app expects a database named 'market' to exist on 'http://localhost:5432/'. The app will try to log in to the database server with the username 'postgres' and password 'root'. Obviously, these can be configured in the aforementioned JSON file. 
 

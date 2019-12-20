@@ -9,7 +9,9 @@
         },
         "create":{
             "priceTable": "CREATE TABLE prices (date DATE, tickerID INT REFERENCES tickers(tickerID), price DECIMAL);",
-            "tickerTable": "CREATE TABLE tickers (tickerID SERIAL PRIMARY KEY, ticker VARCHAR(6), description TEXT);"
+            "tickerTable": "CREATE TABLE tickers (tickerID SERIAL PRIMARY KEY, ticker VARCHAR(6), description TEXT);",
+            "statTable": "CREATE TABLE stats (date DATE, codeID INT REFERENCES codes(codeID), stat DECIMAL);",
+            "codeTable": "CREATE TABLE codes (codeID SERIAL PRIMARY KEY, category VARCHAR(20), description TEXT);"
         },
         "insert": {
            "priceTable":"INSERT INTO prices (date, tickerID, price) VALUE ($1, $2, $3) RETURNING tickerID, date;",
