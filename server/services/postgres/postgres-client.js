@@ -3,7 +3,7 @@
 // strings.
 
 const { Client }  = require('pg');
-const postgresConfig = require('./postgres_config.json');
+const postgresConfig = require('./postgres-config.json');
 const helper = require('../../scripts/helper.js');
 
 const client = new Client({
@@ -15,7 +15,7 @@ const client = new Client({
 })
 
 var initialize = function(){
-    helper.log('Constructing Promise To Database...', 'postgres-client.initialize');
+    helper.log('Constructing Promise For Database Initialization...', 'postgres-client.initialize');
     return new Promise( (resolve, reject) => {        
         helper.log('Intializing Database Schema...', 'postgres-client.initialize');
         helper.log("Does 'tickers' Table Exist?", 'postgres-client.initialize');
@@ -81,17 +81,14 @@ var populate = async function(tickers, codes){
         tickerDesc = tick.name;
         try{
             const res = await client.query(postgresConfig.queries.select.tickerID, [tickerName]);
-            if(res.rows.length>0){
-                helper.warn(`${tickerName} Exists In 'tickers' Table With ID #${res.rows[0]}`,
-                                "postgres-client.populate")
-            }
-            else{
-                helper.log(`Inserting ${tickerName} Into 'tickers' Table`,
-                                "postgres-client.populate");
+                // First check if ID already exists for a given ticker in the tickers table.
+                // Query will return a null array if record does not exist.
+                // If record does not exist, insert into tickers table.
+                // NOTE: parameters for the query must be passed in as an array into the 
+                //       the postgres-client.
+            if(res.rows.length==0){
                 try{
-                    const nextRes = await client.query(postgresConfig.queries.insert.tickerTable, [tickerName, tickerDesc]);
-                    helper.log(`${nextRes.rows[0]} Inserted Into 'tickers' Table`);
-
+                    await client.query(postgresConfig.queries.insert.tickerTable, [tickerName, tickerDesc]);
                 }
                 catch(nextErr){
                     helper.warn(`Error Inserting ${tickerName} Into 'tickers' Table: ${nextErr.message}`,
@@ -101,6 +98,13 @@ var populate = async function(tickers, codes){
         }
         catch (err) { 
             helper.warn(`Error Querying 'tickers' Table: ${err.message}`, "postgres-client.populate");
+        }
+    }
+    for(let category of codes.categories){
+        for(let entry of codes.codes[category]){
+            console.log(category);
+            console.log(entry.code);
+            console.log(entry.description);
         }
     }
 }

@@ -3,7 +3,9 @@
     "queries": {
         "exists":{
             "priceTable": "SELECT to_regclass('public.prices') IS NULL;",
-            "tickerTable": "SELECT to_regclass('public.tickers') IS NULL;"
+            "tickerTable": "SELECT to_regclass('public.tickers') IS NULL;",
+            "statTable": "SELECT to_regclass('public.stats') IS NULL;",
+            "codeTable": "SELECT to_regclass('public.codes') IS NULL;"
         },
         "create":{
             "priceTable": "CREATE TABLE prices (date DATE, tickerID INT REFERENCES tickers(tickerID), price DECIMAL);",

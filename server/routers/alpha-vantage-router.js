@@ -1,6 +1,6 @@
 const express = require('express');
 const request = require('request');
-const alpha_vantage = require('../services/alpha_vantage/alpha_vantage_client.js');
+const alpha_vantage = require('../services/alpha-vantage/alpha-vantage-client.js');
 const helper = require('../scripts/helper.js');
 
 var router = express.Router();

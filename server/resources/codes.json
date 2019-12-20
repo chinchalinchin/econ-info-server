@@ -49,5 +49,8 @@
                 {"code": "DCOILWTICO", "description": "Crude Oil Prices, West Texas Intermediate (WTI), Cushing, Oklakhoma"},
                 {"code": "DTWEXM", "description": "Trade Weighted U.S. Dollar Index, Major Currencides, \n Base: 1973"}, 
                 {"code": "DTWEXB", "description": "Trade Weighted U.S. Dollar Index, Broad, \n Base: 1997"}]
-        }
+        },
+        "categories":["other_indicators", "debt", "income_and_expenditure", 
+                        "employment", "interest_rates", "money_supply", "prices_and_inflation",
+                        "growth"]
 }

@@ -23,7 +23,7 @@ var response_format = {
     },
 }
 
-var alpha_vantage = require('./alpha_vantage_config.json');
+var alpha_vantage = require('./alpha-vantage-config.json');
 
 function getSecureUrl(){
     return `${alpha_vantage.baseURL}&apikey=${alpha_vantage.APIKey}&outputsize=compact&datatype=json`

@@ -3,12 +3,12 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const path = require('path');
 const helper = require('./server/scripts/helper.js');
-const quandl_router = require('./server/routers/quandl_router.js')
-const alpha_vantage_router = require('./server/routers/alpha_vantage_router.js')
+const quandl_router = require('./server/routers/quandl-router.js')
+const alpha_vantage_router = require('./server/routers/alpha-vantage-router.js')
 const tickers = require('./server/resources/tickers.json')
 const codes = require('./server/resources/codes.json')
-const server_config = require('./server/resources/server_config.json')
-const postgres = require('./server/services/postgres/postgres_client.js')
+const server_config = require('./server/resources/server-config.json')
+const postgres = require('./server/services/postgres/postgres-client.js')
 
 // Initialize node-express
 helper.log('Initializing Server', "server");
@@ -64,21 +64,18 @@ app.get('/api/codes/', function(req, res, next){
 helper.log("Initializing 'postgres-client'", "server");
 postgres.connect();
 postgres.init()
-    .then((res,err)=>{
+    .then(async function(res){
         if(res){
-            helper.log('Database Initialized, Starting Server', "server");
+            helper.log('Database Initialized, Populating Database', "server");
+            await postgres.populate(tickers, codes);
+            helper.log('Database Populated, Starting Server', "server");
             app.listen(8001, function(){
                 helper.log("Listening On Port 8001", "server")
                 helper.log("Please Navigate To 'http://localhost:8001/home/' for UI", "server");
             });
         }
-        else{
-            helper.warn('Error Initializing Database! Correct Error Given Below And Restart Server:', "server")
-            console.log(err);
-        }
     })
-    .then(()=>{
-        postgres.populate(tickers, codes);
-    });
-// then populate database
-// todo: then start server. current order of promises starts servers before population.
+    .catch(err=>{
+        helper.warn('Error Initializing Database! Correct Error Given Below And Restart Server:', "server")
+        console.log(err);
+    })

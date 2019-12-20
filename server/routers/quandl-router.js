@@ -1,6 +1,6 @@
 const express = require('express');
 const request = require('request');
-const quandl = require('../services/quandl/quandl_client.js')
+const quandl = require('../services/quandl/quandl-client.js')
 const helper = require('../scripts/helper.js')
 
 var router = express.Router();

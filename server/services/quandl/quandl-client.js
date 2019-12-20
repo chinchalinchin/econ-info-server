@@ -15,7 +15,7 @@ module.exports={
     codes: getCodes,
 }
 
-var quandl = require('./quandl_config.json')
+var quandl = require('./quandl-config.json')
 
 function getColumnValues(){ 
     return quandl.columnValues; 
