@@ -14,8 +14,10 @@
             "codeTable": "CREATE TABLE codes (codeID SERIAL PRIMARY KEY, category VARCHAR(20), description TEXT);"
         },
         "insert": {
-           "priceTable":"INSERT INTO prices (date, tickerID, price) VALUE ($1, $2, $3) RETURNING tickerID, date;",
-            "tickerTable": "INSERT INTO tickers (ticker, description) VALUES ($1, $2) RETURNING tickerID;"
+            "priceTable":"INSERT INTO prices (date, tickerID, price) VALUE ($1, $2, $3) RETURNING tickerID, date;",
+            "tickerTable": "INSERT INTO tickers (ticker, description) VALUES ($1, $2) RETURNING tickerID;",
+            "statTable": "INSERT INTO stats (date, codeID, stat) VALUES ($1, $2, $3) RETURNING codeID;",
+            "codeTable": "INSERT INTO codes (category, description) VALUES ($1, $2) RETURNING codeID;"
         },
         "select":{
             "tickerID": "SELECT tickerID FROM tickers WHERE ticker = $1;",

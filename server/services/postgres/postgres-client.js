@@ -15,77 +15,87 @@ const client = new Client({
 })
 
 var initialize = function(){
-    helper.log('Constructing Promise For Database Initialization...', 'postgres-client.initialize');
+    helper.log('Constructing Promise For Database Initialization', 'postgres-client.initialize');
     return new Promise( (resolve, reject) => {        
-        helper.log('Intializing Database Schema...', 'postgres-client.initialize');
+        helper.log('Intializing Database Schema', 'postgres-client.initialize');
         helper.log("Does 'tickers' Table Exist?", 'postgres-client.initialize');
         // TICKER TABLE EXISTENCE QUERY START
         client.query(postgresConfig.queries.exists.tickerTable)
                 .then(res=>{
                     if(res.rows[0]['?column?']){
                         helper.log("'tickers' Table Does Not Exist!", 'postgres-client.initialize');
-                        helper.log("Creating 'tickers' Table...", 'postgres-client.initialize');
+                        helper.log("Creating 'tickers' Table", 'postgres-client.initialize');
                         // TICKER TABLE INSERTION QUERY START
                         client.query(postgresConfig.queries.create.tickerTable)
                                 .then(()=>{ helper.log("'tickers' Table Created!", 'postgres-client.initialize'); })
                                 .catch((err)=>{ reject(new Error(`Error Creating 'tickers' Table: ${err.message}`)); })
                         // TICKER TABLE INSERTION QUERY END
-                    }
-                    else{ helper.log("'tickers' Table Exists!", 'postgres-client.initialize'); }
+                    } else{ helper.log("'tickers' Table Exists!", 'postgres-client.initialize'); }
                 })
                 .then(()=>{
                     helper.log("Does 'prices' Table Exist?", 'postgres-client.initialize');
                     // PRICE TABLE EXISTENCE QUERY START
                     client.query(postgresConfig.queries.exists.priceTable)
                             .then(res=>{
-                                    if(res.rows[0]['?column?']){
-                                        helper.log("'prices' Table Does Not Exist!", 'postgres-client.initialize');
-                                        helper.log("Creating 'prices' Table...", 'postgres-client.initialize');
-                                        // PRICE TABLE INSERTION QUERY START
-                                        client.query(postgresConfig.queries.create.priceTable)
-                                                .then(()=>{
-                                                    helper.log("'prices' Table Created!", 'postgres-client.initialize');
-                                                })
-                                                .catch((err)=>{ reject(new Error(`Error Creating 'prices' Table: ${err.message}`)); })
-                                    }
-                                    else{
-                                        helper.log("'prices' Table Exists!", 'postgres-client.initialize');
-                                    }
+                                if(res.rows[0]['?column?']){
+                                    helper.log("'prices' Table Does Not Exist!", 'postgres-client.initialize');
+                                    helper.log("Creating 'prices' Table", 'postgres-client.initialize');
+                                    // PRICE TABLE INSERTION QUERY START
+                                    client.query(postgresConfig.queries.create.priceTable)
+                                            .then(()=>{ helper.log("'prices' Table Created!", 'postgres-client.initialize'); })
+                                            .catch((err)=>{ reject(new Error(`Error Creating 'prices' Table: ${err.message}`)); })
+                                    // PRICE TABLE INSERTION QUERY END
+                                } else{ helper.log("'prices' Table Exists!", 'postgres-client.initialize'); }
                             })
                             .then( () =>{
                                 helper.log("Does 'codes' Table Exist?", 'postgres-client.initialize');
-                                // CODE TABLE EXISTENCE QUERY
+                                // CODE TABLE EXISTENCE QUERY START
                                 client.query(postgresConfig.queries.exists.codeTable)
                                         .then(res=>{
                                             if(res.rows[0]['?column?']){
                                                 helper.log("'codes' Table Does Not Exist!", 'postgres-client.initialize');
-                                                helper.log("Creating 'codes' Table...", 'postgres-client.initialize');
+                                                helper.log("Creating 'codes' Table", 'postgres-client.initialize');
                                                 client.query(postgresConfig.queries.create.codeTable)
-                                                        .then(()=>{
-                                                            helper.log("'codes' Table Created!", 'postgres-client.initialize');
-                                                            // promise end point 1
-                                                            resolve(true); 
-                                                            
-                                                        })
+                                                        .then(()=>{ helper.log("'codes' Table Created!", 'postgres-client.initialize');  })
                                                         .catch((err)=>{ reject(new Error(`Error Creating 'codes' Table: ${err.message}`)); })
-                                            }
-                                            else{
-                                                helper.log("'codes' Table Exists!", 'postgres-client.initialize');
-                                                // promise end point
-                                                resolve(true); 
-                                            }
+                                            } else{ helper.log("'codes' Table Exists!", 'postgres-client.initialize'); }
                                         })
                                         .then( () =>{
-                                            //check is stat table exists
+                                            helper.log("Does 'stat' Table Exist?", 'postgres-client.initialize');
+                                            // STAT TABLE EXISTENCE QUERY START
+                                            client.query(postgresConfig.queries.exists.statTable)
+                                                    .then(res=>{
+                                                        if(res.rows[0]['?column?']){
+                                                            helper.log("'stats' Table Does Not Exist!", 'postgres-client.initialize');
+                                                            helper.log("Creating 'stats' Table", 'postgres-client.initialize');
+                                                            client.query(postgresConfig.queries.create.statTable)
+                                                                    .then(()=>{
+                                                                        helper.log("'stats' Table Created!", 'postgres-client.initialize');
+                                                                        // PROMISE END POINT #1
+                                                                        resolve(true); 
+                                                                        
+                                                                    })
+                                                                    .catch((err)=>{ reject(new Error(`Error Creating 'stats' Table: ${err.message}`)); })
+                                                        }
+                                                        else{
+                                                            helper.log("'stats' Table Exists!", 'postgres-client.initialize');
+                                                            // PROMISE END POINT #2
+                                                            resolve(true); 
+                                                        }
+                                                    })
+                                                    .catch(err => { reject(new Error(`Error Querying 'stats' Table: ${err.message}`))})
+                                                // STAT TABLE EXISTENCE QUERY END
                                         })
                                         .catch(err => { reject(new Error(`Error Querying 'codes' Table: ${err.message}`))})
+                                // CODE TABLE EXISTENCE QUERY START
                             })
                             .catch(err =>{ reject(new Error(`Error Querying 'prices' Table: ${err.message}`)); })
+                    // PRICE TABLE EXISTENCE QUERY END
                 })
                 .catch(err=>{ reject(new Error(`Error Querying 'tickers' Table: ${err.message}`));});
-                // PRICE TABLE EXISTENCE QUERY END
+            
+            // TICKER TABLE EXISTENCE QUERY END
     });
-    // TICKER TABLE EXISTENCE QUERY END
 }
 
 var populate = async function(tickers, codes){
@@ -126,11 +136,11 @@ module.exports = {
     init: initialize,
     populate: populate,
     connect: () => { 
-        helper.log('Connecting To Postgres Database...', 'postgres-client.connect')
+        helper.log('Connecting To Postgres Database', 'postgres-client.connect')
         client.connect(); 
     }, 
     disconnect: () => { 
-        helper.log('Disconnecting To Postgres Database...', 'postgres-client.disconnect')
+        helper.log('Disconnecting To Postgres Database', 'postgres-client.disconnect')
         client.end(); 
     },
     basic_query: (text) =>{ 
